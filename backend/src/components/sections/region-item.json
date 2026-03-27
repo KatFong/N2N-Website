@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_region_items",
+  "info": {
+    "displayName": "Region Item",
+    "icon": "globe",
+    "description": "A single geographic region"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

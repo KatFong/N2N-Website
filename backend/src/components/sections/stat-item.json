@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_stat_items",
+  "info": {
+    "displayName": "Stat Item",
+    "icon": "hashtag",
+    "description": "A single stat number with label"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "integer",
+      "required": true
+    },
+    "prefix": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "format": {
+      "type": "enumeration",
+      "enum": ["int", "comma"],
+      "default": "int"
+    },
+    "suffix": {
+      "type": "string",
+      "default": "+"
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

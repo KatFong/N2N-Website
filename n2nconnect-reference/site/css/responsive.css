@@ -1,0 +1,1382 @@
+/**-------------------------
+Max Width 
+-------------------------**/
+/*--- Media Queries (max-width: 1500px) ---*/
+@media only screen and (max-width: 1500px) {
+    .career-with-us-bg {
+        background-position: 40%;
+    }
+
+    /* .career-with-us-bg h3 {
+        left: 25px;
+    } */
+}
+
+/*--- Media Queries (max-width: 1440px) ---*/
+@media only screen and (max-width: 1440px) {
+    /* .carousel-item {
+        height: 75vh;
+    } */
+
+    #carouselExampleAutoplaying > .carousel-item {
+        height: auto;
+    }    
+
+    .slidebg1 {
+        background-image: url(../images/slider-bg/banner%201-laptop.png);
+    }
+
+    .slidebg2 {
+        background-image: url(../images/slider-bg/banner%202-laptop.png);
+    }
+
+    .slidebg3 {
+        background-image: url(../images/slider-bg/banner%203-laptop.png);
+    }
+
+    .slidebg4 {
+        background-image: url(../images/slider-bg/banner%204-laptop.png)
+    }
+
+    /********************************
+    Ain New Code Responsive 767px
+    *********************************/
+    /********************************
+    Start Career List
+    *********************************/
+
+    /****** Career List Content ********/
+
+    .career-with-us-bg .content_banner {
+        left: 25%;
+        transform: translate(-25%, -50%);
+        width: 50%;
+    }
+}
+
+/*--- Media Queries (max-width: 1280px) ---*/
+@media only screen and (max-width: 1280px) {
+
+    .carousel-item {}
+
+    #carouselExampleAutoplaying > .carousel-item {
+        height: auto;
+    }
+
+    .career-with-us-bg {
+        background-position: 55%;
+    }
+
+    .job-box {
+        min-height: 150px;
+    }
+
+    .bg-for-aeb {
+        background-image: url(../images/bg/AEB/AeB_bg_laptop.jpg);
+    }
+}
+
+/*--- Media Queries (max-width: 1199px) ---*/
+@media (max-width: 1199px) {
+    .upload-resume {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .upload-button {
+        width: 100%;
+    }
+
+    .slidebg1 {
+        background-image: url(../images/slider-bg/banner%201-tablet.png);
+    }
+
+    .slidebg2 {
+        background-image: url(../images/slider-bg/banner%202-tablet.png);
+    }
+
+    .slidebg3 {
+        background-image: url(../images/slider-bg/banner%203-tablet.png);
+    }
+
+    .slidebg4 {
+        background-image: url(../images/slider-bg/banner%204-tablet.png)
+    }
+
+    .texts-middle-aligner {
+        padding: 0;
+    }
+
+    .aeb-deco-r {
+        position: absolute;
+        right: 0;
+        top: 827px;
+        /* width: 80%; */
+    }
+    
+    /* #map {} */
+
+}
+
+/*--- Media Queries (max-width: 991px) ---*/
+@media (max-width: 991px) {
+
+    .content-centralizer {
+        margin: 10px auto;
+        width: 95%;
+    }
+
+    .financial-highlights {
+        text-align: left;
+    }
+
+    .ir-ar-part-cover {
+        text-align: center;
+    }
+
+    .ir-ar-part-cover a {
+        float: none;
+        padding: 0;
+    }
+
+    .show-all {
+        display: block;
+        float: none;
+    }
+
+    .ir-fs-title {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 0.8em;
+    }
+
+    .card .logo {
+        width: 70px;
+    }
+
+    .card h6 {
+        font-size: 17px;
+    }
+
+    .card:hover h6 {
+        font-size: 15px;
+    }
+
+    .card-style-button h6 {
+        font-size: 15px;
+    }
+
+    .financial-highlights {
+        text-align: left;
+        padding: 0 30px;
+    }
+
+    .ir-ar-part-cover {
+        text-align: center;
+    }
+
+    .ir-ar-part-cover a {
+        float: none;
+        padding: 0;
+    }
+
+    .show-all {
+        display: block;
+        float: none;
+    }
+
+    .ir-fs-title {
+        font-size: 16px;
+    }
+
+    #map {
+        height: 150px;
+        width: 700px;
+    }
+
+    .close-alert {
+        right: 10px;
+        top: 0;
+    }
+
+     .aeb-deco-r {
+        position: absolute;
+        right: 0;
+        top: 871px;
+    }
+
+    .career_tabs li {
+        /*width: 100%;*/
+        display: block;
+        padding-bottom: 20px;
+    }
+    
+}
+
+@media (max-width: 850px) and (orientation:landscape) {
+    .slider-textcontent-cover {
+        color: #ffffff;
+        text-align: left;
+        position: absolute;
+        top: 20%;
+        max-width: 420px;
+    }
+
+    .slider-textcontent-cover h3 {
+        color: #ffffff;
+        font-size: 30px;
+        font-family: Renogare-regular;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .slider-textcontent-cover p {
+        font-size: 15px;
+    }
+
+    .slider-textcontent-cover a {
+        line-height: 100px;
+    }
+
+    .carousel-indicators {
+        bottom: -10px;
+    }
+}
+
+/*--- Media Queries (max-width: 980px) ---*/
+@media (max-width: 980px) {
+    .tabs li {}
+
+    .tab {
+        padding: 10px 5px;
+    }
+
+    .capital-top-control ul li {
+        padding: 0;
+    }
+
+    .cmsbutton {
+        width: 40px;
+    }
+}
+
+@media (max-width: 980px) {
+    .tabs li {}
+
+    .tab {
+        padding: 10px 5px;
+    }
+
+    .capital-top-control ul li {
+        padding: 0;
+    }
+
+    .cmsbutton {
+        width: 40px;
+    }
+}
+
+/*--- Media Queries (max-width: 800px) ---*/
+@media (max-width: 800px) {
+    /* .carousel-item {
+        height: 80vh;
+    } */
+
+    #carouselExampleAutoplaying > .carousel-item {
+        height: auto;
+    }
+
+    .slider-textcontent-cover {
+        top: 65%;
+    }
+
+    .slidebg1 {
+        background-image: url(../images/slider-bg/banner%201-mobile.png);
+    }
+
+    .slidebg2 {
+        background-image: url(../images/slider-bg/banner%203-mobile.png);
+
+    }
+
+    .slidebg3 {
+        background-image: url(../images/slider-bg/banner2-mobile.png);
+        background-position-y: -35px;
+    }
+
+    .slidebg4 {
+        background-image: url(../images/slider-bg/banenr%204-mobile.png)
+    }
+
+    .slider-textcontent-cover {
+        margin: 0 auto;
+        color: #ffffff;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+    }
+
+    .slider-textcontent-cover h3 {
+        color: #ffffff;
+        font-size: 25px;
+        font-family: Renogare-regular;
+    }
+
+    .slider-textcontent-cover p {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .slider-textcontent-cover a {
+        font-size: 14px;
+        line-height: 80px;
+        padding: 7px 20px;
+    }
+}
+
+
+/*--- Media Queries (max-width: 767px) ---*/
+@media (max-width: 767px) {
+
+    /* .carousel_aeb > a.carousel-control-next > span.carousel-control-next-icon:after {
+        top: 20%;
+    } */
+
+    .carousel_aeb > .carousel-control-next,
+    .carousel_aeb > .carousel-control-prev {
+        display: block;
+        top: 20%;
+    }
+
+    .iframe-chart-cover {
+        padding: 0 15px;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .slidebg1 {
+        background-image: url(../images/slider-bg/banner%201-mobile.png);
+        background-position: center;
+    }
+
+    .slidebg2 {
+        background-image: url(../images/slider-bg/banner%203-mobile.png);
+        background-position: center;
+    }
+
+    .slidebg3 {
+        background-image: url(../images/slider-bg/banner2-mobile.png);
+        background-position-y: 35px;
+        background-position: center;
+    }
+
+    .slidebg4 {
+        background-image: url(../images/slider-bg/banenr%204-mobile.png);
+        background-position: center;
+    }
+
+    .career-with-us-bg {
+        background-image: url(../images/Career_Mobile.jpg);
+    }
+
+    /* .career-with-us-bg h3 {
+        text-align: center;
+        left: 0;
+        top: 10px;
+    } */
+
+    .slider-textcontent-cover {
+        max-width: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        position: absolute;
+        top: 70%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        padding: 0 10%;
+        z-index: 1;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        display: none;
+    }
+
+    .slider-textcontent-cover h3 {
+        font-size: 23px;
+    }
+
+    .intouch-text-cover3 h2 {
+        padding: 30px 0 5px 0;
+    }
+
+    .intouch-text-cover2 h2 {
+        padding: 30px 0 5px 0;
+    }
+
+    .intouch-text-cover {
+        padding: 20px;
+    }
+
+    .intouch-lady-cover {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .intouch-lady-cover2 img {
+        padding: 20px;
+    }
+
+    .intouch-text-cover {}
+
+    .getintouch-section {
+        padding: 10px 0 40px 0;
+    }
+
+    .sub-title-section h2 {
+        text-align: center;
+    }
+
+    .numbers-highlights-cover2 {
+        padding: 5px 0;
+    }
+
+    .getintouch-no-btm-section {
+        padding: 35px 0 0 0;
+    }
+
+    .ar-cover h3 {
+        padding: 10px 0 0 0;
+    }
+
+    .investor-relation-section .pdt30 {
+        padding-top: 0 !important;
+    }
+
+    .sitemap-cover {
+        display: none;
+    }
+
+    .dot {}
+
+    .dot:before {}
+
+    @-webkit-keyframes antenna {
+        0% {
+            box-shadow: 0px 0px 0px 0px #38BDEE;
+        }
+
+        100% {
+            box-shadow: 0px 0px 0px 10px rgba(52, 106, 180, 0);
+        }
+    }
+
+    @keyframes antenna {
+        0% {
+            box-shadow: 0px 0px 0px 0px #38BDEE;
+        }
+
+        100% {
+            box-shadow: 0px 0px 0px 10px rgba(52, 106, 180, 0);
+        }
+    }
+
+    .filter-menu {
+        margin: 0 0 20px 0;
+    }
+
+    .job-application-form-cover {
+        display: inline-block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 30px;
+    }
+
+    .sd-photo-section {
+        padding: 30px 0 30px 0;
+    }
+
+    .loveplaycare-content {
+        margin: 20px 10px;
+    }
+
+    .slider-textcontent-cover {
+        margin: 0 auto;
+        color: #ffffff;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+    }
+
+    .slider-textcontent-cover h3 {
+        color: #ffffff;
+        font-size: 25px;
+        font-family: Renogare-regular;
+    }
+
+    .slider-textcontent-cover p {
+        text-align: center;
+        font-size: 14px;
+        line-height: 16px;
+        margin-top: 5px;
+    }
+
+    .slider-textcontent-cover a {
+        font-size: 14px;
+        line-height: 80px;
+        padding: 7px 20px;
+    }
+
+    .intouch-lady-cover img {}
+
+    .sitemap-2nd-col {
+        padding-left: 20px;
+    }
+
+    .footer-bottom .col-sm-6 .text-left {
+        text-align: center;
+    }
+
+    .footer-bottom .col-sm-6 .text-right {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .text-on-left {
+        text-align: center;
+    }
+
+    .text-on-right {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .dropdown-menu {
+        padding: 0 !important;
+        display: none;
+        background-color: transparent;
+        box-shadow: none;
+        transition: all 200ms linear;
+    }
+
+    .dropdown-toggle {
+        font-weight: 800;
+        font-size: 15px;
+    }
+
+    .dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+        position: relative;
+        width: 100%;
+    }
+
+    .texts-middle-aligner {
+        margin: 0;
+    }
+
+    .menu {
+        padding: 10px 0 0 0;
+        width: 100%;
+        height: 1000px;
+        list-style: none;
+        padding-left: 0;
+        display: table;
+        margin: 0 !important;
+    }
+
+    .menu .menu-item {
+        width: 100%;
+        opacity: 1;
+    }
+
+    .menu .menu-item a {
+        padding: 15px 10px;
+    }
+
+    .dropdown-item {}
+
+    .dropdown-toggle:hover {}
+
+    .dropdown-toggle[aria-expanded="false"] {}
+
+    .dropdown-toggle[aria-expanded="true"] {
+        background-color: #EBEBEB;
+    }
+
+    .menu .menu-item:hover > .sub-menu {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .menu .menu-item:hover > .menu-item-link {
+        background-color: rgba(23, 28, 142, 1);
+        color: #ffffff;
+    }
+
+    .sub-menu {
+
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .sub-menu .menu-item {
+        float: none;
+        -webkit-transition: .3s ease;
+        transition: .3s ease;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .sub-menu .menu-item a {
+        padding: 15px 15px;
+    }
+
+    .loveplaycare-control-cover {
+        padding: 25px 10px 10px;
+    }
+
+    .section-title-cover h3 {
+        font-size: 1.55rem;
+        padding: 10px;
+    }
+
+    .google-map-styling {
+        margin-bottom: 10px;
+        min-height: 300px;
+    }
+
+    .contact-info {
+        padding: 5px;
+    }
+
+    .card-style-button {
+        margin: 10px;
+    }
+
+    .press-news-cover {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .apply-now-butt {
+        /* text-align: center; */
+        margin: 0 auto;
+    }
+
+    .bg-for-aeb {
+        background-image: url(../images/bg/AEB/AeB_bg_tablet.png);
+    }
+
+    .start-header {
+        padding-bottom: 5px;
+    }
+
+    .nav-pad {
+        padding: 0;
+    }
+
+    .nav-pad a {
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+
+    .nav-pad button {
+        padding-right: 10px;
+    }
+
+    .fa-chevron-down {
+        position: relative;
+        left: 7px;
+    }
+
+    .dot-2 .tooltip__content {
+        transform: translate3d(-26%, -10%, 0) !important;
+    }
+
+    .dot-2 .tooltip__content:before {
+        left: 25%;
+    }
+
+    .dot-9 .tooltip__content {
+        transform: translate3d(-75%, -10%, 0) !important
+    }
+
+    .dot-9 .tooltip__content:before {
+        left: 75%;
+    }
+
+    #map {
+        background-image: url(../images/globe_mobile.jpg);
+        height: 265px;
+        width: 530px;
+    }
+
+    .dot-2 {
+        left: 0.5%;
+    }
+
+    .dot-3 {
+        top: 56%;
+        left: 14.9%;
+    }
+
+    .dot-4 {
+        top: 24%;
+        left: 24%;
+    }
+
+    .dot-5 {
+        left: 37.5%;
+    }
+
+    .dot-7 {
+        top: 10%;
+        left: 66%;
+    }
+
+    .dot-8 {
+        top: 51%;
+        left: 82%;
+    }
+
+    .hide-me-when-mobile {
+        display: none;
+    }
+
+    .show-me-when-mobile {
+        display: block;
+    }
+
+    .capital-img-cover {
+        margin: 20px 0;
+    }
+
+    .lpc-photo-cover-1 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .lpc-photo-cover-2 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .lpc-photo-cover-3 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .lpc-photo-cover-4 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .lpc-photo-cover-5 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .button_container {
+        display: block;
+    }
+
+    .checkbox-alert:checked + .navigation-wrap {
+        transform: translateY(-150px);
+    }
+
+    .tabs_item {
+        position: relative;
+    }
+
+    .aeb-deco-r {
+        position: absolute;
+        right: 0;
+        top: 1331px;    
+    }
+}
+
+@media (max-width: 768px) and (orientation:landscape) {
+
+    .slidebg1 {
+        background-image: url(../images/slider-bg/banner%201-laptop.png);
+    }
+
+    .slidebg2 {
+        background-image: url(../images/slider-bg/banner%203-laptop.png);
+
+    }
+
+    .slidebg3 {
+        background-image: url(../images/slider-bg/banner%202-laptop.png);
+        background-position-y: 35px;
+    }
+
+    .slidebg4 {
+        background-image: url(../images/slider-bg/banner%204-laptop.png)
+    }
+
+    .slider-textcontent-cover {
+        color: #ffffff;
+        text-align: left;
+        position: absolute;
+        top: 30%;
+        margin: 0;
+        max-width: 475px;
+        transform: translateY(0%);
+    }
+
+    .slider-textcontent-cover h3 {
+        color: #ffffff;
+        font-size: 25px;
+        font-family: Renogare-regular;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
+    .slider-textcontent-cover p {
+        text-align: left;
+        font-size: 12px;
+    }
+
+    .aeb-deco-r {
+        position: absolute;
+        right: 0;
+        top: 1331px;
+    }
+}
+
+@media only screen and (min-device-width: 700px) and (max-device-height: 450px) and (orientation : landscape){
+    .overlay nav {
+    top:57%;
+    }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-height: 360px) and (orientation : landscape){
+    .overlay nav {
+    top: 60%;
+    }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-height: 380px) and (orientation : landscape){
+    .overlay nav {
+    top: 60%;
+    }
+}
+
+@media only screen and (min-device-width: 540px) and (max-device-height: 360px) and (orientation : landscape){
+    .overlay nav {
+    top: 60%;
+    }
+}
+
+/********************************
+Media Queries (max-width: 767px) 
+*********************************/
+@media (max-width: 767px) {
+    #alert-container {
+        text-align: left;
+        line-height: 20px;
+    }
+
+    #alert-container .icon_alert {
+        margin-right: 5px;
+    }
+
+    .financial-table-style tr:first-child {
+        display: none;
+    }
+
+    .financial-table-style caption {
+        font-size: 1.3em;
+    }
+
+    .financial-table-style thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .financial-table-style tr {
+        display: block;
+        margin-bottom: .625em;
+        padding: 10px 0;
+    }
+
+    .financial-table-style td:first-child {
+        font-weight: bold;
+        font-size: 16px;
+        color: #000000;
+        border-bottom: 2px solid #000000;
+    }
+
+    .financial-table-style td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: left;
+    }
+
+    .financial-table-style td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .financial-table-style td:last-child {
+        border-bottom: 0;
+    }
+
+    .financial-table-greyborder {
+        border: 0;
+    }
+
+    .hide-table {
+        display: none !important;
+    }
+
+    .f-table-indent {
+        padding-left: 10px !important;
+    }
+
+    .financial-highlights-contents img {
+        padding: 10px;
+    }
+
+    .fh-annual-chart h3 {
+        text-align: center;
+    }
+
+    .pie-cover img {
+        max-width: 100%;
+    }
+
+    .stock-info-content {
+        padding: 20px;
+    }
+
+    .investor-relation-section {
+        padding: 30px 0 10px 0;
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .section2 {
+        padding: 0 0 50px;
+    }
+
+    .legal-iframer {
+        height: 400px;
+    }
+
+    #map {
+        height: 230px;
+        width: 460px;
+    }
+
+    .table-scroller {
+        overflow-x: auto;
+    }
+
+    .adjust-with-alert {
+        top: 160px;
+    }
+
+    .aeb-deco-r {
+        position: absolute;
+        right: 0;
+        top: 1431px;    
+    }
+
+    /********************************
+    Ain New Code Responsive 767px
+    *********************************/
+    /********************************
+    Start Career List
+    *********************************/
+
+    /****** Career List Content ********/
+
+    .life_n2n_wrapper .life_n2n_intro {
+        position: relative;
+    }
+
+    .offer_title_wrapper .offer_title {
+        width: 100%;
+    }
+
+    .career-with-us-bg .content_banner {
+        width: 100%;
+        position: relative;
+        top: 20px;
+        left: 0;
+        transform: none;
+    }
+
+    /* .career_staff_spotlight .carousel-item img, .career_staff_spotlight .carousel-item .carousel-caption {
+        transform: none;
+        padding-bottom: 20px;
+        position: relative;
+        top: 0;
+    } */
+
+    .career_staff_spotlight .carousel-inner {
+        width: 100%;
+    }
+
+    .career_staff_spotlight .carousel-inner .carousel-item {
+        height: auto;
+        min-height: 210px;
+    }
+
+    .career_staff_spotlight .carousel-item img {
+        display: none;
+    }
+    
+    .career_staff_spotlight .carousel-item .carousel-caption {
+        width: 100%;
+        display: block;
+        text-align: left;
+        padding: 20px 0;
+        transform: none;
+        top: 0;
+    }
+}
+
+    /********************************
+    Media Queries (max-width: 600px) (all copy inside 768px)
+    *********************************/
+    /* @media (max-width: 600px) {
+        
+        .financial-table-style tr:first-child {
+            display: none;
+        }
+
+        .financial-table-style caption {
+            font-size: 1.3em;
+        }
+
+        .financial-table-style thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        .financial-table-style tr {
+            display: block;
+            margin-bottom: .625em;
+            padding: 10px 0;
+        }
+
+        .financial-table-style td:first-child {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .financial-table-style td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            font-size: .8em;
+            text-align: left;
+        }
+
+        .financial-table-style td::before {
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .financial-table-style td:last-child {
+            border-bottom: 0;
+        }
+
+        .financial-table-greyborder {
+            border: 0;
+        }
+
+        .hide-table {
+            display: none !important;
+        }
+
+        .f-table-indent {
+            padding-left: 10px !important;
+        }
+
+        .financial-highlights-contents img {
+            padding: 10px;
+        }
+
+        .fh-annual-chart h3 {
+            text-align: center;
+        }
+
+        .pie-cover img {
+            max-width: 100%;
+        }
+
+        .stock-info-content {
+            padding: 20px;
+        }
+
+        .investor-relation-section {
+            padding: 30px 0 10px 0;
+        }
+
+        .section {
+            padding: 50px 0;
+        }
+
+        .section2 {
+            padding: 0 0 50px;
+        }
+
+        .legal-iframer {
+            height: 400px;
+        }
+
+        #map {
+            height: 230px;
+            width: 460px;
+        }
+
+        .table-scroller {
+            overflow-x: auto;
+        }
+
+        .adjust-with-alert {
+            top: 160px;
+        }
+
+        .aeb-deco-r {
+            position: absolute;
+            right: 0;
+            top: 1431px;    
+        }
+    } **/
+    /**---End Media Queries (max-width: 600px) --- */
+
+/********************************
+Media Queries (max-width: 575px) 
+*********************************/
+@media only screen and (max-width: 575px) {
+
+    .numbers-section-padding {
+        padding: 0;
+    }
+
+    .numbers .number-item {
+        text-align: center;
+        border: 0;
+        padding: 15px 0;
+    }
+
+    .inner-title-spot h2 {
+        font-size: 24px;
+    }
+
+    .bc-card-cover {
+        margin: 0 10px;
+    }
+
+    .home-icon-centralizer {
+        left: 0;
+    }
+
+    .home-icon-cover {
+        text-align: center;
+    }
+
+    /****** Career Page: Application Process ********/
+    .apply_process_img {
+        text-align: left;
+    }
+}
+
+/********************************
+Media Queries (max-width: 500px) 
+*********************************/
+@media (max-width: 500px) {
+
+    .financial-highlights h2 {
+        text-align: left;
+    }
+
+    .slider-textcontent-cover {
+        max-width: 400px;
+    }
+
+    .links-select {
+        margin-top: 5px;
+    }
+
+    .sitemap-2nd-col {
+        padding-left: 0;
+    }
+
+    .carousel-indicators {
+        margin-bottom: 10px;
+    }
+
+    .home-map-cover {
+        margin: 0 10px;
+    }
+
+    /* .career-with-us-bg h3 {
+        width: 200px;
+        margin: 0 auto;
+    } */
+
+    .love-photo {
+        width: 100%;
+    }
+
+    .play-photo {
+        width: 100%;
+    }
+
+    .care-photo {
+        width: 100%;
+    }
+
+    #map {
+        height: 205px;
+        width: 420px;
+    }
+}
+
+/********************************
+Media Queries (max-width: 450px) 
+*********************************/
+@media (max-width: 450px) {
+    #map {
+        height: 195px;
+        width: 385px;
+    }
+
+    .checkbox-alert:checked + .navigation-wrap {
+        transform: translateY(-150px);
+    }
+
+}
+
+/********************************
+Media Queries (max-width: 425px) 
+*********************************/
+@media (max-width: 425px) {
+    /******
+    New Style 24/10/24 
+    *******/
+
+    /********************************
+    Start Career Info
+    *********************************/
+
+    .career_info_banner_wrapper .career_info_banner h3 {
+        padding-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .career_info_tab {
+        width: 95%;
+        margin: 25px 0;
+    }
+    
+    .career_info_tab li {
+        display: block;    
+    }
+
+    .career_info_tab li:first-child {
+        margin-bottom: 35px;
+        margin-right: 0;
+    }
+
+    .career_info_tab li.career_info_current:last-child {
+        margin-bottom: 10px;    
+    }
+
+    .career_info_current a:after {
+        /* width: 70%; */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+}    
+
+/********************************
+Media Queries (max-width: 400px) 
+*********************************/
+@media (max-width: 400px) {
+    #map {
+        height: 150px;
+        width: 300px;
+    }
+
+    .adjust-with-alert {
+        top: 192px;
+    }
+
+    .checkbox-alert:checked + .navigation-wrap {
+        transform: translateY(-180px);
+    }
+
+     .start-header.scroll-on .adjust-with-alert {
+        top: 185px;
+    }    
+}
+
+/********************************
+Media Queries (max-width: 375px) 
+*********************************/
+@media (max-width: 375px) {
+    .career_staff_spotlight .carousel-inner .carousel-item {
+        min-height: 280px;
+    }
+
+}
+
+/********************************
+Media Queries (max-width: 320px) 
+*********************************/
+@media (max-width: 320px) {
+    
+    .start-header.scroll-on .adjust-with-alert {
+    top: 225px;
+    }
+    
+    .intouch-lady-cover img {
+        max-width: 100%;
+    }
+
+    .adjust-with-alert {
+        top: 220px;
+    }
+
+    .checkbox-alert:checked + .navigation-wrap {
+        transform: translateY(-210px);
+    }
+}

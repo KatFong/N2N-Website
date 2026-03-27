@@ -1,0 +1,45 @@
+{
+  "kind": "singleType",
+  "collectionName": "business_partnership",
+  "info": {
+    "singularName": "business-partnership",
+    "pluralName": "business-partnerships",
+    "displayName": "Business Partnership Page",
+    "description": "Business Partnership page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.hero"
+    },
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "pageDescription": {
+      "type": "richtext"
+    },
+    "partnerBenefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.feature-card"
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.content-block"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

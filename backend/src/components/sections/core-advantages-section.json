@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sections_core_advantages_sections",
+  "info": {
+    "displayName": "Core Advantages Section",
+    "icon": "star",
+    "description": "Stats strip + three advantage cards"
+  },
+  "options": {},
+  "attributes": {
+    "moduleLabel": {
+      "type": "string",
+      "default": "Module 02"
+    },
+    "titleZh": {
+      "type": "string"
+    },
+    "titleEn": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "text"
+    },
+    "statStripBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.stat-item"
+    },
+    "advantageCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.advantage-card"
+    }
+  }
+}

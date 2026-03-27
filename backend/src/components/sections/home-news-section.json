@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_sections_home_news_sections",
+  "info": {
+    "displayName": "Home News Section",
+    "icon": "newspaper",
+    "description": "Featured image + news list + 更多"
+  },
+  "options": {},
+  "attributes": {
+    "moduleLabel": {
+      "type": "string",
+      "default": "Module 04"
+    },
+    "titleZh": {
+      "type": "string"
+    },
+    "titleEn": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "text"
+    },
+    "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "featuredTitle": {
+      "type": "string"
+    },
+    "featuredLink": {
+      "type": "string"
+    },
+    "newsItems": {
+      "type": "component",
+      "repeatable": true,
+      "min": 0,
+      "max": 3,
+      "component": "sections.home-news-item"
+    },
+    "moreButtonLabel": {
+      "type": "string",
+      "default": "更多"
+    },
+    "moreButtonLink": {
+      "type": "string",
+      "default": "/news-insights"
+    }
+  }
+}

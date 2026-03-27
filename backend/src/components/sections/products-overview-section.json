@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_products_overview_sections",
+  "info": {
+    "displayName": "Products Overview Section",
+    "icon": "apps",
+    "description": "产品与服务 — module label, titles, product cards"
+  },
+  "options": {},
+  "attributes": {
+    "moduleLabel": {
+      "type": "string",
+      "default": "Module 03"
+    },
+    "titleZh": {
+      "type": "string"
+    },
+    "titleEn": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "text"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.product-item"
+    }
+  }
+}

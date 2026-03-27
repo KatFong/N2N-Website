@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "news_insights_page",
+  "info": {
+    "singularName": "news-insights-page",
+    "pluralName": "news-insights-pages",
+    "displayName": "News & Insights Page",
+    "description": "News and Insights listing page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.hero"
+    },
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "pageDescription": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

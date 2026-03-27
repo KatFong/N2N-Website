@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_sections_product_items",
+  "info": {
+    "displayName": "Product Item",
+    "icon": "cube",
+    "description": "A single product/service card"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "institutional",
+        "fintech",
+        "retail",
+        "hosting",
+        "financial-info",
+        "settlement",
+        "trading",
+        "server-hosting",
+        "virtual-assets",
+        "mobile-pro",
+        "n2nquant",
+        "master-picks"
+      ]
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_contact_cta_sections",
+  "info": {
+    "displayName": "Contact CTA Section",
+    "icon": "phone",
+    "description": "星空 / 幾何背景 + 聯繫文案 + 按鈕（可選背景圖覆蓋）"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttonLabel": {
+      "type": "string",
+      "default": "聯繫我們"
+    },
+    "buttonLink": {
+      "type": "string",
+      "default": "/login"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

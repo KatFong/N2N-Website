@@ -1,0 +1,139 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Homepage content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.hero"
+    },
+    "coreAdvantagesSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.core-advantages-section"
+    },
+    "productsOverview": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.products-overview-section"
+    },
+    "homeNewsSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.home-news-section"
+    },
+    "contactCtaSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.contact-cta-section"
+    },
+    "introTitle": {
+      "type": "string"
+    },
+    "introText": {
+      "type": "richtext"
+    },
+    "introImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+
+    "statsSectionTitle": {
+      "type": "string"
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.stat-item"
+    },
+
+    "productsSectionTitle": {
+      "type": "string"
+    },
+    "productsSectionSubtitle": {
+      "type": "text"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.product-item"
+    },
+    "productsCtaLabel": {
+      "type": "string"
+    },
+
+    "globalTitle": {
+      "type": "string"
+    },
+    "globalDescription": {
+      "type": "text"
+    },
+    "globalRegions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.region-item"
+    },
+
+    "partnershipTitle": {
+      "type": "string"
+    },
+    "partnershipDescription": {
+      "type": "text"
+    },
+    "partnerBenefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.feature-card"
+    },
+
+    "newsSectionTitle": {
+      "type": "string"
+    },
+
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutDescription": {
+      "type": "text"
+    },
+    "aboutBullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.region-item"
+    },
+
+    "ctaTitle": {
+      "type": "string"
+    },
+    "ctaDescription": {
+      "type": "text"
+    },
+    "ctaPrimaryLabel": {
+      "type": "string"
+    },
+    "ctaSecondaryLabel": {
+      "type": "string"
+    },
+
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.content-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

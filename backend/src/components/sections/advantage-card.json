@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_advantage_cards",
+  "info": {
+    "displayName": "Advantage Card",
+    "icon": "grid",
+    "description": "Core Advantages — single card (title + description)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# Monorepo root — N2N-AFE (frontend + backend)
+.DS_Store
+*.log
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*
+frontend/.vercel
+frontend/*.tsbuildinfo
+
+# Backend (Strapi)
+backend/node_modules/
+backend/.tmp/
+backend/dist/
+backend/build/
+backend/.strapi/
+backend/.env
+backend/.strapi-updater.json
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
+
+# IDE
+.idea/
+*.swp

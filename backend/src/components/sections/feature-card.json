@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_feature_cards",
+  "info": {
+    "displayName": "Feature Card",
+    "icon": "grid",
+    "description": "A feature card with icon, title, and description"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

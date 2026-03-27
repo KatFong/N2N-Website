@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_content_blocks",
+  "info": {
+    "displayName": "Content Block",
+    "icon": "align-left",
+    "description": "Rich text content block"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right", "top", "bottom"],
+      "default": "right"
+    }
+  }
+}

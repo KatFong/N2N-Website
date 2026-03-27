@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_home_news_items",
+  "info": {
+    "displayName": "Home News Item",
+    "icon": "link",
+    "description": "News row in Home — 新闻与活动 list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

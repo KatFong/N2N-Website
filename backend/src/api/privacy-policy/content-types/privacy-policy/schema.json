@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "privacy_policy",
+  "info": {
+    "singularName": "privacy-policy",
+    "pluralName": "privacy-policies",
+    "displayName": "Privacy Policy Page",
+    "description": "Privacy Policy page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "lastUpdated": {
+      "type": "date"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

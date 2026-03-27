@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_page",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About N2N-AFE Page",
+    "description": "About N2N-AFE page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.hero"
+    },
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "mission": {
+      "type": "richtext"
+    },
+    "vision": {
+      "type": "richtext"
+    },
+    "companyImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "teamTitle": {
+      "type": "string"
+    },
+    "teamMembers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.feature-card"
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.content-block"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
