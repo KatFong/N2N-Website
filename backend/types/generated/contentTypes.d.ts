@@ -434,7 +434,7 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   collectionName: 'about_page';
   info: {
     description: 'About N2N-AFE page content';
-    displayName: 'About N2N-AFE Page';
+    displayName: '06 \u00B7 About N2N-AFE';
     pluralName: 'about-pages';
     singularName: 'about-page';
   };
@@ -513,7 +513,7 @@ export interface ApiBusinessPartnershipBusinessPartnership
   collectionName: 'business_partnership';
   info: {
     description: 'Business Partnership page content';
-    displayName: 'Business Partnership Page';
+    displayName: '02 \u00B7 Business Partnership';
     pluralName: 'business-partnerships';
     singularName: 'business-partnership';
   };
@@ -549,7 +549,7 @@ export interface ApiGlobalBusinessGlobalBusiness
   collectionName: 'global_business';
   info: {
     description: 'Global Business page content';
-    displayName: 'Global Business Page';
+    displayName: '04 \u00B7 Global Business';
     pluralName: 'global-businesses';
     singularName: 'global-business';
   };
@@ -583,7 +583,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_page';
   info: {
     description: 'Homepage content';
-    displayName: 'Home Page';
+    displayName: '01 \u00B7 Home';
     pluralName: 'home-pages';
     singularName: 'home-page';
   };
@@ -594,6 +594,14 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     aboutBullets: Schema.Attribute.Component<'sections.region-item', true>;
     aboutDescription: Schema.Attribute.Text;
     aboutTitle: Schema.Attribute.String;
+    contactCtaSection: Schema.Attribute.Component<
+      'sections.contact-cta-section',
+      false
+    >;
+    coreAdvantagesSection: Schema.Attribute.Component<
+      'sections.core-advantages-section',
+      false
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -605,6 +613,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     globalRegions: Schema.Attribute.Component<'sections.region-item', true>;
     globalTitle: Schema.Attribute.String;
     hero: Schema.Attribute.Component<'sections.hero', false>;
+    homeNewsSection: Schema.Attribute.Component<
+      'sections.home-news-section',
+      false
+    >;
     introImage: Schema.Attribute.Media<'images'>;
     introText: Schema.Attribute.RichText;
     introTitle: Schema.Attribute.String;
@@ -620,6 +632,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     partnershipTitle: Schema.Attribute.String;
     products: Schema.Attribute.Component<'sections.product-item', true>;
     productsCtaLabel: Schema.Attribute.String;
+    productsOverview: Schema.Attribute.Component<
+      'sections.products-overview-section',
+      false
+    >;
     productsSectionSubtitle: Schema.Attribute.Text;
     productsSectionTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -638,7 +654,7 @@ export interface ApiNewsInsightsPageNewsInsightsPage
   collectionName: 'news_insights_page';
   info: {
     description: 'News and Insights listing page content';
-    displayName: 'News & Insights Page';
+    displayName: '05 \u00B7 News & Insights';
     pluralName: 'news-insights-pages';
     singularName: 'news-insights-page';
   };
@@ -670,7 +686,7 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Struct.SingleTypeSchema {
   collectionName: 'privacy_policy';
   info: {
     description: 'Privacy Policy page content';
-    displayName: 'Privacy Policy Page';
+    displayName: '07 \u00B7 Privacy Policy';
     pluralName: 'privacy-policies';
     singularName: 'privacy-policy';
   };
@@ -703,7 +719,7 @@ export interface ApiProductsServicesProductsServices
   collectionName: 'products_services';
   info: {
     description: 'Products and Services page content';
-    displayName: 'Products & Services Page';
+    displayName: '03 \u00B7 Products & Services';
     pluralName: 'products-services-pages';
     singularName: 'products-services';
   };

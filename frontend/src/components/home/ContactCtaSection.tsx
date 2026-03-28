@@ -117,7 +117,7 @@ export default function ContactCtaSection({ data }: Props) {
       />
 
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-1/3 bg-gradient-to-t from-[#6366f1]/15 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-1/3 bg-gradient-to-t from-brand-primary/20 to-transparent"
         aria-hidden
       />
 
@@ -131,7 +131,7 @@ export default function ContactCtaSection({ data }: Props) {
         <p className="mt-5 max-w-2xl text-pretty text-sm leading-relaxed text-slate-300/95 sm:text-base">{d.description}</p>
         <Link
           href={d.buttonLink}
-          className="contact-cta-breathe-btn mt-10 inline-flex min-w-[160px] items-center justify-center rounded-lg bg-gradient-to-r from-[#7c3aed] to-[#5b21b6] px-10 py-3.5 text-base font-semibold text-white shadow-lg shadow-violet-900/40 transition hover:brightness-110"
+          className="contact-cta-breathe-btn mt-10 inline-flex min-w-[160px] items-center justify-center rounded-full bg-brand-primary px-10 py-3.5 text-base font-semibold text-white shadow-[0_8px_32px_rgba(32,39,168,0.45)] transition hover:bg-brand-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
         >
           {d.buttonLabel}
         </Link>

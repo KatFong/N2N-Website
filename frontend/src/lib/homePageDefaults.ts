@@ -37,11 +37,11 @@ export const HOME_CORE_ADV_DEFAULTS: {
   introText: '以數據呈現規模，以產品與服務落實價值。',
   statStripBackgroundUrl: '/about/geometric-building2.jpg',
   stats: [
-    { target: 3, suffix: '+', unit: 'Million', label: 'ORDERS SUBMITTED' },
-    { target: 85, suffix: '+', unit: 'Billion', label: 'TRADE VALUE' },
-    { target: 85, suffix: '+', unit: 'Billion', label: 'TRADE VALUE' },
-    { target: 180, suffix: '+', unit: 'Billion', label: 'TRADE VOLUME' },
-    { target: 55000, suffix: '+', unit: '', label: 'INTERNATIONAL TRADES', format: 'comma' as const },
+    { target: 43, suffix: '+', unit: '年', label: '成立時間' },
+    { target: 12, suffix: '+', unit: '', label: '全球服務點' },
+    { target: 30, suffix: '+', unit: '', label: '連結交易所' },
+    { target: 500, suffix: '+', unit: '', label: '服務客戶' },
+    { target: 80, prefix: '超', suffix: '%', unit: '', label: '香港市場滲透' },
   ],
   cards: [
     {

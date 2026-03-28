@@ -70,22 +70,26 @@ export default function HeroBanner({ data }: Props) {
               />
             </div>
           ) : null}
-          <h1 className="text-balance text-3xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl md:leading-tight">
-            {h.title}
+          <h1 className="flex flex-col gap-2 md:gap-2.5">
+            <span className="text-balance text-2xl font-bold leading-snug tracking-tight text-white md:text-4xl md:leading-tight lg:text-5xl">
+              {h.subtitle}
+            </span>
+            <span className="text-balance text-2xl font-semibold leading-snug tracking-wide text-sky-200/95 md:text-4xl md:leading-tight lg:text-5xl">
+              {h.title}
+            </span>
           </h1>
-          <p className="mt-3 text-sm font-medium tracking-wide text-sky-200/90 md:text-base">{h.subtitle}</p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-200/95 md:text-lg">{h.description}</p>
           <div className="mt-9 flex flex-wrap gap-3 sm:gap-4">
             <Link
               href={h.ctaPrimaryLink}
-              className="hero-banner-btn group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-900 shadow-[0_4px_24px_rgba(0,0,0,0.25)] ring-1 ring-white/20 transition-all duration-300 hover:scale-105 hover:bg-sky-50 hover:shadow-[0_8px_32px_rgba(56,189,248,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 md:text-base"
+              className="hero-banner-btn group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-900 shadow-[0_4px_24px_rgba(0,0,0,0.25)] ring-1 ring-white/20 transition-all duration-300 hover:scale-105 hover:bg-brand-faint hover:shadow-[0_8px_32px_rgba(32,39,168,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary md:text-base"
             >
               {h.ctaPrimaryLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={h.ctaSecondaryLink}
-              className="hero-banner-btn inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-sky-200/80 hover:bg-sky-500/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 md:text-base"
+              className="hero-banner-btn inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(0,0,0,0.2)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-white/75 hover:bg-brand-primary/88 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 md:text-base"
             >
               {h.ctaSecondaryLabel}
             </Link>

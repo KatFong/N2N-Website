@@ -85,20 +85,29 @@ export interface SectionsFeatureCard extends Struct.ComponentSchema {
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
-    description: 'Hero banner section';
+    description: '\u9996\u5C4F\u6A6B\u5E45\uFF08\u9996\u9801\u8207\u5176\u4ED6\u5167\u9801\u5171\u7528\uFF09\u3002\u6B04\u4F4D\u5C0D\u61C9\u524D\u53F0\uFF1ASubtitle\uFF1D\u4E3B\u6A19\u4E0A\u884C\uFF08\u516C\u53F8\u5168\u540D\uFF09\uFF1BTitle\uFF1D\u4E3B\u6A19\u4E0B\u884C\uFF08\u6A19\u8A9E\uFF09\uFF1BDescription\uFF1D\u4E3B\u6A19\u4E0B\u65B9\u8AAA\u660E\uFF1BCTA \u70BA\u5169\u9846\u6309\u9215\u6587\u6848\u8207\u9023\u7D50\u3002';
     displayName: 'Hero';
     icon: 'layout';
   };
   attributes: {
     backgroundImage: Schema.Attribute.Media<'images'>;
-    ctaLabel: Schema.Attribute.String;
-    ctaLink: Schema.Attribute.String;
-    ctaSecondaryLabel: Schema.Attribute.String;
-    ctaSecondaryLink: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
+    ctaLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u4E86\u89E3\u6211\u4EEC\u7684\u4EA7\u54C1'>;
+    ctaLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/products-services'>;
+    ctaSecondaryLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u5168\u7403\u4E1A\u52A1\u7F51\u7EDC'>;
+    ctaSecondaryLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/global-business'>;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'\u4E3A\u5168\u7403\u8BC1\u5238\u3001\u671F\u8D27\u3001\u57FA\u91D1\u53CA\u503A\u5238\u5E02\u573A\u63D0\u4F9B\u5FEB\u901F\u3001\u51C6\u786E\u3001\u53EF\u9760\u7684\u4EA4\u6613\u4E0E\u7ED3\u7B97\u89E3\u51B3\u65B9\u6848'>;
     showLogo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    subtitle: Schema.Attribute.Text;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'\u8054\u76DB\u4E9A\u5BCC\u8D44\u8BAF\u79D1\u6280\u6709\u9650\u516C\u53F8\uFF08N2N-AFE\uFF09'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'43\u5E74\u4E13\u4E1A | \u91D1\u878D\u79D1\u6280\u7684\u53EF\u9760\u4F19\u4F34'>;
   };
 }
 
@@ -155,9 +164,14 @@ export interface SectionsProductItem extends Struct.ComponentSchema {
     icon: 'cube';
   };
   attributes: {
+    coverImage: Schema.Attribute.Media<'images'>;
     description: Schema.Attribute.Text;
     icon: Schema.Attribute.Enumeration<
       [
+        'institutional',
+        'fintech',
+        'retail',
+        'hosting',
         'financial-info',
         'settlement',
         'trading',
@@ -170,6 +184,7 @@ export interface SectionsProductItem extends Struct.ComponentSchema {
     >;
     link: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String;
   };
 }
 

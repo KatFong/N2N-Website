@@ -45,7 +45,9 @@ async function fetchAPI<T>(
 ): Promise<T> {
   const mergedOptions: RequestInit = {
     headers: BASE_HEADERS(),
-    next: { revalidate: 60 },
+    /** 避免 CMS 更新後仍看到舊內容；若需 CDN 快取可改回 revalidate 秒數 */
+    cache: 'no-store',
+    next: { revalidate: 0 },
     ...options,
   };
 
@@ -66,6 +68,7 @@ async function fetchAPI<T>(
 async function fetchAPIRaw<T>(pathWithQuery: string, options: RequestInit = {}): Promise<T> {
   const mergedOptions: RequestInit = {
     headers: BASE_HEADERS(),
+    cache: 'no-store',
     next: { revalidate: 0 },
     ...options,
   };
@@ -148,6 +151,7 @@ export interface SEO {
   shareImage?: StrapiMedia;
 }
 
+/** Strapi `sections.hero`；首頁主標：subtitle＝上行（公司名）、title＝下行（標語） */
 export interface Hero {
   title: string;
   subtitle?: string;

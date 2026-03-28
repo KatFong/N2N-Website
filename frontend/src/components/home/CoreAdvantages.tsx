@@ -111,21 +111,21 @@ export default function CoreAdvantages({ data }: Props) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white text-slate-900">
-      <div className="mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="bg-white pb-16 text-slate-900 md:pb-20">
+      <div className="home-shell pt-16 md:pt-20">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2027a8]">{s.moduleLabel}</p>
-            <h2 className="mt-2 flex flex-wrap items-baseline gap-x-3 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <p className="home-kicker">{s.moduleLabel}</p>
+            <h2 className="home-h2 mt-2 flex flex-wrap items-baseline gap-x-3">
               <span>{s.titleZh}</span>
-              <span className="text-base font-medium text-slate-500 md:text-lg">{s.titleEn}</span>
+              <span className="home-h2-en">{s.titleEn}</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-slate-500">{s.introText}</p>
+          <p className="home-intro">{s.introText}</p>
         </div>
       </div>
 
-      <div className="mt-6 flex h-[600px] w-full flex-col overflow-hidden">
+      <div className="mt-10 flex h-[600px] w-full flex-col overflow-hidden">
         {/* 第一層 200px：全寬（不受 max-width 裁切）+ 背景視差 */}
         <div className="relative left-1/2 w-screen max-w-[100vw] shrink-0 -translate-x-1/2">
           <div className="relative h-[200px] overflow-hidden">
@@ -154,14 +154,14 @@ export default function CoreAdvantages({ data }: Props) {
         </div>
 
         {/* 第二層：剩餘高度約 400px（內容區維持 max-width） */}
-        <div className="mx-auto flex min-h-0 w-full max-w-[1600px] flex-1 items-center justify-center overflow-y-auto bg-slate-50/50 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto flex min-h-0 w-full max-w-[1600px] flex-1 items-center justify-center overflow-y-auto bg-slate-50/60 px-4 py-10 sm:px-6 lg:px-8">
           <div className="grid w-full max-w-6xl grid-cols-2 gap-4 gap-y-8 sm:gap-6 lg:grid-cols-3 lg:gap-x-[130px] lg:gap-y-0">
             {s.cards.map((card) => (
               <article
                 key={card.title}
-                className="group flex flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_2px_12px_rgba(15,23,42,0.06)] ring-1 ring-slate-900/[0.04] transition-all duration-300 ease-out hover:-translate-y-[5px] hover:border-slate-300/90 hover:bg-[#f8f8f9] hover:shadow-[0_16px_40px_rgba(15,23,42,0.1)] sm:p-7"
+                className="group flex flex-col home-card-surface p-5 transition-all duration-300 ease-out hover:-translate-y-[5px] hover:border-slate-300/90 hover:bg-slate-50/90 hover:shadow-[0_16px_40px_rgba(32,39,168,0.08)] sm:p-7"
               >
-                <div className="relative mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 shadow-inner ring-1 ring-slate-200/80">
+                <div className="relative mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-faint/80 to-slate-100 shadow-inner ring-1 ring-slate-200/80">
                   <div
                     className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     aria-hidden
@@ -169,7 +169,7 @@ export default function CoreAdvantages({ data }: Props) {
                     <span className="core-adv-shimmer absolute inset-0 rounded-2xl" />
                   </div>
                   <ArrowDownCircle
-                    className="relative z-10 h-9 w-9 text-violet-600 transition-transform duration-300 ease-out group-hover:scale-110"
+                    className="relative z-10 h-9 w-9 text-brand-primary transition-transform duration-300 ease-out group-hover:scale-110"
                     strokeWidth={1.5}
                   />
                 </div>

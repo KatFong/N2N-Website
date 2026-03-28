@@ -3,19 +3,23 @@
   "info": {
     "displayName": "Hero",
     "icon": "layout",
-    "description": "Hero banner section"
+    "description": "首屏橫幅（首頁與其他內頁共用）。欄位對應前台：Subtitle＝主標上行（公司全名）；Title＝主標下行（標語）；Description＝主標下方說明；CTA 為兩顆按鈕文案與連結。"
   },
   "options": {},
   "attributes": {
+    "subtitle": {
+      "type": "text",
+      "required": true,
+      "default": "联盛亚富资讯科技有限公司（N2N-AFE）"
+    },
     "title": {
       "type": "string",
-      "required": true
-    },
-    "subtitle": {
-      "type": "text"
+      "required": true,
+      "default": "43年专业 | 金融科技的可靠伙伴"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "default": "为全球证券、期货、基金及债券市场提供快速、准确、可靠的交易与结算解决方案"
     },
     "showLogo": {
       "type": "boolean",
@@ -28,16 +32,20 @@
       "allowedTypes": ["images"]
     },
     "ctaLabel": {
-      "type": "string"
+      "type": "string",
+      "default": "了解我们的产品"
     },
     "ctaLink": {
-      "type": "string"
+      "type": "string",
+      "default": "/products-services"
     },
     "ctaSecondaryLabel": {
-      "type": "string"
+      "type": "string",
+      "default": "全球业务网络"
     },
     "ctaSecondaryLink": {
-      "type": "string"
+      "type": "string",
+      "default": "/global-business"
     }
   }
 }
