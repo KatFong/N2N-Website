@@ -51,7 +51,10 @@ export default function NewsAndActivities({ data }: Props) {
           <div className="flex min-h-0 w-full flex-1 flex-col justify-between border-t border-slate-200/90 px-5 py-4 lg:h-[320px] lg:w-1/2 lg:border-l lg:border-t-0 lg:py-5">
             <ul className="flex flex-col">
               {n.list.map((article, index) => (
-                <li key={article.link} className={index > 0 ? 'mt-4 border-t border-slate-200/90 pt-4' : ''}>
+                <li
+                  key={`${index}-${article.title}-${article.link}`}
+                  className={index > 0 ? 'mt-4 border-t border-slate-200/90 pt-4' : ''}
+                >
                   <Link href={article.link} className="group block">
                     <h3 className="text-base font-bold leading-snug text-slate-900 transition-colors group-hover:text-brand-primary md:text-lg">
                       {article.title}

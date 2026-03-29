@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_trading_solution_page_ctas",
+  "info": {
+    "displayName": "Trading Solution Footer CTA",
+    "icon": "cursor",
+    "description": "頁尾藍底橫幅：小標、主標、說明、按鈕與附註"
+  },
+  "options": {},
+  "attributes": {
+    "kicker": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "footnote": {
+      "type": "string"
+    },
+    "buttonLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "buttonHref": {
+      "type": "string",
+      "default": "/contact"
+    }
+  }
+}

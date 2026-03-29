@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_contact_enquiry_emails",
+  "info": {
+    "displayName": "Contact Enquiry Box",
+    "icon": "envelope",
+    "description": "馬來西亞／新加坡式：標題 + 信箱"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

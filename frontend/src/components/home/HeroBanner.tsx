@@ -7,7 +7,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import type { MappedHero } from '@/lib/mapHomePage';
 import { HOME_HERO_DEFAULTS } from '@/lib/homePageDefaults';
 
-/** 背景視差：位移為捲動量的 1/5（背景慢於頁面捲動，約 5 倍速差） */
+/** 背景视差：位移为卷动量的 1/5（背景慢于页面卷动，约 5 倍速差） */
 const PARALLAX_BG_FACTOR = 0.2;
 
 type Props = {
@@ -71,9 +71,11 @@ export default function HeroBanner({ data }: Props) {
             </div>
           ) : null}
           <h1 className="flex flex-col gap-2 md:gap-2.5">
-            <span className="text-balance text-2xl font-bold leading-snug tracking-tight text-white md:text-4xl md:leading-tight lg:text-5xl">
-              {h.subtitle}
-            </span>
+            <div className="max-w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:overflow-x-visible [&::-webkit-scrollbar]:hidden">
+              <span className="inline-block whitespace-nowrap text-2xl font-bold leading-snug tracking-tight text-white md:text-4xl md:leading-tight lg:text-5xl">
+                {h.subtitle}
+              </span>
+            </div>
             <span className="text-balance text-2xl font-semibold leading-snug tracking-wide text-sky-200/95 md:text-4xl md:leading-tight lg:text-5xl">
               {h.title}
             </span>

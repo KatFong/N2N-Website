@@ -14,13 +14,13 @@ export default function HomeHero({ hero }: HomeHeroProps) {
   const bgRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
-  const title = hero?.title || 'Connect. Grow. Succeed.';
+  const title = hero?.title || '连接 · 成长 · 共赢';
   const subtitle =
     hero?.subtitle ||
-    'N2N-AFE bridges businesses across Asia with world-class financial enterprise solutions, enabling growth and global connectivity.';
+    'N2N-AFE 以世界级金融与企业科技方案连接亚洲企业，助力业务增长与全球联通。';
   const bgImage = getStrapiMedia(hero?.backgroundImage);
-  const ctaLabel = hero?.ctaLabel || 'Explore Services';
-  const ctaLink = hero?.ctaLink || '/products-services';
+  const ctaLabel = hero?.ctaLabel || '了解产品与服务';
+  const ctaLink = hero?.ctaLink || '/#product-overview';
 
   /* Parallax: bg scrolls at 1/5 speed */
   useEffect(() => {

@@ -6,7 +6,7 @@ import ContactCtaSection from '@/components/home/ContactCtaSection';
 import { mapHomePageFromStrapi } from '@/lib/mapHomePage';
 import { getHomePage } from '@/lib/strapi';
 
-/** 首頁依 Strapi 即時內容，避免建置／代理快取導致 CMS 已改但畫面舊 */
+/** 首页依 Strapi 即时内容，避免建置／代理快取导致 CMS 已改但画面旧 */
 export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {

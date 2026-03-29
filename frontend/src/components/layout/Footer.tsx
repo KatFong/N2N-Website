@@ -3,35 +3,37 @@ import Image from 'next/image';
 
 const FOOTER_COLS = [
   {
-    title: 'OUR COMPANY',
+    title: '关于我们',
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Corporate Highlights', href: '/about' },
+      { label: '公司简介', href: '/about' },
+      { label: '企业亮点', href: '/about' },
     ],
   },
   {
-    title: 'OUR BUSINESS',
+    title: '业务概览',
     links: [
-      { label: 'Capital Market Solutions', href: '/products-services' },
-      { label: '机构解决方案', href: '/product/trading-system' },
-      { label: '创新金融科技', href: '/product/virtual-assets' },
-      { label: '个人投资者工具', href: '/product/smp5' },
-      { label: '技术与网络服务', href: '/product/server-hosting' },
+      { label: '首页', href: '/' },
+      { label: '资本市场解决方案', href: '/#product-overview' },
+      { label: '2.1 交易方案', href: '/trading-solution' },
+      { label: '2.2 结算方案', href: '/settlement-solution' },
+      { label: '创新金融科技', href: '/vas' },
+      { label: '个人投资者工具', href: '/smp5' },
+      { label: '技术与网络服务', href: '/custody' },
     ],
   },
   {
-    title: 'INVESTOR RELATIONS',
+    title: '投资者关系',
     links: [
-      { label: 'Overview', href: '/global-business' },
-      { label: 'Company Announcements', href: '/news-insights' },
-      { label: 'Press Release', href: '/news-insights' },
+      { label: '概览', href: '/global-business' },
+      { label: '公司公告', href: '/news-insights' },
+      { label: '新闻稿', href: '/news-insights' },
     ],
   },
   {
-    title: 'ENQUIRIES',
+    title: '咨询联系',
     links: [
-      { label: 'Contact Us', href: '/login' },
-      { label: 'Join Us', href: '/business-partnership' },
+      { label: '联系我们', href: '/contact' },
+      { label: '加入我们', href: '/business-partnership' },
     ],
   },
 ];
@@ -46,14 +48,13 @@ export default function Footer() {
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
               <h4
-                className="text-xs font-black tracking-[0.18em] mb-4 uppercase"
-                style={{ color: '#003366' }}
+                className="mb-4 text-xs font-black tracking-wide text-[#003366]"
               >
                 {col.title}
               </h4>
               <ul className="space-y-2">
                 {col.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${col.title}-${link.label}`}>
                     <Link
                       href={link.href}
                       className="text-sm leading-relaxed transition-colors duration-150 text-[#666666] hover:text-[#003366]"
@@ -93,19 +94,19 @@ export default function Footer() {
               href="/privacy-policy"
               className="transition-colors duration-150 hover:underline text-[#999999] hover:text-[#0077CC]"
             >
-              Terms &amp; Conditions
+              条款与条件
             </Link>
             <span className="text-[#D9E2EC]">|</span>
             <Link
               href="/privacy-policy"
               className="transition-colors duration-150 hover:underline text-[#999999] hover:text-[#0077CC]"
             >
-              Legal
+              法律信息
             </Link>
           </div>
 
           {/* Copyright */}
-          <p className="text-xs text-[#999999]">© N2N Connect Bhd. All Rights Reserved.</p>
+          <p className="text-xs text-[#999999]">© N2N Connect Bhd. 保留所有权利。</p>
         </div>
       </div>
     </footer>

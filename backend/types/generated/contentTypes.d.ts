@@ -544,6 +544,40 @@ export interface ApiBusinessPartnershipBusinessPartnership
   };
 }
 
+export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
+  collectionName: 'contact_page';
+  info: {
+    description: '\u806F\u7D61\u6211\u5011 \u2014 \u6A19\u984C\u8207\u5404\u5730\u8FA6\u516C\u5BA4\uFF08\u5C0D\u61C9\u524D\u53F0 /contact\uFF09';
+    displayName: '08 \u00B7 Contact Us';
+    pluralName: 'contact-pages';
+    singularName: 'contact-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CONTACT US'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    > &
+      Schema.Attribute.Private;
+    offices: Schema.Attribute.Component<'sections.contact-office', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    sectionTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Our Office'>;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalBusinessGlobalBusiness
   extends Struct.SingleTypeSchema {
   collectionName: 'global_business';
@@ -583,7 +617,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_page';
   info: {
     description: 'Homepage content';
-    displayName: '01 \u00B7 Home';
+    displayName: '1 \u00B7 Home';
     pluralName: 'home-pages';
     singularName: 'home-page';
   };
@@ -714,14 +748,14 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiProductsServicesProductsServices
-  extends Struct.SingleTypeSchema {
-  collectionName: 'products_services';
+export interface ApiProductLinePageProductLinePage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'product_line_pages';
   info: {
-    description: 'Products and Services page content';
-    displayName: '03 \u00B7 Products & Services';
-    pluralName: 'products-services-pages';
-    singularName: 'products-services';
+    description: '\u7522\u54C1\u7DDA\u5B50\u9801 /product-line/:slug\uFF08\u5831\u50F9\u3001\u6258\u7BA1\u3001VAS\u3001SMP5\u3001MPS\u3001Quant\u3001\u5168\u7403\u4E1A\u52A1\uFF09\uFF1B\u8207\u4EA4\u6613\u65B9\u6848\u76F8\u540C\u5340\u584A\uFF0C\u5F8C\u53F0\u53EF\u9010\u7B46\u7DE8\u8F2F\u4E26\u767C\u4F48';
+    displayName: 'Product Line Page';
+    pluralName: 'product-line-pages';
+    singularName: 'product-line-page';
   };
   options: {
     draftAndPublish: true;
@@ -730,19 +764,144 @@ export interface ApiProductsServicesProductsServices
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero: Schema.Attribute.Component<'sections.hero', false>;
+    features: Schema.Attribute.Component<
+      'sections.trading-solution-feature',
+      true
+    >;
+    footerCta: Schema.Attribute.Component<
+      'sections.trading-solution-page-cta',
+      false
+    >;
+    gridSectionCtaHref: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    gridSectionCtaLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u4E86\u89E3\u66F4\u591A'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::products-services.products-services'
+      'api::product-line-page.product-line-page'
     > &
       Schema.Attribute.Private;
-    pageDescription: Schema.Attribute.RichText;
-    pageTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    productCards: Schema.Attribute.Component<'sections.feature-card', true>;
     publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.Component<'sections.content-block', true>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
+    sixGridItems: Schema.Attribute.Component<
+      'sections.trading-solution-grid-item',
+      true
+    >;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    spotlight: Schema.Attribute.Component<
+      'sections.trading-solution-spotlight',
+      false
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSettlementSolutionPageSettlementSolutionPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'settlement_solution_page';
+  info: {
+    description: '\u7D50\u7B97\u65B9\u6848\u5B50\u9801 /settlement-solution\uFF1A\u8207 2.1 \u76F8\u540C\u5340\u584A\u7D50\u69CB\uFF08Hero\u3001Spotlight\u3001\u516D\u5BAE\u683C\u3001\u516B\u7D44\u5716\u6587\u3001\u9801\u5C3E CTA\u3001SEO\uFF09';
+    displayName: '2.2 \u00B7 Settlement Solution';
+    pluralName: 'settlement-solution-pages';
+    singularName: 'settlement-solution-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    features: Schema.Attribute.Component<
+      'sections.trading-solution-feature',
+      true
+    >;
+    footerCta: Schema.Attribute.Component<
+      'sections.trading-solution-page-cta',
+      false
+    >;
+    gridSectionCtaHref: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    gridSectionCtaLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u4E86\u89E3\u66F4\u591A'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::settlement-solution-page.settlement-solution-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    sixGridItems: Schema.Attribute.Component<
+      'sections.trading-solution-grid-item',
+      true
+    >;
+    spotlight: Schema.Attribute.Component<
+      'sections.trading-solution-spotlight',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTradingSolutionPageTradingSolutionPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'trading_solution_page';
+  info: {
+    description: '\u4EA4\u6613\u65B9\u6848\u5B50\u9801 /trading-solution\uFF1AHero\u3001Spotlight\u3001\u516D\u5BAE\u683C\u3001CTA\u3001\u516B\u7D44\u5716\u6587\u8207 SEO \u7686\u53EF\u65BC\u6B64\u7DE8\u8F2F';
+    displayName: '2.1 \u00B7 Trading Solution Page';
+    pluralName: 'trading-solution-pages';
+    singularName: 'trading-solution-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    features: Schema.Attribute.Component<
+      'sections.trading-solution-feature',
+      true
+    >;
+    footerCta: Schema.Attribute.Component<
+      'sections.trading-solution-page-cta',
+      false
+    >;
+    gridSectionCtaHref: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    gridSectionCtaLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u4E86\u89E3\u66F4\u591A'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::trading-solution-page.trading-solution-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    sixGridItems: Schema.Attribute.Component<
+      'sections.trading-solution-grid-item',
+      true
+    >;
+    spotlight: Schema.Attribute.Component<
+      'sections.trading-solution-spotlight',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1263,11 +1422,14 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::article.article': ApiArticleArticle;
       'api::business-partnership.business-partnership': ApiBusinessPartnershipBusinessPartnership;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::global-business.global-business': ApiGlobalBusinessGlobalBusiness;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::news-insights-page.news-insights-page': ApiNewsInsightsPageNewsInsightsPage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
-      'api::products-services.products-services': ApiProductsServicesProductsServices;
+      'api::product-line-page.product-line-page': ApiProductLinePageProductLinePage;
+      'api::settlement-solution-page.settlement-solution-page': ApiSettlementSolutionPageSettlementSolutionPage;
+      'api::trading-solution-page.trading-solution-page': ApiTradingSolutionPageTradingSolutionPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

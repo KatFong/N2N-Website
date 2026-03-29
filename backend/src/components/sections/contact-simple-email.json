@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_contact_simple_emails",
+  "info": {
+    "displayName": "Contact Direct Email",
+    "icon": "envelope",
+    "description": "單一信箱列（香港／越南等）"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

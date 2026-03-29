@@ -1,0 +1,22 @@
+/**
+ * 後台主內容區表單：文字欄位與下拉寬度 100%（排除核取、選項、開關、檔案）。
+ */
+[data-strapi-main-content] form input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not([type='file']),
+[data-strapi-main-content] form textarea,
+[data-strapi-main-content] form select {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+[data-strapi-main-content] form [role='radiogroup'] input,
+[data-strapi-main-content] form [role='switch'],
+[data-strapi-main-content] form [role='switch'] input {
+  width: auto !important;
+  max-width: none !important;
+}
+
+[data-strapi-main-content] form fieldset {
+  min-width: 0;
+  max-width: 100%;
+}

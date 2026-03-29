@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = pressAndAnnouncementArticles.find((item) => item.slug === slug);
 
   if (!article) {
-    return { title: 'Article Not Found' };
+    return { title: '未找到文章' };
   }
 
   return {
@@ -28,7 +28,7 @@ export default async function ArticlePage({ params }: Props) {
 
   if (!article) notFound();
 
-  const date = new Date(article.publishedDate).toLocaleDateString('en-US', {
+  const date = new Date(article.publishedDate).toLocaleDateString('zh-CN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: Props) {
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to News & Insights
+          返回新闻与洞察
         </Link>
 
         <div className="mb-4 flex items-center gap-3">

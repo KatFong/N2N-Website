@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_trading_solution_bullets",
+  "info": {
+    "displayName": "Trading Solution Bullet",
+    "icon": "list",
+    "description": "單條要點文案"
+  },
+  "options": {},
+  "attributes": {
+    "line": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

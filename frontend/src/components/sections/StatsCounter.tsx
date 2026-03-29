@@ -11,11 +11,11 @@ interface Stat {
 }
 
 const DEFAULT_STATS: Stat[] = [
-  { value: 15, suffix: '+', label: 'Years', description: 'Years of Experience' },
-  { value: 20, suffix: '+', label: 'Countries', description: 'Global Presence' },
-  { value: 500, suffix: '+', label: 'Partners', description: 'Business Partners' },
-  { value: 2, suffix: 'B+', label: 'USD', description: 'Transactions Processed' },
-  { value: 55000, suffix: '+', label: 'Clients', description: 'Satisfied Clients' },
+  { value: 15, suffix: '+', label: '年', description: '行业经验' },
+  { value: 20, suffix: '+', label: '国家/地区', description: '全球布局' },
+  { value: 500, suffix: '+', label: '合作伙伴', description: '商业伙伴' },
+  { value: 2, suffix: 'B+', label: '美元', description: '累计处理成交额' },
+  { value: 55000, suffix: '+', label: '客户', description: '服务客户' },
 ];
 
 function useCountUp(target: number, duration = 1800, active: boolean) {

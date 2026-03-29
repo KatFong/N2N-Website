@@ -10,9 +10,9 @@ interface HeroCarouselProps {
 }
 
 /* ── Brand colours (from style guide) ──────────────────────────────────────── */
-const C_PRIMARY   = '#003366';   // 深藍色
-const C_SECONDARY = '#0077CC';   // 天藍色
-const C_HOVER     = '#0055AA';   // Hover 藍色漸變
+const C_PRIMARY   = '#003366';   // 深蓝色
+const C_SECONDARY = '#0077CC';   // 天蓝色
+const C_HOVER     = '#0055AA';   // Hover 蓝色渐变
 
 /* ── Floating 3-D card decoration (right side) ─────────────────────────────── */
 function FloatingCards() {
@@ -122,16 +122,18 @@ const ANIMATION_STYLE = `
 /* ── Main component ────────────────────────────────────────────────────────── */
 export default function HeroCarousel({ hero }: HeroCarouselProps) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    queueMicrotask(() => setMounted(true));
+  }, []);
 
   /* CMS values with fallbacks */
-  const title        = hero?.title        || "ASIA'S LEADING\nCAPITAL MARKET\nSOLUTIONS";
-  const subtitle     = hero?.subtitle     || 'We are a strong name committed to innovating and connecting capital markets across regions through digitization.';
+  const title        = hero?.title        || '亚洲领先的\n资本市场\n科技方案';
+  const subtitle     = hero?.subtitle     || '我们以数字化创新连接区域资本市场，为金融机构提供可信赖的交易与基础设施能力。';
   const bgImage      = getStrapiMedia(hero?.backgroundImage);
-  const ctaLabel     = hero?.ctaLabel     || 'About Us';
+  const ctaLabel     = hero?.ctaLabel     || '关于我们';
   const ctaLink      = hero?.ctaLink      || '/about';
-  const ctaSecLabel  = hero?.ctaSecondaryLabel || 'Our Services';
-  const ctaSecLink   = hero?.ctaSecondaryLink  || '/products-services';
+  const ctaSecLabel  = hero?.ctaSecondaryLabel || '产品与服务';
+  const ctaSecLink   = hero?.ctaSecondaryLink  || '/#product-overview';
 
   return (
     <section

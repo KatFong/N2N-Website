@@ -7,12 +7,20 @@
   },
   "options": {},
   "attributes": {
+    "iconId": {
+      "type": "enumeration",
+      "enum": ["clock", "lock", "globe"],
+      "default": "clock"
+    },
     "title": {
       "type": "string",
       "required": true
     },
     "description": {
       "type": "text"
+    },
+    "cardLink": {
+      "type": "string"
     }
   }
 }

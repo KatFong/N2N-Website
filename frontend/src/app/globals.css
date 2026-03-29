@@ -11,7 +11,7 @@
   --foreground: #171717;
 }
 
-/* 首頁與內頁共用的區塊節奏（與 About 等品牌藍一致） */
+/* 首页与内页共用的区块节奏（与 About 等品牌蓝一致） */
 @layer components {
   .home-shell {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
@@ -74,7 +74,7 @@ body {
   overflow: hidden;
 }
 
-/* Hero Banner：文字淡入並由下往上 */
+/* Hero Banner：文字淡入并由下往上 */
 @keyframes hero-fade-in-up {
   from {
     opacity: 0;
@@ -104,7 +104,253 @@ body {
   }
 }
 
-/* Core Advantages：圖標懸停閃爍 */
+/* Trading Solution：全宽 Hero 渐层流动 */
+@keyframes trading-solution-hero-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.trading-solution-hero-bg {
+  background: linear-gradient(
+    125deg,
+    #060d2e 0%,
+    #0f1c5c 18%,
+    #2027a8 42%,
+    #3d52d4 58%,
+    #1a2a7a 78%,
+    #2027a8 100%
+  );
+  background-size: 240% 240%;
+  animation: trading-solution-hero-gradient 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trading-solution-hero-bg {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes trading-hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trading-hero-line-1 {
+  animation: trading-hero-fade-in 0.95s ease-out forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.trading-hero-line-2 {
+  animation: trading-hero-fade-in 0.95s ease-out forwards;
+  animation-delay: 0.32s;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trading-hero-line-1,
+  .trading-hero-line-2 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Trading Solution：图文区块滑入 + 仪表板数据流光 */
+@keyframes ts-mock-flow-scan {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    background-position: 200% 50%;
+    opacity: 0.35;
+  }
+}
+
+.ts-mock-flow {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(56, 189, 248, 0.22) 48%,
+    rgba(129, 140, 248, 0.35) 52%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  animation: ts-mock-flow-scan 4.2s ease-in-out infinite;
+  mask-image: linear-gradient(black, transparent 92%);
+}
+
+.ts-mock-flow-2 {
+  animation-duration: 5.8s;
+  animation-direction: reverse;
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-mock-flow,
+  .ts-mock-flow-2 {
+    animation: none;
+    opacity: 0.25;
+  }
+}
+
+/* Trading Solution：8 组图文 — 卷入视窗时滑入（桌面左右 / 行动上下错时序） */
+.ts-slide-title,
+.ts-slide-media,
+.ts-slide-text {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ts-feature-row:not([data-visible='true']) .ts-slide-title,
+.ts-feature-row:not([data-visible='true']) .ts-slide-media,
+.ts-feature-row:not([data-visible='true']) .ts-slide-text {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+}
+
+@media (min-width: 1024px) {
+  .ts-feature-row:not([data-visible='true']) .ts-slide-title,
+  .ts-feature-row:not([data-visible='true']) .ts-slide-text {
+    transform: translate3d(var(--ts-text-x, 40px), 0, 0);
+  }
+
+  .ts-feature-row:not([data-visible='true']) .ts-slide-media {
+    transform: translate3d(var(--ts-media-x, -40px), 0, 0);
+  }
+}
+
+.ts-feature-row[data-visible='true'] .ts-slide-title {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.06s;
+}
+
+.ts-feature-row[data-visible='true'] .ts-slide-media {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.14s;
+}
+
+.ts-feature-row[data-visible='true'] .ts-slide-text {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 0.22s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-feature-row:not([data-visible='true']) .ts-slide-title,
+  .ts-feature-row:not([data-visible='true']) .ts-slide-media,
+  .ts-feature-row:not([data-visible='true']) .ts-slide-text {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ts-feature-row[data-visible='true'] .ts-slide-title,
+  .ts-feature-row[data-visible='true'] .ts-slide-media,
+  .ts-feature-row[data-visible='true'] .ts-slide-text {
+    transition-delay: 0s;
+  }
+}
+
+/* Core Advantages 顶部条：星空背景（无照片） */
+.core-adv-astro-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(158deg, #060a12 0%, #0f172a 38%, #1a2744 72%, #1e3a8a 100%);
+}
+
+.core-adv-astro-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.88;
+  background-image:
+    radial-gradient(1.4px 1.4px at 6% 14%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1px 1px at 14% 42%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.2px 1.2px at 22% 8%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 31% 55%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.3px 1.3px at 38% 22%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 45% 68%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 52% 38%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.4px 1.4px at 58% 12%, rgba(255, 255, 255, 0.92), transparent),
+    radial-gradient(1px 1px at 64% 78%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.2px 1.2px at 71% 48%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 78% 18%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.3px 1.3px at 84% 62%, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(1px 1px at 91% 35%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 96% 82%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.2px 1.2px at 11% 88%, rgba(255, 255, 255, 0.72), transparent),
+    radial-gradient(1px 1px at 27% 92%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.4px 1.4px at 44% 6%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 67% 88%, rgba(255, 255, 255, 0.58), transparent),
+    radial-gradient(1px 1px at 73% 5%, rgba(255, 255, 255, 0.68), transparent),
+    radial-gradient(1.2px 1.2px at 88% 48%, rgba(255, 255, 255, 0.78), transparent),
+    radial-gradient(1px 1px at 3% 58%, rgba(255, 255, 255, 0.52), transparent),
+    radial-gradient(1.3px 1.3px at 19% 72%, rgba(255, 255, 255, 0.82), transparent),
+    radial-gradient(1px 1px at 55% 92%, rgba(255, 255, 255, 0.48), transparent),
+    radial-gradient(1.2px 1.2px at 93% 12%, rgba(255, 255, 255, 0.76), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.core-adv-astro-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 100% 55% at 50% 0%, rgba(56, 189, 248, 0.14), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 85% 65%, rgba(99, 102, 241, 0.1), transparent 48%),
+    radial-gradient(ellipse 50% 35% at 15% 40%, rgba(147, 197, 253, 0.06), transparent 50%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes core-adv-astro-twinkle {
+    0%,
+    100% {
+      opacity: 0.82;
+    }
+    50% {
+      opacity: 0.95;
+    }
+  }
+
+  .core-adv-astro-bg::before {
+    animation: core-adv-astro-twinkle 8s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .core-adv-astro-bg::before {
+    animation: none;
+    opacity: 0.88;
+  }
+}
+
+/* Core Advantages：图标悬停闪烁 */
 @keyframes core-adv-shimmer-move {
   0% {
     transform: translateX(-120%);
@@ -133,7 +379,7 @@ body {
   }
 }
 
-/* Contact CTA：按鈕懸停呼吸燈（光暈脈動） */
+/* Contact CTA：按钮悬停呼吸灯（光晕脉动） */
 @keyframes contact-cta-breathe-glow {
   0%,
   100% {

@@ -8,11 +8,12 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'N2N-AFE | Asia Financial Enterprise',
+    default: 'N2N-AFE | 亚洲金融科技企业',
     template: '%s | N2N-AFE',
   },
-  description: 'N2N-AFE - Connecting businesses across Asia with cutting-edge financial and enterprise solutions.',
-  keywords: ['N2N-AFE', 'Asia', 'Financial', 'Enterprise', 'Business', 'Global'],
+  description:
+    'N2N-AFE（联盛亚富）以领先的金融与企业科技方案，连接亚洲各地企业，助力业务增长与数字化。',
+  keywords: ['N2N-AFE', '亚洲', '金融', '企业', '业务', '全球'],
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body className={inter.className}>
         <Navbar />
         <main className="pt-16 min-h-screen">

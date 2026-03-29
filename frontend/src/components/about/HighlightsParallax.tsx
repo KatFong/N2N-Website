@@ -46,15 +46,15 @@ export default function HighlightsParallax() {
         <div className="grid w-full max-w-4xl grid-cols-3 gap-4 text-white">
           <div className="text-center">
             <p className="text-5xl font-extrabold leading-none">300</p>
-            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">BROKERS SERVING</p>
+            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">服务券商</p>
           </div>
           <div className="text-center">
             <p className="text-5xl font-extrabold leading-none">228</p>
-            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">EMPLOYEES</p>
+            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">员工</p>
           </div>
           <div className="text-center">
             <p className="text-5xl font-extrabold leading-none">6</p>
-            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">DEVELOPMENT CENTERS</p>
+            <p className="mt-3 text-sm font-semibold tracking-[0.08em]">研发中心</p>
           </div>
         </div>
       </div>

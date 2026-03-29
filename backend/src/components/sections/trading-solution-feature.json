@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_sections_trading_solution_features",
+  "info": {
+    "displayName": "Trading Solution Feature Block",
+    "icon": "layout",
+    "description": "交易方案頁 — 單組圖文（標題、要點、示意版型 key）"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "visualKey": {
+      "type": "enumeration",
+      "enum": [
+        "spreadsheet",
+        "api-console",
+        "multi-chart",
+        "order-blotter",
+        "risk-radar",
+        "settlement",
+        "portfolio",
+        "compact-terminal"
+      ],
+      "default": "multi-chart",
+      "required": true
+    },
+    "bullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-bullet"
+    },
+    "moreLabel": {
+      "type": "string"
+    },
+    "moreHref": {
+      "type": "string"
+    }
+  }
+}

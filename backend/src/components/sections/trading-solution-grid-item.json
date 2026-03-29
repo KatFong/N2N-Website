@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_trading_solution_grid_items",
+  "info": {
+    "displayName": "Trading Solution Grid Item",
+    "icon": "grid",
+    "description": "能力網格單卡：圖示 key、標題、條列（順序即前台顯示順序，建議 6 筆）"
+  },
+  "options": {},
+  "attributes": {
+    "iconKey": {
+      "type": "enumeration",
+      "enum": [
+        "clock",
+        "chart",
+        "mobile",
+        "custom",
+        "api",
+        "security",
+        "shield",
+        "brain",
+        "arrow",
+        "alarm"
+      ],
+      "default": "clock",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "lines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-bullet"
+    }
+  }
+}

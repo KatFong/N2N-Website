@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_contact_phones",
+  "info": {
+    "displayName": "Contact Phone",
+    "icon": "phone",
+    "description": "電話一行（可選標籤）"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "tel": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

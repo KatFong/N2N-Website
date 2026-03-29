@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_line_pages",
+  "info": {
+    "singularName": "product-line-page",
+    "pluralName": "product-line-pages",
+    "displayName": "Product Line Page",
+    "description": "產品線子頁 /product-line/:slug（報價、托管、VAS、SMP5、MPS、Quant、全球业务）；與交易方案相同區塊，後台可逐筆編輯並發佈"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "spotlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-spotlight"
+    },
+    "sixGridItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-grid-item"
+    },
+    "gridSectionCtaLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "gridSectionCtaHref": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "footerCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-page-cta"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-feature",
+      "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

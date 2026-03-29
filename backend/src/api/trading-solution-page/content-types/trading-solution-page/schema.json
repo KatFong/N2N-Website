@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "trading_solution_page",
+  "info": {
+    "singularName": "trading-solution-page",
+    "pluralName": "trading-solution-pages",
+    "displayName": "2.1 · Trading Solution Page",
+    "description": "交易方案子頁 /trading-solution：Hero、Spotlight、六宮格、CTA、八組圖文與 SEO 皆可於此編輯"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "spotlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-spotlight"
+    },
+    "sixGridItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-grid-item"
+    },
+    "gridSectionCtaLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "gridSectionCtaHref": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "footerCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-page-cta"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-feature",
+      "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

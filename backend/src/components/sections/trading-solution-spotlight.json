@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_sections_trading_solution_spotlights",
+  "info": {
+    "displayName": "Trading Solution Spotlight",
+    "icon": "picture",
+    "description": "左圖右文區：主圖、標題、副標、段落與 CTA"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "text"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "ctaHref": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "bodyLines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-bullet"
+    },
+    "coreHighlightLines": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-bullet",
+      "description": "Section 2 標題下方「核心特点」條列（可選）"
+    }
+  }
+}

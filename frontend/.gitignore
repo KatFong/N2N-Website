@@ -20,6 +20,9 @@
 # production
 /build
 
+# local tooling (OpenCC batch conversion)
+/.venv-opencc
+
 # misc
 .DS_Store
 *.pem

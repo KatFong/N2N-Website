@@ -5,34 +5,60 @@ import type { NextConfig } from 'next';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
-  /** 避免上層目錄另有 lockfile 時誤判 workspace root */
+  /** 避免上层目录另有 lockfile 时误判 workspace root */
   turbopack: {
     root: projectRoot,
   },
   async redirects() {
     return [
-      /** 舊站 .html 與站內曾用的 /products/ 路徑 → 正式網址 /product/:slug */
+      { source: '/products-services', destination: '/#product-overview', permanent: true },
+      { source: '/trading-solution.html', destination: '/trading-solution', permanent: true },
       {
         source: '/product/trading-system.html',
-        destination: '/product/trading-system',
+        destination: '/trading-solution',
         permanent: true,
       },
+      { source: '/product/trading-system', destination: '/trading-solution', permanent: true },
+      { source: '/product/trading-solution', destination: '/trading-solution', permanent: true },
+      {
+        source: '/product/settlement-solution',
+        destination: '/settlement-solution',
+        permanent: true,
+      },
+      {
+        source: '/product/financial-information-service',
+        destination: '/financial-information-service',
+        permanent: true,
+      },
+      { source: '/product/virtual-assets', destination: '/vas', permanent: true },
+      { source: '/product/smp5', destination: '/smp5', permanent: true },
+      { source: '/product/server-hosting', destination: '/custody', permanent: true },
       {
         source: '/product/virtual-assets.html',
-        destination: '/product/virtual-assets',
+        destination: '/vas',
         permanent: true,
       },
-      { source: '/product/smp5.html', destination: '/product/smp5', permanent: true },
+      { source: '/product/smp5.html', destination: '/smp5', permanent: true },
       {
         source: '/product/server-hosting.html',
-        destination: '/product/server-hosting',
+        destination: '/custody',
         permanent: true,
       },
+      { source: '/products/virtual-assets', destination: '/vas', permanent: true },
+      { source: '/products/smp5', destination: '/smp5', permanent: true },
+      { source: '/products/server-hosting', destination: '/custody', permanent: true },
+      { source: '/product-line', destination: '/quotation', permanent: true },
+      { source: '/product-line/:slug', destination: '/:slug', permanent: true },
       {
         source: '/products/:slug',
         destination: '/product/:slug',
         permanent: true,
       },
+      /** 首页核心优势卡片沿用旧站 .html 路径 */
+      { source: '/about.html', destination: '/about', permanent: true },
+      { source: '/contact.html', destination: '/contact', permanent: true },
+      { source: '/contact-us.html', destination: '/contact', permanent: true },
+      { source: '/global-business.html', destination: '/global-business', permanent: true },
     ];
   },
   images: {

@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_sections_contact_offices",
+  "info": {
+    "displayName": "Contact Office",
+    "icon": "map",
+    "description": "單一據點：國家、公司、地址、電話、地圖 embed URL 等"
+  },
+  "options": {},
+  "attributes": {
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "phones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.contact-phone"
+    },
+    "fax": {
+      "type": "string"
+    },
+    "websiteLabel": {
+      "type": "string"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "directEmails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.contact-simple-email"
+    },
+    "enquiryEmails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.contact-enquiry-email"
+    },
+    "mapEmbedUrl": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

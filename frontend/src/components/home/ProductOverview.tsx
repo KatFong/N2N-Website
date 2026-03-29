@@ -4,7 +4,8 @@ import type { LucideIcon } from 'lucide-react';
 import { Building2, BrainCircuit, Smartphone, Cloud } from 'lucide-react';
 import type { MappedProductsSection } from '@/lib/mapHomePage';
 import { HOME_PRODUCTS_DEFAULTS, HOME_PRODUCTS_SECTION_DEFAULTS } from '@/lib/homePageDefaults';
-import type { ProductIconId } from '@/lib/productOverview';
+import { productCardHref } from '@/lib/productCardHref';
+import type { ProductIconId } from '@/lib/productIcons';
 
 const ICON_BY_ID: Record<ProductIconId, LucideIcon> = {
   institutional: Building2,
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export default function ProductOverview({ data }: Props) {
-  const section = data ?? {
+  const section: MappedProductsSection = data ?? {
     ...HOME_PRODUCTS_SECTION_DEFAULTS,
     items: HOME_PRODUCTS_DEFAULTS,
   };
@@ -37,7 +38,7 @@ export default function ProductOverview({ data }: Props) {
               {section.titleEn ? <span className="home-h2-en ml-3">{section.titleEn}</span> : null}
             </h2>
           </div>
-          <p className="home-intro">{section.introText}</p>
+          {section.introText ? <p className="home-intro">{section.introText}</p> : null}
         </div>
 
         <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
@@ -46,7 +47,7 @@ export default function ProductOverview({ data }: Props) {
             return (
               <li key={item.slug} className="min-w-0">
                 <Link
-                  href={`/product/${item.slug}`}
+                  href={productCardHref(item.slug)}
                   className="group flex h-full flex-col overflow-hidden home-card-surface transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(32,39,168,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-200">
@@ -86,7 +87,7 @@ export default function ProductOverview({ data }: Props) {
                     </p>
 
                     <span className="mt-4 text-xs font-semibold text-brand-primary opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-white/90">
-                      查看詳情 →
+                      查看详情 →
                     </span>
                   </div>
                 </Link>

@@ -18,10 +18,13 @@ import {
   HOME_NEWS_DEFAULTS,
   HOME_PRODUCTS_DEFAULTS,
   HOME_PRODUCTS_SECTION_DEFAULTS,
+  type CoreAdvCardIcon,
   type CoreAdvStat,
   type HomeProductCardDefault,
 } from '@/lib/homePageDefaults';
-import type { ProductIconId } from '@/lib/productOverview';
+import { productCardHref } from '@/lib/productCardHref';
+import type { ProductIconId } from '@/lib/productIcons';
+import { PRODUCT_LINE_SLUGS } from '@/lib/productLinePageContent';
 import { pressAndAnnouncementArticles } from '@/lib/referenceContent';
 
 const PRODUCT_ICONS: ProductIconId[] = ['institutional', 'fintech', 'retail', 'hosting'];
@@ -34,14 +37,14 @@ function mediaUrl(m: unknown): string | null {
   return getStrapiMedia(unwrapMedia(m));
 }
 
-/** 字串欄位去空白；CMS 填空白時改走預設或後備 */
+/** 字串栏位去空白；CMS 填空白时改走预设或后备 */
 function pickStr(v: unknown): string {
   return typeof v === 'string' ? v.trim() : '';
 }
 
 /**
- * Strapi 元件可能是扁平物件，或包一層 { data } / { data: { attributes } }。
- * 若未解包，前台會讀不到欄位，造成「部分沒有顯示」。
+ * Strapi 元件可能是扁平物件，或包一层 { data } / { data: { attributes } }。
+ * 若未解包，前台会读不到栏位，造成「部分没有显示」。
  */
 function unwrapStrapiComponent(v: unknown): Record<string, unknown> | undefined {
   if (v == null || typeof v !== 'object' || Array.isArray(v)) return undefined;
@@ -60,7 +63,7 @@ function unwrapStrapiComponent(v: unknown): Record<string, unknown> | undefined 
   return cur;
 }
 
-/** 可重複元件 / Relation 常為陣列或 { data: [...] }；子項可能再包一層 */
+/** 可重复元件 / Relation 常为阵列或 { data: [...] }；子项可能再包一层 */
 function unwrapStrapiEntryArray(v: unknown): Record<string, unknown>[] {
   let arr: unknown[] = [];
   if (Array.isArray(v)) arr = v;
@@ -83,21 +86,64 @@ function pickDocument<T extends Record<string, unknown>>(raw: unknown): T | null
   return o as T;
 }
 
+const PRODUCT_LINE_TO_HOME_SLUG: Record<string, string> = {
+  vas: 'virtual-assets',
+  smp5: 'smp5',
+  custody: 'server-hosting',
+};
+
+const PRODUCT_LINE_SLUG_SET = new Set(PRODUCT_LINE_SLUGS);
+
 function slugFromLink(link: string | undefined): string {
   if (!link) return HOME_PRODUCTS_DEFAULTS[0].slug;
-  const clean = link.split('?')[0]?.replace(/\.html$/i, '') ?? '';
+  let clean = link.split('?')[0]?.replace(/\.html$/i, '') ?? '';
+  try {
+    if (/^https?:\/\//i.test(clean)) clean = new URL(clean).pathname;
+  } catch {
+    /* ignore */
+  }
+  if (clean && !clean.startsWith('/')) clean = `/${clean}`;
+
+  if (clean === '/trading-solution' || /\/trading-solution\/?$/.test(clean)) return 'trading-solution';
+  if (/\/settlement-solution\/?$/.test(clean)) return 'settlement-solution';
+  const rootSeg = clean.match(/^\/([^/]+)\/?$/);
+  if (rootSeg && PRODUCT_LINE_SLUG_SET.has(rootSeg[1])) {
+    const key = rootSeg[1];
+    return PRODUCT_LINE_TO_HOME_SLUG[key] ?? key;
+  }
+  const pl = clean.match(/\/product-line\/([^/]+)\/?$/);
+  if (pl) {
+    const key = pl[1];
+    return PRODUCT_LINE_TO_HOME_SLUG[key] ?? key;
+  }
   const m = clean.match(/\/product\/([^/]+)\/?$/);
-  return m?.[1] ?? HOME_PRODUCTS_DEFAULTS[0].slug;
+  const slug = m?.[1];
+  if (slug === 'trading-system') return 'trading-solution';
+  return slug ?? HOME_PRODUCTS_DEFAULTS[0].slug;
 }
 
 export type MappedHero = typeof HOME_HERO_DEFAULTS;
-export type MappedCoreAdv = Omit<typeof HOME_CORE_ADV_DEFAULTS, 'stats'> & { stats: CoreAdvStat[] };
-export type MappedProductsSection = typeof HOME_PRODUCTS_SECTION_DEFAULTS & { items: HomeProductCardDefault[] };
+export type MappedCoreAdv = Omit<typeof HOME_CORE_ADV_DEFAULTS, 'stats' | 'cards'> & {
+  stats: CoreAdvStat[];
+  cards: { title: string; desc: string; icon?: CoreAdvCardIcon; href?: string }[];
+  introText?: string;
+};
+
+function parseCoreAdvCardIcon(v: unknown): CoreAdvCardIcon | undefined {
+  return v === 'clock' || v === 'lock' || v === 'globe' ? v : undefined;
+}
+
+const CORE_ADV_ICON_BY_INDEX: CoreAdvCardIcon[] = ['clock', 'lock', 'globe'];
+const CORE_ADV_DEFAULT_HREFS = ['/about.html', '/contact.html', '/global-business.html'] as const;
+export type MappedProductsSection = typeof HOME_PRODUCTS_SECTION_DEFAULTS & {
+  introText?: string;
+  items: HomeProductCardDefault[];
+};
 export type MappedNews = {
   moduleLabel: string;
   titleZh: string;
   titleEn: string;
-  introText: string;
+  introText?: string;
   featuredTitle: string;
   featuredLink: string;
   featuredImageUrl: string;
@@ -152,7 +198,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   const newsRaw = unwrapStrapiComponent(doc?.homeNewsSection);
   const contactRaw = unwrapStrapiComponent(doc?.contactCtaSection);
 
-  /** Hero 對應 Strapi `sections.hero`：subtitle＝主標上行（公司名）、title＝主標下行（標語） */
+  /** Hero 对应 Strapi `sections.hero`：subtitle＝主标上行（公司名）、title＝主标下行（标语） */
   const hero: MappedHero = {
     ...HOME_HERO_DEFAULTS,
     title: pickStr(heroRaw?.title) || HOME_HERO_DEFAULTS.title,
@@ -185,11 +231,18 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   const cardRows = unwrapStrapiEntryArray(coreRaw?.advantageCards);
   const mappedCards =
     cardRows.length > 0
-      ? cardRows.map((c) => {
+      ? cardRows.map((c, index) => {
           const row = unwrapStrapiComponent(c) ?? c;
           const title = pickStr(row.title) || String(row.title ?? '').trim();
           const desc = pickStr(row.description) || String(row.description ?? '').trim();
-          return { title, desc };
+          const icon =
+            parseCoreAdvCardIcon(row.iconId) ??
+            parseCoreAdvCardIcon(row.icon) ??
+            CORE_ADV_ICON_BY_INDEX[index % CORE_ADV_ICON_BY_INDEX.length];
+          const href =
+            pickStr(row.cardLink) ||
+            (index < CORE_ADV_DEFAULT_HREFS.length ? CORE_ADV_DEFAULT_HREFS[index] : undefined);
+          return { title, desc, icon, href };
         })
       : [];
   const cardsFromCms =
@@ -197,16 +250,17 @@ export function mapHomePageFromStrapi(apiData: unknown): {
       ? mappedCards.filter((c) => c.title !== '')
       : HOME_CORE_ADV_DEFAULTS.cards;
 
+  const coreIntro = pickStr(coreRaw?.introText);
   const core: MappedCoreAdv = {
     ...HOME_CORE_ADV_DEFAULTS,
     moduleLabel: pickStr(coreRaw?.moduleLabel) || HOME_CORE_ADV_DEFAULTS.moduleLabel,
     titleZh: pickStr(coreRaw?.titleZh) || HOME_CORE_ADV_DEFAULTS.titleZh,
     titleEn: pickStr(coreRaw?.titleEn) || HOME_CORE_ADV_DEFAULTS.titleEn,
-    introText: pickStr(coreRaw?.introText) || HOME_CORE_ADV_DEFAULTS.introText,
     statStripBackgroundUrl:
       mediaUrl(coreRaw?.statStripBackgroundImage as StrapiMedia) || HOME_CORE_ADV_DEFAULTS.statStripBackgroundUrl,
     stats: statsFromCms,
     cards: cardsFromCms,
+    ...(coreIntro ? { introText: coreIntro } : {}),
   };
 
   const cmsProducts = unwrapStrapiEntryArray(productsRaw?.products);
@@ -214,7 +268,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
     cmsProducts.length > 0
       ? cmsProducts.map((p) => {
           const row = unwrapStrapiComponent(p) ?? p;
-          const link = pickStr(row.link) || `/product/${HOME_PRODUCTS_DEFAULTS[0].slug}`;
+          const link = pickStr(row.link) || productCardHref(HOME_PRODUCTS_DEFAULTS[0].slug);
           const slug = slugFromLink(link);
           const iconStr = row.icon as string | undefined;
           const icon: ProductIconId = isProductIcon(iconStr) ? iconStr : 'institutional';
@@ -233,12 +287,13 @@ export function mapHomePageFromStrapi(apiData: unknown): {
         })
       : HOME_PRODUCTS_DEFAULTS;
 
+  const productsIntro = pickStr(productsRaw?.introText);
   const products: MappedProductsSection = {
     moduleLabel: pickStr(productsRaw?.moduleLabel) || HOME_PRODUCTS_SECTION_DEFAULTS.moduleLabel,
     titleZh: pickStr(productsRaw?.titleZh) || HOME_PRODUCTS_SECTION_DEFAULTS.titleZh,
     titleEn: pickStr(productsRaw?.titleEn) || HOME_PRODUCTS_SECTION_DEFAULTS.titleEn,
-    introText: pickStr(productsRaw?.introText) || HOME_PRODUCTS_SECTION_DEFAULTS.introText,
     items,
+    ...(productsIntro ? { introText: productsIntro } : {}),
   };
 
   const refArticles = pressAndAnnouncementArticles;
@@ -280,17 +335,18 @@ export function mapHomePageFromStrapi(apiData: unknown): {
     }));
   }
 
+  const newsIntro = pickStr(newsRaw?.introText);
   const news: MappedNews = {
     moduleLabel: pickStr(newsRaw?.moduleLabel) || HOME_NEWS_DEFAULTS.moduleLabel,
     titleZh: pickStr(newsRaw?.titleZh) || HOME_NEWS_DEFAULTS.titleZh,
     titleEn: pickStr(newsRaw?.titleEn) || HOME_NEWS_DEFAULTS.titleEn,
-    introText: pickStr(newsRaw?.introText) || HOME_NEWS_DEFAULTS.introText,
     featuredTitle,
     featuredLink,
     featuredImageUrl,
     moreButtonLabel: pickStr(newsRaw?.moreButtonLabel) || HOME_NEWS_DEFAULTS.moreButtonLabel,
     moreButtonLink: pickStr(newsRaw?.moreButtonLink) || HOME_NEWS_DEFAULTS.moreButtonLink,
     list,
+    ...(newsIntro ? { introText: newsIntro } : {}),
   };
 
   const contact: MappedContactCta = {

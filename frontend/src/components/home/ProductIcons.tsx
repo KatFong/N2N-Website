@@ -1,4 +1,4 @@
-import type { ProductIconId } from '@/lib/productOverview';
+import type { ProductIconId } from '@/lib/productIcons';
 
 const base = 'h-12 w-12 shrink-0 transition-transform duration-300 ease-out group-hover:scale-105';
 

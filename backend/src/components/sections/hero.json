@@ -8,14 +8,14 @@
   "options": {},
   "attributes": {
     "subtitle": {
-      "type": "text",
-      "required": true,
-      "default": "联盛亚富资讯科技有限公司（N2N-AFE）"
+      "type": "string",
+      "default": "联盛亚富资讯科技有限公司（N2N-AFE）",
+      "required": true
     },
     "title": {
       "type": "string",
-      "required": true,
-      "default": "43年专业 | 金融科技的可靠伙伴"
+      "default": "43年专业 | 金融科技的可靠伙伴",
+      "required": true
     },
     "description": {
       "type": "text",
@@ -29,7 +29,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ctaLabel": {
       "type": "string",
@@ -37,7 +39,7 @@
     },
     "ctaLink": {
       "type": "string",
-      "default": "/products-services"
+      "default": "/#product-overview"
     },
     "ctaSecondaryLabel": {
       "type": "string",

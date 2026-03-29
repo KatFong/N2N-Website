@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "settlement_solution_page",
+  "info": {
+    "singularName": "settlement-solution-page",
+    "pluralName": "settlement-solution-pages",
+    "displayName": "2.2 · Settlement Solution",
+    "description": "結算方案子頁 /settlement-solution：與 2.1 相同區塊結構（Hero、Spotlight、六宮格、八組圖文、頁尾 CTA、SEO）"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "spotlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-spotlight"
+    },
+    "sixGridItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-grid-item"
+    },
+    "gridSectionCtaLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "gridSectionCtaHref": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "footerCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-page-cta"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-feature",
+      "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

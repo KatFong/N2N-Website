@@ -15,13 +15,14 @@ N2N-AFE/
 | Page | Route | Strapi Content Type |
 |------|-------|---------------------|
 | Home | `/` | `home-page` (Single Type) |
-| Products & Services | `/products-services` | `products-services` (Single Type) |
 | Global Business | `/global-business` | `global-business` (Single Type) |
 | Business Partnership | `/business-partnership` | `business-partnership` (Single Type) |
 | News & Insights | `/news-insights` | `news-insights-page` + `article` (Collection) |
 | About N2N-AFE | `/about` | `about-page` (Single Type) |
 | Login / Register | `/login` | Static page |
 | Privacy Policy | `/privacy-policy` | `privacy-policy` (Single Type) |
+
+產品總覽區塊在首頁錨點 `/#product-overview`；舊網址 `/products-services` 由 Next 永久轉址至該錨點。
 
 ## Getting Started
 
