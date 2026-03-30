@@ -4,12 +4,13 @@
   "info": {
     "singularName": "privacy-policy",
     "pluralName": "privacy-policies",
-    "displayName": "07 · Privacy Policy",
+    "displayName": "8 · Privacy Policy",
     "description": "Privacy Policy page content"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "pageTitle": {
       "type": "string",
@@ -24,8 +25,8 @@
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

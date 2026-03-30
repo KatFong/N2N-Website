@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_core_advantages_sections",
   "info": {
-    "displayName": "Core Advantages Section",
+    "displayName": "核心优势模块",
     "icon": "star",
     "description": "Stats strip + three advantage cards"
   },
@@ -17,23 +17,22 @@
     "titleEn": {
       "type": "string"
     },
-    "introText": {
-      "type": "text"
-    },
     "statStripBackgroundImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "stats": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.stat-item"
+      "component": "sections.stat-item",
+      "repeatable": true
     },
     "advantageCards": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.advantage-card"
+      "component": "sections.advantage-card",
+      "repeatable": true
     }
   }
 }

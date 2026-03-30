@@ -89,7 +89,6 @@ function pickDocument<T extends Record<string, unknown>>(raw: unknown): T | null
 const PRODUCT_LINE_TO_HOME_SLUG: Record<string, string> = {
   vas: 'virtual-assets',
   smp5: 'smp5',
-  custody: 'server-hosting',
 };
 
 const PRODUCT_LINE_SLUG_SET = new Set(PRODUCT_LINE_SLUGS);
@@ -106,6 +105,9 @@ function slugFromLink(link: string | undefined): string {
 
   if (clean === '/trading-solution' || /\/trading-solution\/?$/.test(clean)) return 'trading-solution';
   if (/\/settlement-solution\/?$/.test(clean)) return 'settlement-solution';
+  if (/\/financial-information-service\/?$/.test(clean)) return 'financial-information-service';
+  if (/\/server-hosting\/?$/.test(clean)) return 'server-hosting';
+  if (/\/custody\/?$/.test(clean)) return 'server-hosting';
   const rootSeg = clean.match(/^\/([^/]+)\/?$/);
   if (rootSeg && PRODUCT_LINE_SLUG_SET.has(rootSeg[1])) {
     const key = rootSeg[1];
@@ -198,17 +200,22 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   const newsRaw = unwrapStrapiComponent(doc?.homeNewsSection);
   const contactRaw = unwrapStrapiComponent(doc?.contactCtaSection);
 
-  /** Hero 对应 Strapi `sections.hero`：subtitle＝主标上行（公司名）、title＝主标下行（标语） */
+  /** Hero 对应 Strapi `sections.hero`：subtitle＝主标上行（公司名）、title＝主标下行（标语）；CTA 可为 Button1/2 或旧字段 ctaLabel */
+  const hr = heroRaw as Record<string, unknown> | undefined;
   const hero: MappedHero = {
     ...HOME_HERO_DEFAULTS,
     title: pickStr(heroRaw?.title) || HOME_HERO_DEFAULTS.title,
     subtitle: pickStr(heroRaw?.subtitle) || HOME_HERO_DEFAULTS.subtitle,
     description: pickStr(heroRaw?.description) || HOME_HERO_DEFAULTS.description,
     backgroundImageUrl: mediaUrl(heroRaw?.backgroundImage as StrapiMedia) || HOME_HERO_DEFAULTS.backgroundImageUrl,
-    ctaPrimaryLabel: pickStr(heroRaw?.ctaLabel) || HOME_HERO_DEFAULTS.ctaPrimaryLabel,
-    ctaPrimaryLink: pickStr(heroRaw?.ctaLink) || HOME_HERO_DEFAULTS.ctaPrimaryLink,
-    ctaSecondaryLabel: pickStr(heroRaw?.ctaSecondaryLabel) || HOME_HERO_DEFAULTS.ctaSecondaryLabel,
-    ctaSecondaryLink: pickStr(heroRaw?.ctaSecondaryLink) || HOME_HERO_DEFAULTS.ctaSecondaryLink,
+    ctaPrimaryLabel:
+      pickStr(hr?.Button1) || pickStr(hr?.ctaLabel) || HOME_HERO_DEFAULTS.ctaPrimaryLabel,
+    ctaPrimaryLink:
+      pickStr(hr?.Button1Link) || pickStr(hr?.ctaLink) || HOME_HERO_DEFAULTS.ctaPrimaryLink,
+    ctaSecondaryLabel:
+      pickStr(hr?.Button2) || pickStr(hr?.ctaSecondaryLabel) || HOME_HERO_DEFAULTS.ctaSecondaryLabel,
+    ctaSecondaryLink:
+      pickStr(hr?.Button2Link) || pickStr(hr?.ctaSecondaryLink) || HOME_HERO_DEFAULTS.ctaSecondaryLink,
     showLogo: heroRaw?.showLogo !== false,
   };
 
@@ -253,7 +260,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   const coreIntro = pickStr(coreRaw?.introText);
   const core: MappedCoreAdv = {
     ...HOME_CORE_ADV_DEFAULTS,
-    moduleLabel: pickStr(coreRaw?.moduleLabel) || HOME_CORE_ADV_DEFAULTS.moduleLabel,
+    moduleLabel: pickStr(coreRaw?.moduleLabel),
     titleZh: pickStr(coreRaw?.titleZh) || HOME_CORE_ADV_DEFAULTS.titleZh,
     titleEn: pickStr(coreRaw?.titleEn) || HOME_CORE_ADV_DEFAULTS.titleEn,
     statStripBackgroundUrl:
@@ -289,7 +296,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
 
   const productsIntro = pickStr(productsRaw?.introText);
   const products: MappedProductsSection = {
-    moduleLabel: pickStr(productsRaw?.moduleLabel) || HOME_PRODUCTS_SECTION_DEFAULTS.moduleLabel,
+    moduleLabel: pickStr(productsRaw?.moduleLabel),
     titleZh: pickStr(productsRaw?.titleZh) || HOME_PRODUCTS_SECTION_DEFAULTS.titleZh,
     titleEn: pickStr(productsRaw?.titleEn) || HOME_PRODUCTS_SECTION_DEFAULTS.titleEn,
     items,
@@ -337,7 +344,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
 
   const newsIntro = pickStr(newsRaw?.introText);
   const news: MappedNews = {
-    moduleLabel: pickStr(newsRaw?.moduleLabel) || HOME_NEWS_DEFAULTS.moduleLabel,
+    moduleLabel: pickStr(newsRaw?.moduleLabel),
     titleZh: pickStr(newsRaw?.titleZh) || HOME_NEWS_DEFAULTS.titleZh,
     titleEn: pickStr(newsRaw?.titleEn) || HOME_NEWS_DEFAULTS.titleEn,
     featuredTitle,

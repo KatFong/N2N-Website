@@ -12,7 +12,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "seed:frontend-defaults": "node -e \"require('@strapi/typescript-utils').compile(process.cwd(), { configOptions: { ignoreDiagnostics: true } }).catch(e=>{console.error(e);process.exit(1)})\" && esbuild scripts/seed-frontend-defaults.ts --bundle --platform=node --format=cjs --outfile=scripts/seed.bundle.cjs --alias:@=../frontend/src --external:@strapi/strapi --external:@strapi/core && node scripts/seed.bundle.cjs"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.39.0",
@@ -28,6 +29,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.2",
     "typescript": "^5"
   },
   "engines": {

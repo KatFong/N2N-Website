@@ -14,11 +14,11 @@ export const INSTITUTIONAL_SOLUTION_NAV: InstitutionalNavItem[] = [
 ];
 
 export const FINANCIAL_INFORMATION_SERVICE_PAGE_DEFAULT = {
-  title: '金融资讯服务',
-  subtitle: '金融信息服务',
+  title: '券商报价系统',
+  subtitle: 'Financial Information Service',
   bullets: [
-    '即时与历史行情、参考数据与新闻资讯整合，支持投研与交易决策。',
-    '可扩充的数据介面与 API，方便接入内部系统与第三方应用。',
-    '依角色与合规需求配置权限与留痕，满足机构对资料治理的要求。',
+    '多市场即时报价与深度行情，整合参考数据与新闻资讯，支援投研与柜台交易决策。',
+    '可扩充的数据介面与 API，便于接入内部系统、风控与第三方应用。',
+    '依角色与合规需求配置权限与留痕，满足券商对资料治理与审计的要求。',
   ],
 };

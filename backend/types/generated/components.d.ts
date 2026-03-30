@@ -121,12 +121,11 @@ export interface SectionsCoreAdvantagesSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_core_advantages_sections';
   info: {
     description: 'Stats strip + three advantage cards';
-    displayName: 'Core Advantages Section';
+    displayName: '\u6838\u5FC3\u4F18\u52BF\u6A21\u5757';
     icon: 'star';
   };
   attributes: {
     advantageCards: Schema.Attribute.Component<'sections.advantage-card', true>;
-    introText: Schema.Attribute.Text;
     moduleLabel: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Module 02'>;
     stats: Schema.Attribute.Component<'sections.stat-item', true>;
@@ -151,6 +150,32 @@ export interface SectionsFeatureCard extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsFooterColumn extends Struct.ComponentSchema {
+  collectionName: 'components_sections_footer_columns';
+  info: {
+    description: '\u9801\u5C3E\u4E00\u6B04\uFF1A\u6A19\u984C + \u591A\u500B\u9023\u7D50';
+    displayName: 'Footer Column';
+    icon: 'layout';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'sections.footer-link', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsFooterLink extends Struct.ComponentSchema {
+  collectionName: 'components_sections_footer_links';
+  info: {
+    description: '\u9801\u5C3E\u55AE\u4E00\u9023\u7D50\uFF08\u6587\u5B57 + \u8DEF\u5F91\uFF09';
+    displayName: 'Footer Link';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
@@ -160,13 +185,13 @@ export interface SectionsHero extends Struct.ComponentSchema {
   };
   attributes: {
     backgroundImage: Schema.Attribute.Media<'images'>;
-    ctaLabel: Schema.Attribute.String &
+    Button1: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'\u4E86\u89E3\u6211\u4EEC\u7684\u4EA7\u54C1'>;
-    ctaLink: Schema.Attribute.String &
+    Button1Link: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'/#product-overview'>;
-    ctaSecondaryLabel: Schema.Attribute.String &
+    Button2: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'\u5168\u7403\u4E1A\u52A1\u7F51\u7EDC'>;
-    ctaSecondaryLink: Schema.Attribute.String &
+    Button2Link: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'/global-business'>;
     description: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'\u4E3A\u5168\u7403\u8BC1\u5238\u3001\u671F\u8D27\u3001\u57FA\u91D1\u53CA\u503A\u5238\u5E02\u573A\u63D0\u4F9B\u5FEB\u901F\u3001\u51C6\u786E\u3001\u53EF\u9760\u7684\u4EA4\u6613\u4E0E\u7ED3\u7B97\u89E3\u51B3\u65B9\u6848'>;
@@ -266,7 +291,6 @@ export interface SectionsProductsOverviewSection
     icon: 'apps';
   };
   attributes: {
-    introText: Schema.Attribute.Text;
     moduleLabel: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Module 03'>;
     products: Schema.Attribute.Component<'sections.product-item', true>;
@@ -282,9 +306,7 @@ export interface SectionsRegionItem extends Struct.ComponentSchema {
     displayName: 'Region Item';
     icon: 'globe';
   };
-  attributes: {
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-  };
+  attributes: {};
 }
 
 export interface SectionsStatItem extends Struct.ComponentSchema {
@@ -295,11 +317,9 @@ export interface SectionsStatItem extends Struct.ComponentSchema {
     icon: 'hashtag';
   };
   attributes: {
-    description: Schema.Attribute.String;
     format: Schema.Attribute.Enumeration<['int', 'comma']> &
       Schema.Attribute.DefaultTo<'int'>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
-    prefix: Schema.Attribute.String;
     suffix: Schema.Attribute.String & Schema.Attribute.DefaultTo<'+'>;
     unit: Schema.Attribute.String;
     value: Schema.Attribute.Integer & Schema.Attribute.Required;
@@ -371,6 +391,8 @@ export interface SectionsTradingSolutionGridItem
         'brain',
         'arrow',
         'alarm',
+        'harddrive',
+        'headphones',
       ]
     > &
       Schema.Attribute.Required &
@@ -452,6 +474,8 @@ declare module '@strapi/strapi' {
       'sections.content-block': SectionsContentBlock;
       'sections.core-advantages-section': SectionsCoreAdvantagesSection;
       'sections.feature-card': SectionsFeatureCard;
+      'sections.footer-column': SectionsFooterColumn;
+      'sections.footer-link': SectionsFooterLink;
       'sections.hero': SectionsHero;
       'sections.home-news-item': SectionsHomeNewsItem;
       'sections.home-news-section': SectionsHomeNewsSection;

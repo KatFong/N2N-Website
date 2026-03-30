@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "99 · Footer（全站頁尾）",
+    "description": "全站頁尾四欄導覽、底部法律連結與版權；未發布時前台使用程式預設。"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "columns": {
+      "type": "component",
+      "component": "sections.footer-column",
+      "repeatable": true
+    },
+    "legalLinks": {
+      "type": "component",
+      "component": "sections.footer-link",
+      "repeatable": true
+    },
+    "copyright": {
+      "type": "string",
+      "default": "© N2N Connect Bhd. 保留所有权利。"
+    }
+  }
+}

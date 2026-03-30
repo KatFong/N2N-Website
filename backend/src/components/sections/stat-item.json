@@ -7,31 +7,28 @@
   },
   "options": {},
   "attributes": {
-    "value": {
-      "type": "integer",
-      "required": true
-    },
-    "prefix": {
-      "type": "string"
-    },
-    "unit": {
-      "type": "string"
-    },
-    "format": {
-      "type": "enumeration",
-      "enum": ["int", "comma"],
-      "default": "int"
-    },
-    "suffix": {
-      "type": "string",
-      "default": "+"
-    },
     "label": {
       "type": "string",
       "required": true
     },
-    "description": {
+    "unit": {
       "type": "string"
+    },
+    "value": {
+      "type": "integer",
+      "required": true
+    },
+    "format": {
+      "type": "enumeration",
+      "default": "int",
+      "enum": [
+        "int",
+        "comma"
+      ]
+    },
+    "suffix": {
+      "type": "string",
+      "default": "+"
     }
   }
 }

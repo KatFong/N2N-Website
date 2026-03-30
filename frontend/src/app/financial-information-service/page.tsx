@@ -1,12 +1,39 @@
-import InstitutionalSolutionSimplePage, {
-  institutionalSolutionMetadata,
-} from '@/components/institutional/InstitutionalSolutionSimplePage';
-import { FINANCIAL_INFORMATION_SERVICE_PAGE_DEFAULT } from '@/lib/institutionalSolutions';
+import { cache } from 'react';
+import { Metadata } from 'next';
+import InstitutionalSolutionSimplePage from '@/components/institutional/InstitutionalSolutionSimplePage';
+import { mapFinancialInformationServiceFromStrapi } from '@/lib/mapFinancialInformationServicePage';
+import { mapTradingSolutionSeoFromStrapi } from '@/lib/mapTradingSolutionPage';
+import { getFinancialInformationServicePage } from '@/lib/strapi';
 
-const d = FINANCIAL_INFORMATION_SERVICE_PAGE_DEFAULT;
+export const dynamic = 'force-dynamic';
 
-export const metadata = institutionalSolutionMetadata(d.title, d.subtitle, d.bullets);
+const getFinancialInformationPayload = cache(async () => {
+  const res = await getFinancialInformationServicePage();
+  const raw = res?.data ?? null;
+  return {
+    view: mapFinancialInformationServiceFromStrapi(raw),
+    seo: mapTradingSolutionSeoFromStrapi(raw),
+  };
+});
 
-export default function FinancialInformationServicePage() {
-  return <InstitutionalSolutionSimplePage {...d} />;
+export async function generateMetadata(): Promise<Metadata> {
+  const { view, seo } = await getFinancialInformationPayload();
+  const title = seo.metaTitle?.trim() || `${view.title} | N2N Connect`;
+  const description =
+    seo.metaDescription?.trim() || view.bullets[0] || view.subtitle;
+  return {
+    title,
+    description,
+    ...(seo.shareImageUrl
+      ? {
+          openGraph: { images: [{ url: seo.shareImageUrl }] },
+          twitter: { images: [seo.shareImageUrl] },
+        }
+      : {}),
+  };
+}
+
+export default async function FinancialInformationServicePage() {
+  const { view } = await getFinancialInformationPayload();
+  return <InstitutionalSolutionSimplePage {...view} />;
 }

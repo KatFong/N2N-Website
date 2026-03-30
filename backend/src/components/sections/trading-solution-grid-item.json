@@ -19,7 +19,9 @@
         "shield",
         "brain",
         "arrow",
-        "alarm"
+        "alarm",
+        "harddrive",
+        "headphones"
       ],
       "default": "clock",
       "required": true

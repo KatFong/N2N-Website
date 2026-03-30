@@ -123,6 +123,16 @@ export async function getHomePage() {
   return fetchAPIRaw<StrapiResponse<HomePageData | Record<string, unknown> | null>>(`/home-page?${q}`);
 }
 
+const FOOTER_POPULATE_PATHS = ['columns', 'columns.links', 'legalLinks'] as const;
+
+/** 全站頁尾（Single Type `footer`）；404/403 時回 null，前台用 mapFooter 預設 */
+export async function getFooter() {
+  const q = buildPopulateQuery([...FOOTER_POPULATE_PATHS]);
+  return fetchAPIRaw<StrapiResponse<Record<string, unknown> | null>>(`/footer?${q}`, {
+    quietIfNoCmsEntry: true,
+  });
+}
+
 export async function getGlobalBusinessPage() {
   const q = buildPopulateQuery([
     'hero',
@@ -237,6 +247,24 @@ export async function getSettlementSolutionPage() {
   );
 }
 
+const FINANCIAL_INFORMATION_SERVICE_PAGE_POPULATE_PATHS = ['bullets', 'seo', 'seo.shareImage'] as const;
+
+export async function getFinancialInformationServicePage() {
+  const q = buildPopulateQuery([...FINANCIAL_INFORMATION_SERVICE_PAGE_POPULATE_PATHS]);
+  return fetchAPIRaw<StrapiResponse<Record<string, unknown> | null>>(
+    `/financial-information-service-page?${q}`,
+    { quietIfNoCmsEntry: true }
+  );
+}
+
+export async function getServerHostingSolutionPage() {
+  const q = buildPopulateQuery([...SOLUTION_STYLE_PAGE_POPULATE_PATHS]);
+  return fetchAPIRaw<StrapiResponse<TradingSolutionPageData | Record<string, unknown> | null>>(
+    `/server-hosting-page?${q}`,
+    { quietIfNoCmsEntry: true }
+  );
+}
+
 /** Collection：`product-line-pages`，依 `slug` 篩選一筆（與 Trading 子頁相同 populate） */
 export async function getProductLinePageBySlug(slug: string) {
   const q = buildPopulateQuery([...SOLUTION_STYLE_PAGE_POPULATE_PATHS]);
@@ -279,6 +307,11 @@ export interface Hero {
   description?: string;
   showLogo?: boolean;
   backgroundImage?: StrapiMedia;
+  /** 與 Strapi `sections.hero` 一致；舊欄位 ctaLabel／ctaLink 仍相容 */
+  Button1?: string;
+  Button1Link?: string;
+  Button2?: string;
+  Button2Link?: string;
   ctaLabel?: string;
   ctaLink?: string;
   ctaSecondaryLabel?: string;

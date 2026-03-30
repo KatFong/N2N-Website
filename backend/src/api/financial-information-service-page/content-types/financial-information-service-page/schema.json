@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "financial_information_service_page",
+  "info": {
+    "singularName": "financial-information-service-page",
+    "pluralName": "financial-information-service-pages",
+    "displayName": "2.3 · Financial Information Service Page",
+    "description": "券商报价系统（Financial Information Service）/financial-information-service：标题、要点与 SEO"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "iconId": {
+      "type": "enumeration",
+      "enum": [
+        "institutional",
+        "fintech",
+        "retail",
+        "hosting"
+      ]
+    },
+    "bullets": {
+      "type": "component",
+      "component": "sections.trading-solution-bullet",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}

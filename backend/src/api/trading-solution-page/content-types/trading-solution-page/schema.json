@@ -10,22 +10,23 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "heroTitle": {
       "type": "string"
     },
     "heroSubtitle": {
-      "type": "text"
+      "type": "string"
     },
     "spotlight": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.trading-solution-spotlight"
+      "component": "sections.trading-solution-spotlight",
+      "repeatable": false
     },
     "sixGridItems": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.trading-solution-grid-item"
+      "component": "sections.trading-solution-grid-item",
+      "repeatable": true
     },
     "gridSectionCtaLabel": {
       "type": "string",
@@ -37,19 +38,19 @@
     },
     "footerCta": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.trading-solution-page-cta"
+      "component": "sections.trading-solution-page-cta",
+      "repeatable": false
     },
     "features": {
       "type": "component",
-      "repeatable": true,
       "component": "sections.trading-solution-feature",
+      "repeatable": true,
       "required": false
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

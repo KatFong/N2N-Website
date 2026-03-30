@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "server_hosting_line_page",
+  "info": {
+    "singularName": "server-hosting-page",
+    "pluralName": "server-hosting-pages",
+    "displayName": "2.4 · Server Hosting Page",
+    "description": "服务器托管和专线服务 /server-hosting：Hero、Spotlight、能力網格、圖文區塊與 SEO（與 2.1 欄位一致）"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "spotlight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-spotlight"
+    },
+    "sixGridItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-grid-item"
+    },
+    "gridSectionCtaLabel": {
+      "type": "string",
+      "default": "了解更多"
+    },
+    "gridSectionCtaHref": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "footerCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.trading-solution-page-cta"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.trading-solution-feature",
+      "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

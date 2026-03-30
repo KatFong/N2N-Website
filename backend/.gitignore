@@ -76,6 +76,7 @@ $RECYCLE.BIN/
 # Misc.
 ############################
 
+scripts/seed.bundle.cjs
 *#
 ssl
 .idea

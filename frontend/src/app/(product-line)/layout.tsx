@@ -1,6 +1,6 @@
 import ProductLineSubnav from '@/components/product-line/ProductLineSubnav';
 
-export default function ProductLineSegmentLayout({ children }: { children: React.ReactNode }) {
+export default function ProductLineGroupLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <ProductLineSubnav />

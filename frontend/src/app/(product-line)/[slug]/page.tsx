@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import TradingSolutionView from '@/components/trading-solution/TradingSolutionView';
 import {
   getProductLinePage,
+  PRODUCT_LINE_DYNAMIC_SLUGS,
   PRODUCT_LINE_PAGE_ENTRIES,
-  PRODUCT_LINE_SLUGS,
 } from '@/lib/productLinePageContent';
 import { getProductLinePayload } from '@/lib/productLinePayload';
 
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const label = PRODUCT_LINE_PAGE_ENTRIES.find((n) => n.slug === slug)?.label ?? slug;
-  if (!PRODUCT_LINE_SLUGS.includes(slug)) {
+  if (!PRODUCT_LINE_DYNAMIC_SLUGS.includes(slug)) {
     return { title: label };
   }
   const fb = getProductLinePage(slug);
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductLineRootPage({ params }: Props) {
   const { slug } = await params;
-  if (!PRODUCT_LINE_SLUGS.includes(slug)) notFound();
+  if (!PRODUCT_LINE_DYNAMIC_SLUGS.includes(slug)) notFound();
 
   const { view } = await getProductLinePayload(slug);
 

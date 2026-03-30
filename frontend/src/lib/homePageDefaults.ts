@@ -105,10 +105,10 @@ export const HOME_PRODUCTS_DEFAULTS: HomeProductCardDefault[] = [
   },
   {
     slug: 'server-hosting',
-    title: '技术与网络服务',
-    subtitle: '技术与网络服务',
+    title: '服务器托管和专线服务',
+    subtitle: '7×24小时全天候监察',
     description:
-      '托管与专线服务，金融级别的数据中心与高速专线服务，保障用户的业务7x24小时不间断运行。',
+      '一站式服务：IT 硬件与机房环境、全天候监察、符合证监会科技安全要求、系统设置与维护，技术稳定可靠。',
     icon: 'hosting',
     coverImage: '/product-overview/half-globe.png',
   },

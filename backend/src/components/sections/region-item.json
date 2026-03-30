@@ -6,10 +6,5 @@
     "description": "A single geographic region"
   },
   "options": {},
-  "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
-    }
-  }
+  "attributes": {}
 }

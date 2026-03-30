@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_footer_columns",
+  "info": {
+    "displayName": "Footer Column",
+    "icon": "layout",
+    "description": "頁尾一欄：標題 + 多個連結"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.footer-link"
+    }
+  }
+}

@@ -1,51 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { MappedFooter } from '@/lib/footerDefaults';
+import { FOOTER_DEFAULT_COLUMNS, FOOTER_DEFAULT_COPYRIGHT, FOOTER_DEFAULT_LEGAL_LINKS } from '@/lib/footerDefaults';
 
-const FOOTER_COLS = [
-  {
-    title: '关于我们',
-    links: [
-      { label: '公司简介', href: '/about' },
-      { label: '企业亮点', href: '/about' },
-    ],
-  },
-  {
-    title: '业务概览',
-    links: [
-      { label: '首页', href: '/' },
-      { label: '资本市场解决方案', href: '/#product-overview' },
-      { label: '2.1 交易方案', href: '/trading-solution' },
-      { label: '2.2 结算方案', href: '/settlement-solution' },
-      { label: '创新金融科技', href: '/vas' },
-      { label: '个人投资者工具', href: '/smp5' },
-      { label: '技术与网络服务', href: '/custody' },
-    ],
-  },
-  {
-    title: '投资者关系',
-    links: [
-      { label: '概览', href: '/global-business' },
-      { label: '公司公告', href: '/news-insights' },
-      { label: '新闻稿', href: '/news-insights' },
-    ],
-  },
-  {
-    title: '咨询联系',
-    links: [
-      { label: '联系我们', href: '/contact' },
-      { label: '加入我们', href: '/business-partnership' },
-    ],
-  },
-];
+type Props = {
+  data?: MappedFooter;
+};
 
-export default function Footer() {
+export default function Footer({ data }: Props) {
+  const cols = data?.columns?.length ? data.columns : FOOTER_DEFAULT_COLUMNS;
+  const legalLinks = data?.legalLinks?.length ? data.legalLinks : FOOTER_DEFAULT_LEGAL_LINKS;
+  const copyright = data?.copyright?.trim() ? data.copyright : FOOTER_DEFAULT_COPYRIGHT;
+
   return (
     <footer style={{ backgroundColor: '#F5F7FA', borderTop: '1px solid #D9E2EC' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Columns */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-          {FOOTER_COLS.map((col) => (
+          {cols.map((col) => (
             <div key={col.title}>
               <h4
                 className="mb-4 text-xs font-black tracking-wide text-[#003366]"
@@ -89,24 +62,22 @@ export default function Footer() {
           </Link>
 
           {/* Legal links */}
-          <div className="flex items-center gap-4 text-xs" style={{ color: '#999999' }}>
-            <Link
-              href="/privacy-policy"
-              className="transition-colors duration-150 hover:underline text-[#999999] hover:text-[#0077CC]"
-            >
-              条款与条件
-            </Link>
-            <span className="text-[#D9E2EC]">|</span>
-            <Link
-              href="/privacy-policy"
-              className="transition-colors duration-150 hover:underline text-[#999999] hover:text-[#0077CC]"
-            >
-              法律信息
-            </Link>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs" style={{ color: '#999999' }}>
+            {legalLinks.map((link, i) => (
+              <span key={`${link.href}-${link.label}`} className="inline-flex items-center gap-4">
+                {i > 0 ? <span className="text-[#D9E2EC]">|</span> : null}
+                <Link
+                  href={link.href}
+                  className="transition-colors duration-150 hover:underline text-[#999999] hover:text-[#0077CC]"
+                >
+                  {link.label}
+                </Link>
+              </span>
+            ))}
           </div>
 
           {/* Copyright */}
-          <p className="text-xs text-[#999999]">© N2N Connect Bhd. 保留所有权利。</p>
+          <p className="text-xs text-[#999999]">{copyright}</p>
         </div>
       </div>
     </footer>

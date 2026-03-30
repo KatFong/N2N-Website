@@ -130,10 +130,10 @@ export default function HeroCarousel({ hero }: HeroCarouselProps) {
   const title        = hero?.title        || '亚洲领先的\n资本市场\n科技方案';
   const subtitle     = hero?.subtitle     || '我们以数字化创新连接区域资本市场，为金融机构提供可信赖的交易与基础设施能力。';
   const bgImage      = getStrapiMedia(hero?.backgroundImage);
-  const ctaLabel     = hero?.ctaLabel     || '关于我们';
-  const ctaLink      = hero?.ctaLink      || '/about';
-  const ctaSecLabel  = hero?.ctaSecondaryLabel || '产品与服务';
-  const ctaSecLink   = hero?.ctaSecondaryLink  || '/#product-overview';
+  const ctaLabel     = hero?.Button1 || hero?.ctaLabel     || '关于我们';
+  const ctaLink      = hero?.Button1Link || hero?.ctaLink      || '/about';
+  const ctaSecLabel  = hero?.Button2 || hero?.ctaSecondaryLabel || '产品与服务';
+  const ctaSecLink   = hero?.Button2Link || hero?.ctaSecondaryLink  || '/#product-overview';
 
   return (
     <section

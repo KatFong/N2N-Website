@@ -4,12 +4,13 @@
   "info": {
     "singularName": "contact-page",
     "pluralName": "contact-pages",
-    "displayName": "08 · Contact Us",
+    "displayName": "7 · Contact Us",
     "description": "聯絡我們 — 標題與各地辦公室（對應前台 /contact）"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "heroTitle": {
       "type": "string",
@@ -21,13 +22,13 @@
     },
     "offices": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.contact-office"
+      "component": "sections.contact-office",
+      "repeatable": true
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

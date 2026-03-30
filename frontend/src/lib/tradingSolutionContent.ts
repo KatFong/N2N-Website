@@ -155,7 +155,9 @@ export type TradingSolutionGridIconId =
   | 'shield'
   | 'brain'
   | 'arrow'
-  | 'alarm';
+  | 'alarm'
+  | 'harddrive'
+  | 'headphones';
 
 export type TradingSolutionGridItem = {
   iconId: TradingSolutionGridIconId;

@@ -1,5 +1,16 @@
 import type { Core } from '@strapi/strapi';
 
+/** 允許 Next 等前台來源；可再加環境變數（逗號分隔） */
+const corsOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3001',
+  ...(process.env.FRONTEND_URLS?.split(',')
+    .map((s) => s.trim())
+    .filter(Boolean) ?? []),
+];
+
 const config: Core.Config.Middlewares = [
   'strapi::logger',
   'strapi::errors',
@@ -20,9 +31,8 @@ const config: Core.Config.Middlewares = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       headers: '*',
-      origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+      origin: corsOrigins,
     },
   },
   'strapi::poweredBy',

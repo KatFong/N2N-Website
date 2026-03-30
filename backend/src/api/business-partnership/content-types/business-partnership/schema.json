@@ -4,17 +4,18 @@
   "info": {
     "singularName": "business-partnership",
     "pluralName": "business-partnerships",
-    "displayName": "02 · Business Partnership",
+    "displayName": "3 · Business Partnership",
     "description": "Business Partnership page content"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.hero"
+      "component": "sections.hero",
+      "repeatable": false
     },
     "pageTitle": {
       "type": "string",
@@ -25,21 +26,21 @@
     },
     "partnerBenefits": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.feature-card"
+      "component": "sections.feature-card",
+      "repeatable": true
     },
     "sections": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.content-block"
+      "component": "sections.content-block",
+      "repeatable": true
     },
     "contactEmail": {
       "type": "email"
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

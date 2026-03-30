@@ -8,7 +8,7 @@ import type {
 /** 产品线内容 slug（不含「全球业务」，独立页 `/global-business`）；前台路径为根路径 `/{slug}`；交易／结算为独立路由 */
 export const PRODUCT_LINE_PAGE_ENTRIES: { slug: string; label: string }[] = [
   { slug: 'quotation', label: '报价' },
-  { slug: 'custody', label: '托管' },
+  { slug: 'server-hosting', label: '服务器托管和专线服务' },
   { slug: 'vas', label: 'VAS' },
   { slug: 'smp5', label: 'SMP5' },
   { slug: 'mps', label: 'MPS' },
@@ -16,6 +16,11 @@ export const PRODUCT_LINE_PAGE_ENTRIES: { slug: string; label: string }[] = [
 ];
 
 export const PRODUCT_LINE_SLUGS = PRODUCT_LINE_PAGE_ENTRIES.map((e) => e.slug);
+
+/** 由 `(product-line)/[slug]` 承載；`/server-hosting` 另用 Single Type 專頁 */
+export const PRODUCT_LINE_DYNAMIC_SLUGS = PRODUCT_LINE_PAGE_ENTRIES.filter((e) => e.slug !== 'server-hosting').map(
+  (e) => e.slug
+);
 
 export function productLineEntryHref(slug: string): string {
   return `/${slug}`;
@@ -45,7 +50,8 @@ function grid(items: TradingSolutionGridItem[]): TradingSolutionGridItem[] {
   return items;
 }
 
-const PAGES: Record<string, TradingSolutionPageMapped> = {
+/** 與前台 fallback 相同；供 backend seed 寫入 Strapi `product-line-pages` 與 `server-hosting-page`。 */
+export const productLinePageContentBySlug: Record<string, TradingSolutionPageMapped> = {
   quotation: {
     hero: {
       title: '报价与行情服务',
@@ -84,41 +90,108 @@ const PAGES: Record<string, TradingSolutionPageMapped> = {
     ]),
   },
 
-  custody: {
+  'server-hosting': {
     hero: {
-      title: '资产托管与运营支持',
-      subtitle: '安全隔离、清晰账务、满足机构合规',
+      title: '服务器托管和专线服务',
+      subtitle: '7×24小时全天候监察',
     },
     spotlight: {
-      title: '托管方案概览',
-      tagline: '透明 · 可追溯 · 可扩展',
-      paragraphs: [
-        '为券商与基金行政提供托管相关流程与系统能力支撑，减少人工对账与操作风险。',
-        '可与现有前台、后台及银行接口对接，按监管与客户要求配置字段与审批流。',
-      ],
-      imageSrc: IMG,
+      title: '一站式服务',
+      tagline: '',
+      paragraphs: [],
+      imageSrc: '/trading-solution/server-hosting-spotlight.png',
       ctaLabel: '了解更多',
       ctaHref: '/contact',
+      highlightsHeading: '',
+      coreHighlights: [
+        'IT硬件和服务器机房环境',
+        '7×24全天候监察',
+        '符合证监会科技安全要求',
+        '系统设置与维护',
+        '技术稳定可靠',
+      ],
     },
     sixGrid: grid([
-      { iconId: 'security', title: '安全隔离', lines: ['多层权限与审批', '关键操作留痕'] },
-      { iconId: 'chart', title: '账务清晰', lines: ['多币种多账户视图', '估值与损益展示'] },
-      { iconId: 'clock', title: '高效清算', lines: ['日终批量与异常处理', '与上游系统对账'] },
-      { iconId: 'api', title: '开放对接', lines: ['标准 API 与文件交换', '银行与 TA 接口经验'] },
-      { iconId: 'custom', title: '流程可配', lines: ['产品模板与费率规则', '客户化报表'] },
-      { iconId: 'mobile', title: '移动查询', lines: ['高管与客户经理视图', '关键指标推送'] },
+      {
+        iconId: 'harddrive',
+        title: '服务器托管',
+        lines: [
+          '多服务器托管设施',
+          '高性能互联网接入',
+          '服务器安装与配置',
+          '服务器处置服务',
+          '资产计算与存储',
+        ],
+      },
+      {
+        iconId: 'api',
+        title: '专线服务',
+        lines: [
+          'GP多线网络',
+          '高速专线连接',
+          '低延迟数据传输',
+          '网络冗余备份',
+          '24小时网络监控',
+        ],
+      },
+      {
+        iconId: 'security',
+        title: '网络安全',
+        lines: ['DDoS防护', '网络安全监控', '数据加密传输', '物理安全防护'],
+      },
+      {
+        iconId: 'headphones',
+        title: '技术支持',
+        lines: [
+          '7×24小时技术支持',
+          '故障即时响应',
+          '系统设置与维护',
+          '灾备恢复服务',
+          '定期安全审计',
+        ],
+      },
     ]),
     gridSectionCta: GRID_CTA,
     footerCta: SETTLEMENT_SOLUTION_FOOTER_CTA_DEFAULT,
     featureRows: rows([
-      { title: '持仓与估值', variant: 'portfolio', lines: ['多资产类别统一视图', '公允价值与汇率处理', '异常持仓预警'] },
-      { title: '清算与交收', variant: 'settlement', lines: ['与交易所、存管对接', '失败重试与人工干预', '交收状态全程跟踪'] },
-      { title: '对账与调节', variant: 'spreadsheet', lines: ['银行、券商、内部账三方核对', '差异项工作流', '电子存档'] },
-      { title: '公司行动', variant: 'multi-chart', lines: ['派息送股等公司行为', '选择权行使与分配', '客户通知与执行'] },
-      { title: '报表与披露', variant: 'order-blotter', lines: ['监管与客户定制报表', '定时推送与订阅', '多格式导出'] },
-      { title: '权限与合规', variant: 'risk-radar', lines: ['四眼原则与职责分离', '审计日志不可篡改', '合规检查清单'] },
-      { title: '与客户系统对接', variant: 'api-console', lines: ['托管数据 API', '文件 SFTP / 专线', '实施方法论'] },
-      { title: '运维与支持', variant: 'compact-terminal', lines: ['监控与告警', '版本与补丁管理', '专属客户经理'] },
+      {
+        title: '服务器托管',
+        variant: 'settlement',
+        lines: [
+          '多服务器托管设施',
+          '高性能互联网接入',
+          '服务器安装与配置',
+          '服务器处置服务',
+          '资产计算与存储',
+        ],
+      },
+      {
+        title: '专线服务',
+        variant: 'api-console',
+        lines: [
+          'GP多线网络',
+          '高速专线连接',
+          '低延迟数据传输',
+          '网络冗余备份',
+          '24小时网络监控',
+        ],
+      },
+      {
+        title: '网络安全',
+        variant: 'risk-radar',
+        lines: ['DDoS防护', '网络安全监控', '数据加密传输', '物理安全防护'],
+      },
+      {
+        title: '技术支持',
+        variant: 'compact-terminal',
+        lines: [
+          '7×24小时技术支持',
+          '故障即时响应',
+          '系统设置与维护',
+          '灾备恢复服务',
+          '定期安全审计',
+        ],
+      },
     ]),
   },
 
@@ -325,5 +398,5 @@ const PAGES: Record<string, TradingSolutionPageMapped> = {
 };
 
 export function getProductLinePage(slug: string): TradingSolutionPageMapped | undefined {
-  return PAGES[slug];
+  return productLinePageContentBySlug[slug];
 }

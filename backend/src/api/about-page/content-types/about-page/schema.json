@@ -4,17 +4,18 @@
   "info": {
     "singularName": "about-page",
     "pluralName": "about-pages",
-    "displayName": "06 · About N2N-AFE",
+    "displayName": "6 · About N2N-AFE",
     "description": "About N2N-AFE page content"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.hero"
+      "component": "sections.hero",
+      "repeatable": false
     },
     "pageTitle": {
       "type": "string",
@@ -29,25 +30,27 @@
     "companyImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "teamTitle": {
       "type": "string"
     },
     "teamMembers": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.feature-card"
+      "component": "sections.feature-card",
+      "repeatable": true
     },
     "sections": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.content-block"
+      "component": "sections.content-block",
+      "repeatable": true
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

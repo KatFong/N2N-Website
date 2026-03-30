@@ -3,8 +3,13 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { mapFooterFromStrapi } from '@/lib/mapFooter';
+import { getFooter } from '@/lib/strapi';
 
 const inter = Inter({ subsets: ['latin'] });
+
+/** 頁尾等依 Strapi，避免建置時快取舊內容 */
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: {
@@ -16,11 +21,14 @@ export const metadata: Metadata = {
   keywords: ['N2N-AFE', '亚洲', '金融', '企业', '业务', '全球'],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const footerRes = await getFooter();
+  const footerData = mapFooterFromStrapi(footerRes?.data ?? null);
+
   return (
     <html lang="zh-CN">
       <body className={inter.className}>
@@ -28,7 +36,7 @@ export default function RootLayout({
         <main className="pt-16 min-h-screen">
           {children}
         </main>
-        <Footer />
+        <Footer data={footerData} />
       </body>
     </html>
   );

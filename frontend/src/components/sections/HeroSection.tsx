@@ -36,12 +36,12 @@ export default function HeroSection({ hero, defaultTitle, defaultSubtitle }: Her
             {subtitle}
           </p>
         )}
-        {hero?.ctaLabel && hero?.ctaLink && (
+        {(hero?.Button1 || hero?.ctaLabel) && (hero?.Button1Link || hero?.ctaLink) && (
           <Link
-            href={hero.ctaLink}
+            href={(hero.Button1Link || hero.ctaLink) as string}
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 rounded-full font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            {hero.ctaLabel}
+            {(hero.Button1 || hero.ctaLabel) as string}
             <ArrowRight className="w-5 h-5" />
           </Link>
         )}

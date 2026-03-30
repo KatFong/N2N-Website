@@ -42,6 +42,8 @@ const GRID_ICON_KEYS: TradingSolutionGridIconId[] = [
   'brain',
   'arrow',
   'alarm',
+  'harddrive',
+  'headphones',
 ];
 
 export type SolutionPageSpotlightBase = {
@@ -53,6 +55,8 @@ export type SolutionPageSpotlightBase = {
   ctaHref: string;
   /** Section 2 可选：标题下的「核心特点」条列（如 VAS 页） */
   coreHighlights?: string[];
+  /** 条列上方小标题；传空字符串则不显示该行（仅保留圆点列表） */
+  highlightsHeading?: string;
 };
 
 export type SolutionPageFallbacks = {
@@ -138,6 +142,7 @@ export type TradingSolutionSpotlightView = {
   ctaLabel: string;
   ctaHref: string;
   coreHighlights?: string[];
+  highlightsHeading?: string;
 };
 
 export type TradingSolutionPageMapped = {
@@ -157,14 +162,16 @@ function mapHero(doc: Record<string, unknown> | null, fb: SolutionPageFallbacks[
 
 function spotlightCoreFromBase(
   base: SolutionPageSpotlightBase
-): Pick<TradingSolutionSpotlightView, 'coreHighlights'> {
-  return base.coreHighlights && base.coreHighlights.length > 0
-    ? { coreHighlights: [...base.coreHighlights] }
-    : {};
+): Pick<TradingSolutionSpotlightView, 'coreHighlights' | 'highlightsHeading'> {
+  const hl =
+    base.coreHighlights && base.coreHighlights.length > 0 ? { coreHighlights: [...base.coreHighlights] } : {};
+  const hh =
+    base.highlightsHeading !== undefined ? { highlightsHeading: base.highlightsHeading } : {};
+  return { ...hl, ...hh };
 }
 
 function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpotlightBase): TradingSolutionSpotlightView {
-  const core = spotlightCoreFromBase(base);
+  const coreFromBase = spotlightCoreFromBase(base);
   if (!doc) {
     return {
       title: base.title,
@@ -173,7 +180,7 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
       imageSrc: base.imageSrc,
       ctaLabel: base.ctaLabel,
       ctaHref: base.ctaHref,
-      ...core,
+      ...coreFromBase,
     };
   }
   const sp = unwrapStrapiComponent(doc.spotlight);
@@ -185,7 +192,7 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
       imageSrc: base.imageSrc,
       ctaLabel: base.ctaLabel,
       ctaHref: base.ctaHref,
-      ...core,
+      ...coreFromBase,
     };
   }
   const linesFromCms = unwrapStrapiEntryArray(sp.bodyLines)
@@ -201,6 +208,8 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
         ? { coreHighlights: [...base.coreHighlights] }
         : {};
   const mediaUrl = getStrapiMedia(unwrapMedia(sp.image));
+  const headingFromBase =
+    base.highlightsHeading !== undefined ? { highlightsHeading: base.highlightsHeading } : {};
   return {
     title: pickStr(sp.title) || base.title,
     tagline: pickStr(sp.tagline) || base.tagline,
@@ -209,6 +218,7 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
     ctaLabel: pickStr(sp.ctaLabel) || base.ctaLabel,
     ctaHref: pickStr(sp.ctaHref) || base.ctaHref,
     ...mergedCore,
+    ...headingFromBase,
   };
 }
 
@@ -358,6 +368,9 @@ function productLineMappedToFallbacks(slug: string): SolutionPageFallbacks {
       ctaHref: m.spotlight.ctaHref,
       ...(m.spotlight.coreHighlights && m.spotlight.coreHighlights.length > 0
         ? { coreHighlights: m.spotlight.coreHighlights }
+        : {}),
+      ...(m.spotlight.highlightsHeading !== undefined
+        ? { highlightsHeading: m.spotlight.highlightsHeading }
         : {}),
     },
     sixGrid: m.sixGrid,

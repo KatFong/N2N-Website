@@ -19,8 +19,8 @@ export default function HomeHero({ hero }: HomeHeroProps) {
     hero?.subtitle ||
     'N2N-AFE 以世界级金融与企业科技方案连接亚洲企业，助力业务增长与全球联通。';
   const bgImage = getStrapiMedia(hero?.backgroundImage);
-  const ctaLabel = hero?.ctaLabel || '了解产品与服务';
-  const ctaLink = hero?.ctaLink || '/#product-overview';
+  const ctaLabel = hero?.Button1 || hero?.ctaLabel || '了解产品与服务';
+  const ctaLink = hero?.Button1Link || hero?.ctaLink || '/#product-overview';
 
   /* Parallax: bg scrolls at 1/5 speed */
   useEffect(() => {

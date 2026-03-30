@@ -4,17 +4,18 @@
   "info": {
     "singularName": "news-insights-page",
     "pluralName": "news-insights-pages",
-    "displayName": "05 · News & Insights",
+    "displayName": "5 · News & Insights",
     "description": "News and Insights listing page content"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.hero"
+      "component": "sections.hero",
+      "repeatable": false
     },
     "pageTitle": {
       "type": "string",
@@ -25,8 +26,8 @@
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

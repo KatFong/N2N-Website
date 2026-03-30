@@ -161,8 +161,8 @@ export default function CoreAdvantages({ data }: Props) {
         <div className="home-shell pt-8 pb-10 md:pt-10 md:pb-12 lg:pt-11">
           <header className="flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
             <div>
-              <p className="home-kicker">{s.moduleLabel}</p>
-              <h2 className="home-h2 mt-2">
+              {s.moduleLabel ? <p className="home-kicker">{s.moduleLabel}</p> : null}
+              <h2 className={`home-h2 ${s.moduleLabel ? 'mt-2' : ''}`}>
                 <span className="text-slate-900">{s.titleZh}</span>
                 {s.titleEn ? <span className="home-h2-en ml-2 sm:ml-3">{s.titleEn}</span> : null}
               </h2>

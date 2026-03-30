@@ -30,9 +30,11 @@ const nextConfig: NextConfig = {
         destination: '/financial-information-service',
         permanent: true,
       },
+      { source: '/custody', destination: '/server-hosting', permanent: true },
+      { source: '/custody.html', destination: '/server-hosting', permanent: true },
       { source: '/product/virtual-assets', destination: '/vas', permanent: true },
       { source: '/product/smp5', destination: '/smp5', permanent: true },
-      { source: '/product/server-hosting', destination: '/custody', permanent: true },
+      { source: '/product/server-hosting', destination: '/server-hosting', permanent: true },
       {
         source: '/product/virtual-assets.html',
         destination: '/vas',
@@ -41,12 +43,12 @@ const nextConfig: NextConfig = {
       { source: '/product/smp5.html', destination: '/smp5', permanent: true },
       {
         source: '/product/server-hosting.html',
-        destination: '/custody',
+        destination: '/server-hosting',
         permanent: true,
       },
       { source: '/products/virtual-assets', destination: '/vas', permanent: true },
       { source: '/products/smp5', destination: '/smp5', permanent: true },
-      { source: '/products/server-hosting', destination: '/custody', permanent: true },
+      { source: '/products/server-hosting', destination: '/server-hosting', permanent: true },
       { source: '/product-line', destination: '/quotation', permanent: true },
       { source: '/product-line/:slug', destination: '/:slug', permanent: true },
       {

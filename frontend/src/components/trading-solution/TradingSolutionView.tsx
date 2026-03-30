@@ -7,6 +7,8 @@ import {
   ArrowRight,
   Brain,
   Clock,
+  HardDrive,
+  Headphones,
   LineChart,
   Plug,
   Shield,
@@ -37,6 +39,8 @@ const GRID_ICONS: Record<TradingSolutionGridIconId, LucideIcon> = {
   brain: Brain,
   arrow: ArrowRight,
   alarm: AlarmClock,
+  harddrive: HardDrive,
+  headphones: Headphones,
 };
 
 function GridIconMark({ iconId }: { iconId: TradingSolutionGridIconId }) {
@@ -125,10 +129,20 @@ export default function TradingSolutionView({
             </div>
             <div className="order-1 space-y-5 lg:order-2">
               <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">{spotlight.title}</h2>
-              <p className="text-base font-medium text-slate-800 md:text-lg">{spotlight.tagline}</p>
+              {spotlight.tagline.trim() ? (
+                <p className="text-base font-medium text-slate-800 md:text-lg">{spotlight.tagline}</p>
+              ) : null}
               {spotlight.coreHighlights && spotlight.coreHighlights.length > 0 ? (
                 <div className="space-y-3 pt-1">
-                  <p className="text-sm font-semibold text-slate-900 md:text-base">核心特点：</p>
+                  {(() => {
+                    const label =
+                      spotlight.highlightsHeading !== undefined
+                        ? spotlight.highlightsHeading
+                        : '核心特点：';
+                    return label ? (
+                      <p className="text-sm font-semibold text-slate-900 md:text-base">{label}</p>
+                    ) : null;
+                  })()}
                   <ul className="list-none space-y-2.5 text-sm leading-relaxed text-slate-600 md:text-base">
                     {spotlight.coreHighlights.map((line, i) => (
                       <li key={i} className="flex gap-2.5">
@@ -152,11 +166,17 @@ export default function TradingSolutionView({
         </div>
       </section>
 
-      {/* 能力网格：4 项为 2×2，6 项为 3×2；CTA 置于下方置中 */}
+      {/* 能力网格：4 项大屏 1×4，小屏先 2 列再单列；6 项为 3×2；CTA 置于下方置中 */}
       <section className="border-t border-slate-100">
         <div className={`${tsContentMax} ${tsSectionInner}`}>
           <div
-            className={`grid gap-12 md:gap-14 ${six.length <= 4 ? 'sm:grid-cols-2' : 'md:grid-cols-3'}`}
+            className={`grid gap-10 md:gap-12 ${
+              six.length > 4
+                ? 'md:grid-cols-3'
+                : six.length === 4
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                  : 'sm:grid-cols-2'
+            }`}
           >
             {six.map((item, i) => (
               <GridCard key={`${item.title}-${i}`} item={item} />

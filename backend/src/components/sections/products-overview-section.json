@@ -17,13 +17,10 @@
     "titleEn": {
       "type": "string"
     },
-    "introText": {
-      "type": "text"
-    },
     "products": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.product-item"
+      "component": "sections.product-item",
+      "repeatable": true
     }
   }
 }

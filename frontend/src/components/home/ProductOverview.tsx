@@ -32,8 +32,8 @@ export default function ProductOverview({ data }: Props) {
       <div className="home-shell">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="home-kicker">{section.moduleLabel}</p>
-            <h2 className="home-h2 mt-2">
+            {section.moduleLabel ? <p className="home-kicker">{section.moduleLabel}</p> : null}
+            <h2 className={`home-h2 ${section.moduleLabel ? 'mt-2' : ''}`}>
               <span className="text-slate-900">{section.titleZh}</span>
               {section.titleEn ? <span className="home-h2-en ml-3">{section.titleEn}</span> : null}
             </h2>

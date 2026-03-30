@@ -7,23 +7,23 @@
   },
   "options": {},
   "attributes": {
-    "subtitle": {
-      "type": "string",
-      "default": "联盛亚富资讯科技有限公司（N2N-AFE）",
-      "required": true
+    "showLogo": {
+      "type": "boolean",
+      "default": true
     },
     "title": {
       "type": "string",
       "default": "43年专业 | 金融科技的可靠伙伴",
       "required": true
     },
+    "subtitle": {
+      "type": "string",
+      "default": "联盛亚富资讯科技有限公司（N2N-AFE）",
+      "required": true
+    },
     "description": {
       "type": "text",
       "default": "为全球证券、期货、基金及债券市场提供快速、准确、可靠的交易与结算解决方案"
-    },
-    "showLogo": {
-      "type": "boolean",
-      "default": true
     },
     "backgroundImage": {
       "type": "media",
@@ -33,19 +33,19 @@
         "images"
       ]
     },
-    "ctaLabel": {
+    "Button1": {
       "type": "string",
       "default": "了解我们的产品"
     },
-    "ctaLink": {
+    "Button1Link": {
       "type": "string",
       "default": "/#product-overview"
     },
-    "ctaSecondaryLabel": {
+    "Button2": {
       "type": "string",
       "default": "全球业务网络"
     },
-    "ctaSecondaryLink": {
+    "Button2Link": {
       "type": "string",
       "default": "/global-business"
     }

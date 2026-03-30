@@ -4,17 +4,18 @@
   "info": {
     "singularName": "global-business",
     "pluralName": "global-businesses",
-    "displayName": "04 · Global Business",
+    "displayName": "4 · Global Business",
     "description": "Global Business page content"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.hero"
+      "component": "sections.hero",
+      "repeatable": false
     },
     "pageTitle": {
       "type": "string",
@@ -25,18 +26,18 @@
     },
     "regions": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.feature-card"
+      "component": "sections.feature-card",
+      "repeatable": true
     },
     "sections": {
       "type": "component",
-      "repeatable": true,
-      "component": "sections.content-block"
+      "component": "sections.content-block",
+      "repeatable": true
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

@@ -15,7 +15,7 @@ export function productCardHref(slug: string): string {
     case 'smp5':
       return '/smp5';
     case 'server-hosting':
-      return '/custody';
+      return '/server-hosting';
     default:
       return `/${slug}`;
   }

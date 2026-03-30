@@ -5,135 +5,42 @@
     "singularName": "home-page",
     "pluralName": "home-pages",
     "displayName": "1 · Home",
-    "description": "Homepage content"
+    "description": "首頁區塊順序與前台一致（由上至下）：① Hero → ② 核心優勢 → ③ 產品與服務 → ④ 新聞與活動 → ⑤ 聯繫 CTA；其後為 SEO。再下方為舊版／預留欄位，目前前台 map 未使用，請以五大元件為主。"
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "hero": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.hero"
+      "component": "sections.hero",
+      "repeatable": false
     },
     "coreAdvantagesSection": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.core-advantages-section"
+      "component": "sections.core-advantages-section",
+      "repeatable": false
     },
     "productsOverview": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.products-overview-section"
+      "component": "sections.products-overview-section",
+      "repeatable": false
     },
     "homeNewsSection": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.home-news-section"
+      "component": "sections.home-news-section",
+      "repeatable": false
     },
     "contactCtaSection": {
       "type": "component",
-      "repeatable": false,
-      "component": "sections.contact-cta-section"
-    },
-    "introTitle": {
-      "type": "string"
-    },
-    "introText": {
-      "type": "richtext"
-    },
-    "introImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
-    },
-
-    "statsSectionTitle": {
-      "type": "string"
-    },
-    "stats": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.stat-item"
-    },
-
-    "productsSectionTitle": {
-      "type": "string"
-    },
-    "productsSectionSubtitle": {
-      "type": "text"
-    },
-    "products": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.product-item"
-    },
-    "productsCtaLabel": {
-      "type": "string"
-    },
-
-    "globalTitle": {
-      "type": "string"
-    },
-    "globalDescription": {
-      "type": "text"
-    },
-    "globalRegions": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.region-item"
-    },
-
-    "partnershipTitle": {
-      "type": "string"
-    },
-    "partnershipDescription": {
-      "type": "text"
-    },
-    "partnerBenefits": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.feature-card"
-    },
-
-    "newsSectionTitle": {
-      "type": "string"
-    },
-
-    "aboutTitle": {
-      "type": "string"
-    },
-    "aboutDescription": {
-      "type": "text"
-    },
-    "aboutBullets": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.region-item"
-    },
-
-    "ctaTitle": {
-      "type": "string"
-    },
-    "ctaDescription": {
-      "type": "text"
-    },
-    "ctaPrimaryLabel": {
-      "type": "string"
-    },
-    "ctaSecondaryLabel": {
-      "type": "string"
-    },
-
-    "sections": {
-      "type": "component",
-      "repeatable": true,
-      "component": "sections.content-block"
+      "component": "sections.contact-cta-section",
+      "repeatable": false
     },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

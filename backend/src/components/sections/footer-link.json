@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_footer_links",
+  "info": {
+    "displayName": "Footer Link",
+    "icon": "link",
+    "description": "頁尾單一連結（文字 + 路徑）"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
