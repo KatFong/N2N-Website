@@ -55,7 +55,7 @@ async function fetchAPIRaw<T>(pathWithQuery: string, options: FetchAPIRawOptions
     ...fetchInit,
   };
 
-  const requestUrl = `${STRAPI_URL}/api${pathWithQuery}`;
+  const requestUrl = `${STRAPI_URL}/api${pathWithQuery.startsWith('/') ? pathWithQuery : '/' + pathWithQuery}`;
   let response: Response;
   try {
     response = await fetch(requestUrl, mergedOptions);
