@@ -24,3 +24,6 @@ backend/public/uploads/*
 # IDE
 .idea/
 *.swp
+
+# local legacy route cache
+frontend/src/app/products/
