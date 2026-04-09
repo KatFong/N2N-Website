@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_timeline_groups",
+  "info": {
+    "displayName": "Timeline Group",
+    "icon": "clock",
+    "description": "One timeline era with multiple events"
+  },
+  "options": {},
+  "attributes": {
+    "era": {
+      "type": "string",
+      "required": true
+    },
+    "events": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.timeline-event"
+    }
+  }
+}

@@ -407,3 +407,167 @@ body {
     box-shadow: 0 0 20px rgba(32, 39, 168, 0.45);
   }
 }
+
+/* About：Section 3 公事大事记 */
+.about-chronicle-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.about-chronicle-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, #161f87 0%, #2027a8 35%, #3650d8 68%, #1f2ea3 100%);
+  background-size: 220% 220%;
+  animation: trading-solution-hero-gradient 15s ease-in-out infinite;
+}
+
+.about-chronicle-map {
+  position: absolute;
+  inset: 0;
+  background-image: url('/globe.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(1120px, 92vw) auto;
+  opacity: 0.09;
+  filter: grayscale(1) brightness(1.6);
+}
+
+.about-chronicle-title {
+  opacity: 0;
+  animation: hero-fade-in-up 0.9s ease-out forwards;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.about-chronicle-copy {
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.about-timeline-axis {
+  position: absolute;
+  left: calc(86px + 1.1rem);
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 1px;
+  background: rgba(226, 232, 240, 0.45);
+  pointer-events: none;
+}
+
+.about-timeline-row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  position: relative;
+  padding: 0.2rem 0 0.35rem 0;
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.about-timeline-row::before {
+  content: '';
+  position: absolute;
+  left: calc(86px + 1.1rem - 4px);
+  top: 0.58rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 232, 240, 0.65);
+  background: rgba(241, 245, 249, 0.9);
+  z-index: 1;
+}
+
+.about-timeline-row:hover {
+  transform: scale(1.01);
+}
+
+.about-timeline-row:hover .about-timeline-year {
+  color: #93c5fd;
+}
+
+.about-timeline-row:hover::before {
+  background: #93c5fd;
+  border-color: #bfdbfe;
+}
+
+.about-timeline-year {
+  font-size: clamp(1.55rem, 2.2vw, 2.2rem);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #60a5fa;
+  text-align: right;
+  padding-top: 0.05rem;
+}
+
+.about-timeline-events {
+  margin: 0;
+  list-style: none;
+  padding-left: 1.2rem;
+}
+
+.about-timeline-event-item {
+  color: rgba(226, 232, 240, 0.96);
+  font-size: clamp(1rem, 1.05vw, 1.38rem);
+  line-height: 1.65;
+  margin-bottom: 0.55rem;
+}
+
+.about-timeline-event-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .about-timeline-row {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+
+  .about-timeline-axis {
+    left: calc(70px + 0.8rem);
+  }
+
+  .about-timeline-row::before {
+    left: calc(70px + 0.8rem - 4px);
+  }
+
+  .about-timeline-year {
+    font-size: 1.45rem;
+  }
+
+  .about-timeline-event-item {
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-chronicle-bg {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .about-chronicle-title {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-chronicle-copy {
+    transform: none;
+  }
+
+  .about-timeline-row:hover {
+    transform: none;
+  }
+
+  .about-timeline-row:hover .about-timeline-year {
+    color: #60a5fa;
+  }
+}

@@ -40,7 +40,8 @@ const BASE_HEADERS = () => ({
 
 type FetchAPIRawOptions = RequestInit & {
   /**
-   * Single Type 尚未在后台建立并发布、或未对 Public 开放 find 时，REST 常回 404／403；
+   * Single Type 尚未在后台建立并发布、未对 Public 开放 find，或缺少可用凭证时，
+   * REST 常回 404 / 403 / 401；
    * 前端已有程式后备时可略过 console.error，避免主控台洗版。
    */
   quietIfNoCmsEntry?: boolean;
@@ -68,7 +69,7 @@ async function fetchAPIRaw<T>(pathWithQuery: string, options: FetchAPIRawOptions
   }
 
   if (!response.ok) {
-    if (quietIfNoCmsEntry && (response.status === 404 || response.status === 403)) {
+    if (quietIfNoCmsEntry && (response.status === 404 || response.status === 403 || response.status === 401)) {
       return null as T;
     }
     let detail = '';
@@ -175,10 +176,14 @@ export async function getAboutPage() {
     'teamMembers.icon',
     'sections',
     'sections.image',
+    'timelineGroups',
+    'timelineGroups.events',
     'seo',
     'seo.shareImage',
   ]);
-  return fetchAPIRaw<StrapiResponse<GenericPageData>>(`/about-page?${q}`);
+  return fetchAPIRaw<StrapiResponse<GenericPageData>>(`/about-page?${q}`, {
+    quietIfNoCmsEntry: true,
+  });
 }
 
 const CONTACT_PAGE_POPULATE_PATHS = [
@@ -371,6 +376,9 @@ export interface GenericPageData {
   companyImage?: StrapiMedia;
   teamTitle?: string;
   pageDescriptionText?: string;
+  timelineTitle?: string;
+  timelineGroups?: unknown;
+  timelineFooter?: string;
   seo?: SEO;
 }
 

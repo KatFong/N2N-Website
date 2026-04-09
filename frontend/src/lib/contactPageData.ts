@@ -38,7 +38,7 @@ export const CONTACT_OFFICES: ContactOffice[] = [
       { heading: '一般咨询', email: 'n2n_admin@n2nconnect.com' },
     ],
     mapEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15935.751014043597!2d101.667146!3d3.111172!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8e56c4093c3976c2!2sN2N%20Connect%20Berhad!5e0!3m2!1sen!2smy!4v1577343681556!5m2!1sen!2smy',
+      'https://www.openstreetmap.org/export/embed.html?bbox=101.657146%2C3.101172%2C101.677146%2C3.121172&layer=mapnik&marker=3.111172%2C101.667146',
   },
   {
     country: '新加坡',
@@ -50,7 +50,7 @@ export const CONTACT_OFFICES: ContactOffice[] = [
       { heading: '一般咨询', email: 'n2n_admin@n2nconnect.com' },
     ],
     mapEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.696455116455!2d103.83109147558413!3d1.358756361545886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1725f6ca4f35%3A0x7ff1fd1b9c84ac7e!2sMidview%20City!5e0!3m2!1sen!2smy!4v1680770223970!5m2!1sen!2smy',
+      'https://www.openstreetmap.org/export/embed.html?bbox=103.821091%2C1.348756%2C103.841091%2C1.368756&layer=mapnik&marker=1.358756%2C103.831091',
   },
   {
     country: '香港',
@@ -60,7 +60,7 @@ export const CONTACT_OFFICES: ContactOffice[] = [
     website: { label: 'http://afe.hk/', href: 'http://afe.hk/' },
     emails: [{ email: 'contact@afe-solutions.com' }],
     mapEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.356428801209!2d114.18946045055537!3d22.302355948384093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404011e299fe3ef%3A0xc85acb7d6a011788!2sOne%20Harbourfront!5e0!3m2!1sen!2smy!4v1585273082395!5m2!1sen!2smy',
+      'https://www.openstreetmap.org/export/embed.html?bbox=114.179460%2C22.292356%2C114.199460%2C22.312356&layer=mapnik&marker=22.302356%2C114.189460',
   },
   {
     country: '越南',
@@ -70,6 +70,6 @@ export const CONTACT_OFFICES: ContactOffice[] = [
     website: { label: 'http://afe.hk/', href: 'http://afe.hk/' },
     emails: [{ email: 'vncontact@afe-solutions.com' }],
     mapEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.13644181104!2d106.6869817!3d10.7895384!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11043cf07da9322f!2sEmerald%20Central!5e0!3m2!1sen!2smy!4v1610349494257!5m2!1sen!2smy',
+      'https://www.openstreetmap.org/export/embed.html?bbox=106.676982%2C10.779538%2C106.696982%2C10.799538&layer=mapnik&marker=10.789538%2C106.686982',
   },
 ];

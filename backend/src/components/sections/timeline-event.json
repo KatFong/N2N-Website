@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_timeline_events",
+  "info": {
+    "displayName": "Timeline Event",
+    "icon": "bulletList",
+    "description": "Single event text under one timeline era"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

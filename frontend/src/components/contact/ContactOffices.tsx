@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 import { Globe, Mail, MapPin, Phone, Printer } from 'lucide-react';
 import type { ContactOffice } from '@/lib/contactPageData';
+import AmapOfficeMap from '@/components/contact/AmapOfficeMap';
 
 function InfoRow({ icon: Icon, children }: { icon: LucideIcon; children: React.ReactNode }) {
   return (
@@ -72,16 +73,12 @@ function OfficeBlock({ office }: { office: ContactOffice }) {
             </div>
           ) : null}
         </div>
-        <div className="min-h-[280px] overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 shadow-inner lg:order-2 lg:min-h-[360px]">
-          <iframe
-            title={`地图 — ${office.company}`}
-            src={office.mapEmbedUrl}
-            className="h-full min-h-[280px] w-full lg:min-h-[360px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-        </div>
+        <AmapOfficeMap
+          company={office.company}
+          address={office.address}
+          fallbackUrl={office.mapEmbedUrl}
+          className="min-h-[280px] overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 shadow-inner lg:order-2 lg:min-h-[360px]"
+        />
       </div>
     </div>
   );

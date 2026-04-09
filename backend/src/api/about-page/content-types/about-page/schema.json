@@ -47,6 +47,17 @@
       "component": "sections.content-block",
       "repeatable": true
     },
+    "timelineTitle": {
+      "type": "string"
+    },
+    "timelineGroups": {
+      "type": "component",
+      "component": "sections.timeline-group",
+      "repeatable": true
+    },
+    "timelineFooter": {
+      "type": "string"
+    },
     "seo": {
       "type": "component",
       "component": "shared.seo",
