@@ -71,7 +71,7 @@ async function ensureHeroEditLayoutMatchesSchema(strapi: Core.Strapi) {
 }
 
 /** Home 單頁欄位名仍為 coreAdvantagesSection（API 不變），僅 Content Manager 顯示為「核心优势模块」。 */
-async function ensureHomePageCoreAdvantagesFieldLabel(strapi: Core.Strapi) {
+async function ensureHomePageContentManagerLabels(strapi: Core.Strapi) {
   const uid = 'api::home-page.home-page';
   const schema = strapi.contentTypes[uid];
   if (!schema) return;
@@ -79,9 +79,13 @@ async function ensureHomePageCoreAdvantagesFieldLabel(strapi: Core.Strapi) {
   const contentTypesService = strapi.plugin('content-manager').service('content-types') as {
     findContentType: (id: string) => { uid: string } | undefined;
     findConfiguration: (ct: { uid: string }) => Promise<{
+      settings: Record<string, unknown>;
       metadatas: Record<string, { edit?: Record<string, unknown> }>;
     }>;
-    updateConfiguration: (ct: { uid: string }, c: { metadatas: unknown }) => Promise<unknown>;
+    updateConfiguration: (
+      ct: { uid: string },
+      c: { settings: unknown; metadatas: unknown }
+    ) => Promise<unknown>;
   };
 
   const contentType = contentTypesService.findContentType(uid);
@@ -94,9 +98,25 @@ async function ensureHomePageCoreAdvantagesFieldLabel(strapi: Core.Strapi) {
   const defMeta = def.metadatas as MetaMap;
   const curMeta = current.metadatas as MetaMap;
 
+  const defSettings = (def.settings as Record<string, unknown>) ?? {};
+  const settings = {
+    ...defSettings,
+    ...current.settings,
+    mainField: 'internalName',
+  };
+
   const metadatas = {
     ...defMeta,
     ...curMeta,
+    internalName: {
+      ...defMeta.internalName,
+      ...curMeta.internalName,
+      edit: {
+        ...defMeta.internalName?.edit,
+        ...curMeta.internalName?.edit,
+        label: '頁面名稱',
+      },
+    },
     coreAdvantagesSection: {
       ...defMeta.coreAdvantagesSection,
       ...curMeta.coreAdvantagesSection,
@@ -108,8 +128,23 @@ async function ensureHomePageCoreAdvantagesFieldLabel(strapi: Core.Strapi) {
     },
   };
 
-  await contentTypesService.updateConfiguration(contentType, { metadatas });
-  strapi.log.info('bootstrap: home-page coreAdvantagesSection label → 核心优势模块');
+  await contentTypesService.updateConfiguration(contentType, { settings, metadatas });
+  const docs = strapi.documents(uid);
+  for (const status of ['draft', 'published'] as const) {
+    const row = (await docs.findFirst({ status })) as
+      | { documentId?: string; internalName?: string | null }
+      | null;
+    if (!row?.documentId) continue;
+    if ((row.internalName ?? '').trim()) continue;
+    await docs.update({
+      documentId: row.documentId,
+      data: { internalName: '首頁' },
+      status,
+    });
+  }
+  strapi.log.info(
+    'bootstrap: home-page labels updated (internalName/mainField + coreAdvantagesSection)'
+  );
 }
 
 /**
@@ -142,7 +177,7 @@ export default {
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await ensureHeroEditLayoutMatchesSchema(strapi);
-    await ensureHomePageCoreAdvantagesFieldLabel(strapi);
+    await ensureHomePageContentManagerLabels(strapi);
 
     const publicRole = await strapi.db
       .query('plugin::users-permissions.role')

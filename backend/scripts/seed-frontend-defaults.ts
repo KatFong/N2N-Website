@@ -136,7 +136,7 @@ function homePayload() {
   const marketKnowHowFeatured = pressAndAnnouncementArticles[2];
 
   return {
-    internalName: 'Home Page',
+    internalName: '首頁',
     hero,
     coreAdvantagesSection: {
       moduleLabel: HOME_CORE_ADV_DEFAULTS.moduleLabel,

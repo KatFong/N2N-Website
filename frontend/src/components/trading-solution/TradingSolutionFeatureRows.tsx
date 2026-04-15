@@ -53,18 +53,40 @@ function TradingSolutionCtaBanner({ cta }: { cta: TradingSolutionFooterCta }) {
           <p className="mx-auto mt-4 max-w-md text-pretty text-sm leading-relaxed text-white/78 md:text-base md:leading-relaxed">
             {cta.description}
           </p>
-          <div className="mt-9 flex flex-col items-center gap-4 sm:mt-10">
-            <Link
-              href={cta.buttonHref}
-              className="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-brand-primary shadow-[0_16px_48px_rgba(0,0,0,0.28)] transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_22px_56px_rgba(0,0,0,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:min-w-[220px]"
-            >
-              {cta.buttonLabel}
-              <ArrowRight
-                className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                strokeWidth={2}
-                aria-hidden
-              />
-            </Link>
+          <div className="mt-9 flex flex-row flex-wrap items-center justify-center gap-4 sm:mt-10">
+            {cta.secondaryButtonLabel?.trim() && cta.secondaryButtonHref?.trim() ? (
+              <>
+                <Link
+                  href={cta.buttonHref}
+                  className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-brand-primary shadow-[0_16px_48px_rgba(0,0,0,0.28)] transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_22px_56px_rgba(0,0,0,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {cta.buttonLabel}
+                  <ArrowRight
+                    className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
+                </Link>
+                <Link
+                  href={cta.secondaryButtonHref}
+                  className="inline-flex min-w-[220px] items-center justify-center rounded-2xl border border-white/70 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/15 hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {cta.secondaryButtonLabel}
+                </Link>
+              </>
+            ) : (
+              <Link
+                href={cta.buttonHref}
+                className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-brand-primary shadow-[0_16px_48px_rgba(0,0,0,0.28)] transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_22px_56px_rgba(0,0,0,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                {cta.buttonLabel}
+                <ArrowRight
+                  className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+              </Link>
+            )}
             {cta.footnote?.trim() ? <p className="text-xs text-white/45">{cta.footnote}</p> : null}
           </div>
         </div>
@@ -82,9 +104,15 @@ const featureRowPadY = 'py-12 md:py-16';
 export default function TradingSolutionFeatureRows({
   rows,
   footerCta,
+  isSmp5Page = false,
+  isMpsPage = false,
+  isServerHostingPage = false,
 }: {
   rows: TradingSolutionFeatureRow[];
   footerCta: TradingSolutionFooterCta;
+  isSmp5Page?: boolean;
+  isMpsPage?: boolean;
+  isServerHostingPage?: boolean;
 }) {
   return (
     <section className="border-t border-slate-100 bg-white" aria-label="产品能力展示">
@@ -92,6 +120,72 @@ export default function TradingSolutionFeatureRows({
         {rows.map((row, index) => (
           <FeatureRow key={`${index}-${row.title}`} row={row} index={index} />
         ))}
+        {isSmp5Page ? (
+          <div className={`flex flex-row flex-wrap items-center justify-center gap-4 ${tsSectionPadY} pt-6`}>
+            <Link
+              href="/knowledge-base"
+              className="inline-flex min-w-[220px] items-center justify-center rounded-2xl border border-brand-primary/20 bg-white px-8 py-4 text-base font-semibold text-brand-primary shadow-sm transition hover:-translate-y-0.5 hover:border-brand-primary/40 hover:bg-brand-primary/5"
+            >
+              了解更多
+            </Link>
+            <Link
+              href="/product/smp5/vip"
+              className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-brand-primary px-8 py-4 text-base font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)] transition hover:-translate-y-0.5 hover:bg-brand-primary-dark"
+            >
+              立即申请
+              <ArrowRight
+                className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </Link>
+          </div>
+        ) : null}
+        {isMpsPage ? (
+          <div className={`flex flex-row flex-wrap items-center justify-center gap-4 ${tsSectionPadY} pt-6`}>
+            <Link
+              href="/contact"
+              className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-brand-primary px-8 py-4 text-base font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)] transition hover:-translate-y-0.5 hover:bg-brand-primary-dark"
+            >
+              立即体验
+              <ArrowRight
+                className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </Link>
+          </div>
+        ) : null}
+        {isServerHostingPage ? (
+          <div className={`flex flex-row flex-wrap items-center justify-center gap-4 ${tsSectionPadY} pt-6`}>
+            <Link
+              href="/contact"
+              className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-brand-primary px-8 py-4 text-base font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)] transition hover:-translate-y-0.5 hover:bg-brand-primary-dark"
+            >
+              了解更多
+              <ArrowRight
+                className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </Link>
+          </div>
+        ) : null}
+        {!isSmp5Page && !isMpsPage && !isServerHostingPage ? (
+          <div className={`flex flex-row flex-wrap items-center justify-center gap-4 ${tsSectionPadY} pt-6`}>
+            <Link
+              href="/contact"
+              className="group inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-brand-primary px-8 py-4 text-base font-semibold text-white shadow-[0_16px_36px_rgba(0,0,0,0.18)] transition hover:-translate-y-0.5 hover:bg-brand-primary-dark"
+            >
+              了解更多
+              <ArrowRight
+                className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+                aria-hidden
+              />
+            </Link>
+          </div>
+        ) : null}
       </div>
       <TradingSolutionCtaBanner cta={footerCta} />
     </section>
@@ -124,6 +218,7 @@ function FeatureRow({
 
   const textCol = odd ? 'lg:col-start-2' : 'lg:col-start-1';
   const mockCol = odd ? 'lg:col-start-1' : 'lg:col-start-2';
+  const showBullet = row.lines.length > 1;
 
   return (
     <article
@@ -168,10 +263,12 @@ function FeatureRow({
           <ul className="list-none space-y-3.5 md:space-y-4">
             {row.lines.map((line, i) => (
               <li key={i} className="flex gap-3 text-[0.9rem] leading-[1.55] text-slate-700 md:text-[0.95rem] md:leading-[1.65]">
-                <span
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-600"
-                  aria-hidden
-                />
+                {showBullet ? (
+                  <span
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-600"
+                    aria-hidden
+                  />
+                ) : null}
                 <span>{line}</span>
               </li>
             ))}

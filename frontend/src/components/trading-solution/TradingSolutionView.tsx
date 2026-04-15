@@ -57,8 +57,9 @@ function GridIconMark({ iconId }: { iconId: TradingSolutionGridIconId }) {
 }
 
 function GridCard({ item, noBullet = false }: { item: TradingSolutionGridItem; noBullet?: boolean }) {
+  const showBullet = !noBullet && item.lines.length > 1;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-faint text-brand-primary">
         <GridIconMark iconId={item.iconId} />
       </div>
@@ -66,7 +67,7 @@ function GridCard({ item, noBullet = false }: { item: TradingSolutionGridItem; n
       <ul className="mt-2 list-none space-y-2">
         {item.lines.map((line, i) => (
           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-slate-600">
-            {noBullet ? null : <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />}
+            {showBullet ? <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden /> : null}
             <span>{line}</span>
           </li>
         ))}
@@ -100,6 +101,20 @@ export default function TradingSolutionView({
     hero.title.includes('VAS') ||
     hero.title.includes('虚拟资产') ||
     hero.subtitle.includes('Virtual Asset');
+  const isSmp5Page = hero.title.includes('SMP5') || hero.title.includes('股市宝') || hero.subtitle.includes('SMP5');
+  const isMpsPage =
+    hero.title.includes('MPS') || hero.title.includes('Master Picks') || hero.title.includes('选股策略');
+  const isServerHostingPage =
+    hero.title.includes('服务器托管') ||
+    hero.title.includes('Server Hosting') ||
+    hero.subtitle.includes('Leased Line');
+  const smp5QuickLinks = [
+    { label: 'Windows版下载', href: '/contact' },
+    { label: 'Mac版下载', href: '/contact' },
+    { label: '移动版下载', href: '/contact' },
+    { label: '产品功能详情', href: '/smp5' },
+    { label: '帮助文档', href: '/contact' },
+  ] as const;
 
   return (
     <div className="bg-white text-slate-900">
@@ -150,11 +165,13 @@ export default function TradingSolutionView({
                   <ul className="list-none space-y-2.5 pl-5 text-sm leading-relaxed text-slate-600 md:pl-7 md:text-base">
                     {spotlight.coreHighlights.map((line, i) => {
                       const isHeadingLine = /[：:]$/.test(line.trim());
+                      const normalLines = spotlight.coreHighlights.filter((v) => !/[：:]$/.test(v.trim()));
+                      const showBullet = !isHeadingLine && normalLines.length > 1;
                       return (
                         <li key={i} className="flex gap-2.5">
-                          {isHeadingLine ? null : (
+                          {showBullet ? (
                             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />
-                          )}
+                          ) : null}
                           <span className={isHeadingLine ? 'font-semibold text-slate-800' : ''}>{line}</span>
                         </li>
                       );
@@ -172,10 +189,25 @@ export default function TradingSolutionView({
               </Link>
             </div>
           </div>
+          {isSmp5Page ? (
+            <div className="mt-8 border-t border-slate-200/80 pt-5">
+              <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-5 sm:gap-3">
+                {smp5QuickLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="flex min-h-14 items-center justify-center rounded-md bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-200 hover:text-slate-900 md:min-h-16 md:px-5 md:text-base"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 
-      {/* 能力网格：4 项大屏 1×4，小屏先 2 列再单列；6 项为 3×2；CTA 置于下方置中 */}
+      {/* 能力网格：6 项为 3×2；5 项桌面单行均分；4 项为 1×4；移动端统一单列 */}
       <section className="border-t border-slate-200 bg-slate-50/80">
         <div className={`${tsContentMax} ${tsSectionInner}`}>
           <div className="mb-10 text-center md:mb-12">
@@ -184,14 +216,18 @@ export default function TradingSolutionView({
           <div
             className={`grid gap-10 md:gap-12 ${
               six.length > 4
-                ? 'md:grid-cols-3'
+                ? six.length === 5
+                  ? 'grid-cols-1 md:grid-cols-5'
+                  : 'grid-cols-1 md:grid-cols-3'
                 : six.length === 4
-                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-                  : 'sm:grid-cols-2'
+                  ? 'grid-cols-1 lg:grid-cols-4'
+                  : 'grid-cols-1'
             }`}
           >
             {six.map((item, i) => (
-              <GridCard key={`${item.title}-${i}`} item={item} noBullet={isVasPage} />
+              <div key={`${item.title}-${i}`} className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+                <GridCard item={item} noBullet={isVasPage} />
+              </div>
             ))}
           </div>
           <div className="mt-12 flex w-full justify-center md:mt-14">
@@ -202,7 +238,13 @@ export default function TradingSolutionView({
         </div>
       </section>
 
-      <TradingSolutionFeatureRows rows={featureRows} footerCta={footerCta} />
+      <TradingSolutionFeatureRows
+        rows={featureRows}
+        footerCta={footerCta}
+        isSmp5Page={isSmp5Page}
+        isMpsPage={isMpsPage}
+        isServerHostingPage={isServerHostingPage}
+      />
     </div>
   );
 }

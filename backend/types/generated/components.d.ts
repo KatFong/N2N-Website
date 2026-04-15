@@ -475,6 +475,8 @@ export interface SectionsTradingSolutionPageCta extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     footnote: Schema.Attribute.String;
     kicker: Schema.Attribute.String;
+    secondaryButtonHref: Schema.Attribute.String;
+    secondaryButtonLabel: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }

@@ -198,6 +198,7 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
   const linesFromCms = unwrapStrapiEntryArray(sp.bodyLines)
     .map((b) => pickStr((unwrapStrapiComponent(b) ?? b).line))
     .filter(Boolean);
+  const hasBodyLinesField = Object.prototype.hasOwnProperty.call(sp, 'bodyLines');
   const cmsCoreLines = unwrapStrapiEntryArray((sp as Record<string, unknown>).coreHighlightLines)
     .map((b) => pickStr((unwrapStrapiComponent(b) ?? b).line))
     .filter(Boolean);
@@ -213,7 +214,8 @@ function mapSpotlight(doc: Record<string, unknown> | null, base: SolutionPageSpo
   return {
     title: pickStr(sp.title) || base.title,
     tagline: pickStr(sp.tagline) || base.tagline,
-    paragraphs: linesFromCms.length > 0 ? linesFromCms : [...base.paragraphs],
+    // Respect explicit empty bodyLines from CMS (do not force fallback paragraphs).
+    paragraphs: hasBodyLinesField ? linesFromCms : [...base.paragraphs],
     imageSrc: mediaUrl || base.imageSrc,
     ctaLabel: pickStr(sp.ctaLabel) || base.ctaLabel,
     ctaHref: pickStr(sp.ctaHref) || base.ctaHref,
@@ -237,7 +239,7 @@ function mapSixGrid(doc: Record<string, unknown> | null, defaultGrid: TradingSol
     if (lines.length === 0) continue;
     out.push({ iconId: parseGridIcon(row.iconKey), title, lines });
   }
-  return out.length === 6 || out.length === 4 ? out : defaultGrid;
+  return out.length === 6 || out.length === 5 || out.length === 4 ? out : defaultGrid;
 }
 
 function mapGridSectionCta(doc: Record<string, unknown> | null): { label: string; href: string } {
@@ -261,6 +263,8 @@ function mapFooterCta(doc: Record<string, unknown> | null, d: TradingSolutionFoo
     footnote: pickStr(raw.footnote) || d.footnote,
     buttonLabel: pickStr(raw.buttonLabel) || d.buttonLabel,
     buttonHref: pickStr(raw.buttonHref) || d.buttonHref,
+    secondaryButtonLabel: pickStr(raw.secondaryButtonLabel) || d.secondaryButtonLabel,
+    secondaryButtonHref: pickStr(raw.secondaryButtonHref) || d.secondaryButtonHref,
   };
 }
 

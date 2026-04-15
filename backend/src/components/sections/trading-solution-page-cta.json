@@ -26,6 +26,12 @@
     "buttonHref": {
       "type": "string",
       "default": "/contact"
+    },
+    "secondaryButtonLabel": {
+      "type": "string"
+    },
+    "secondaryButtonHref": {
+      "type": "string"
     }
   }
 }

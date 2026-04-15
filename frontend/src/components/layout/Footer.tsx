@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
+import { SiXiaohongshu } from 'react-icons/si';
+import type { IconType } from 'react-icons';
 import type { MappedFooter } from '@/lib/footerDefaults';
 
 type Props = {
@@ -44,11 +47,11 @@ const CTA_LEFT_LINKS = [
   { label: 'Youtube', href: '#' },
 ];
 
-const CTA_RIGHT_LINKS = [
-  { label: 'Whatsapp（二維碼）', href: '/contact#contact-section' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
-  { label: '小红书', href: '#' },
+const CTA_RIGHT_LINKS: { label: string; href: string; icon: IconType }[] = [
+  { label: 'Whatsapp（二維碼）', href: '/contact#contact-section', icon: FaWhatsapp },
+  { label: 'Facebook', href: '#', icon: FaFacebookF },
+  { label: 'LinkedIn', href: '#', icon: FaLinkedinIn },
+  { label: '小红书', href: '#', icon: SiXiaohongshu },
 ];
 
 export default function Footer({ data: _data }: Props) {
@@ -59,7 +62,6 @@ export default function Footer({ data: _data }: Props) {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_3fr_1.9fr]">
           <div>
-            <h4 className="mb-4 text-xs font-black tracking-[0.18em] text-[#003366]">品牌区</h4>
             <Link href="/" className="inline-flex items-center gap-2">
               <Image
                 src="/n2n-logo-head.png"
@@ -85,7 +87,6 @@ export default function Footer({ data: _data }: Props) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-black tracking-[0.18em] text-[#003366]">主导航区</h4>
             <div className="grid gap-8 sm:grid-cols-3">
               <div>
                 <p className="mb-3 text-lg font-bold text-[#1F2937]">产品与服务</p>
@@ -129,7 +130,6 @@ export default function Footer({ data: _data }: Props) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-black tracking-[0.18em] text-[#003366]">CTA区</h4>
             <div className="grid gap-6 sm:grid-cols-2">
               <ul className="space-y-2">
                 {CTA_LEFT_LINKS.map((link, idx) => (
@@ -145,13 +145,21 @@ export default function Footer({ data: _data }: Props) {
               </ul>
 
               <ul className="space-y-2">
-                {CTA_RIGHT_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="text-sm leading-relaxed text-[#4B5563] transition-colors hover:text-[#003366]">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {CTA_RIGHT_LINKS.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        aria-label={link.label}
+                        title={link.label}
+                        className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#D9E2EC] bg-white text-[#4B5563] transition-all hover:-translate-y-0.5 hover:border-[#003366]/30 hover:text-[#003366]"
+                      >
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

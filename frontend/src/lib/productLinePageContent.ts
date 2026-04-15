@@ -332,6 +332,7 @@ export const productLinePageContentBySlug: Record<string, TradingSolutionPageMap
       imageSrc: IMG,
       ctaLabel: '了解更多',
       ctaHref: '/contact',
+      highlightsHeading: '',
     },
     sixGrid: grid([
       { iconId: 'chart', title: '研究框架', lines: ['技术面与基本面', '量化因子展示'] },

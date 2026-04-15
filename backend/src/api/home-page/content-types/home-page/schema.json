@@ -14,7 +14,7 @@
   "attributes": {
     "internalName": {
       "type": "string",
-      "default": "Home Page"
+      "default": "首頁"
     },
     "hero": {
       "type": "component",

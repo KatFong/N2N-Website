@@ -106,10 +106,10 @@ exports.TRADING_SOLUTION_SPOTLIGHT = {
     ctaHref: '/contact',
 };
 exports.TRADING_SOLUTION_FOOTER_CTA_DEFAULT = {
-    kicker: '下一步',
+    kicker: '',
     title: '准备好部署专业交易方案？',
     description: '与我们联系，安排产品示范、技术咨询与导入规划，为您的业务选择最合适的模组组合。',
-    footnote: '无需费用 · 专人回复',
+    footnote: '',
     buttonLabel: '了解更多',
     buttonHref: '/contact',
 };

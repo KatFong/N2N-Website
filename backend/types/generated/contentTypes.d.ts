@@ -716,7 +716,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       false
     >;
     internalName: Schema.Attribute.String &
-      Schema.Attribute.DefaultTo<'Home Page'>;
+      Schema.Attribute.DefaultTo<'\u9996\u9801'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
