@@ -90,7 +90,7 @@ export default function ContactCtaSection({ data }: Props) {
       />
 
       <div
-        className="pointer-events-none absolute -inset-[5%] z-[2] opacity-[0.35] will-change-transform"
+        className="pointer-events-none absolute -inset-[5%] z-[2] opacity-[0.45] will-change-transform"
         style={{
           transform: `translate3d(0, ${parallax.mid}px, 0) rotate(-8deg) scale(1.12)`,
           backgroundImage: `
@@ -112,6 +112,15 @@ export default function ContactCtaSection({ data }: Props) {
             )
           `,
           backgroundSize: '100% 100%, 100% 100%, 100% 100%, 100% 100%',
+        }}
+        aria-hidden
+      />
+
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.2]"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 20% 30%, rgba(56,189,248,0.2) 0%, transparent 28%), radial-gradient(circle at 80% 70%, rgba(99,102,241,0.22) 0%, transparent 30%), linear-gradient(120deg, transparent 0%, rgba(99,102,241,0.14) 42%, transparent 100%)',
         }}
         aria-hidden
       />

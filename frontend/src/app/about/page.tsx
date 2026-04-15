@@ -158,7 +158,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-24 sm:py-28">
+      <section id="company-introduction-section" className="bg-white py-24 sm:py-28">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-2">
           <div className="md:pr-6">
             <h2 className="text-4xl font-extrabold tracking-wide text-slate-900">我们是谁</h2>
@@ -182,7 +182,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-24 sm:pb-28">
+      <section id="industry-insights-section" className="bg-white pb-24 sm:pb-28">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-2">
           <div className="flex justify-center md:justify-start">
             <Image
@@ -208,7 +208,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="about-chronicle-section">
+      <section id="company-updates-section" className="about-chronicle-section">
         <div className="about-chronicle-bg" aria-hidden />
         <div className="about-chronicle-map" aria-hidden />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-24">
@@ -238,14 +238,14 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-12 text-center">
+      <section id="product-information-section" className="bg-white pb-12 text-center">
         <h2 className="text-4xl font-extrabold tracking-wide text-slate-900">企业亮点</h2>
         <div className="mt-8">
           <HighlightsParallax />
         </div>
       </section>
 
-      <section className="bg-white py-24 sm:py-28">
+      <section id="join-us-section" className="bg-white py-24 sm:py-28">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-2">
           <div className="md:pr-6">
             <h2 className="text-4xl font-extrabold tracking-wide text-slate-900">企业文化</h2>

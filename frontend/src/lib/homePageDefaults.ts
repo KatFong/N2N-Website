@@ -132,10 +132,9 @@ export const HOME_NEWS_DEFAULTS = {
 };
 
 export const HOME_CONTACT_CTA_DEFAULTS = {
-  title: '联系 N2N Connect，开启降本增效与业务增长新模式',
-  description:
-    '超越传统 IT 供应商，以领先金融科技提供高性价比、高效能，多市场、多业务的一站式灵活客制化服务。',
-  buttonLabel: '联系我们',
+  title: '准备好迎接金融科技的未来了吗？',
+  description: '立即联系我们的专家，获取为您量身定制的解决方案。',
+  buttonLabel: '免费咨询',
   buttonLink: '/contact',
   backgroundImageUrl: null as string | null,
 };

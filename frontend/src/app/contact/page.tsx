@@ -36,7 +36,7 @@ export default async function ContactPage() {
 
   return (
     <main className="bg-white text-slate-900">
-      <section className="border-y border-slate-300 bg-[#2027a8] py-10">
+      <section id="contact-section" className="border-y border-slate-300 bg-[#2027a8] py-10">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-wide text-white">
             {heroTitle || CONTACT_PAGE_DEFAULTS.heroTitle}

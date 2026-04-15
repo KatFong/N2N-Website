@@ -14,11 +14,11 @@ export default function PrivacyPolicyPage() {
         <div className="mt-4 h-1 w-20 rounded-full bg-slate-900" />
 
         <div className="prose prose-lg mt-8 max-w-none text-slate-700">
-          <h2>条款与条件</h2>
+          <h2 id="privacy-policy-section">条款与条件</h2>
           <p>
             本网站信息仅供一般参考，可能随时更新而不另行通知。用户在依据任何内容采取行动前，应自行查阅最新版本的相关资料。
           </p>
-          <h2>法律声明</h2>
+          <h2 id="disclaimer-section">免责声明</h2>
           <p>
             本网站所载商标、内容与资料由 N2N Connect Bhd
             或其权利人所有。除法律允许的情形外，未经许可不得复制、传播或修改。

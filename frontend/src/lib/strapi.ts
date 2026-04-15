@@ -69,7 +69,11 @@ async function fetchAPIRaw<T>(pathWithQuery: string, options: FetchAPIRawOptions
   }
 
   if (!response.ok) {
-    if (quietIfNoCmsEntry && (response.status === 404 || response.status === 403 || response.status === 401)) {
+    // 在「可使用前端後備內容」的情境下，CMS 常見暫時性失敗（含 5xx）不需要洗版報錯
+    if (
+      quietIfNoCmsEntry &&
+      [401, 403, 404, 500, 502, 503, 504].includes(response.status)
+    ) {
       return null as T;
     }
     let detail = '';

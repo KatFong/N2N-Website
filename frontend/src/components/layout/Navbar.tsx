@@ -11,14 +11,23 @@ const productsDropdownItems = PRODUCT_LINE_NAV.map((item) => ({
   href: item.href,
 }));
 
-const navLinks = [
-  { label: '全球业务', href: '/global-business' },
-  { label: '商务合作', href: '/business-partnership' },
-  { label: '新闻与洞察', href: '/news-insights' },
-  { label: '关于 N2N-AFE', href: '/about' },
-  { label: '登录 / 注册', href: '/login' },
-  { label: '隐私政策', href: '/privacy-policy' },
+const newsDropdownItems = [
+  { label: '公司动态', href: '/news-insights#company-updates-section' },
+  { label: '行业透视', href: '/news-insights#industry-insights-section' },
+  { label: '产品资讯', href: '/news-insights#product-information-section' },
+  { label: 'Market Know How', href: '/news-insights#market-know-how-section' },
 ];
+
+const aboutDropdownItems = [
+  { label: 'N2N-AFE', href: '/about#company-introduction-section' },
+  { label: '联系我们', href: '/contact#contact-section' },
+  { label: '加入我们', href: '/about#join-us-section' },
+];
+
+const navLinks = [{ label: '全球业务', href: '/global-business' }, { label: '商务合作', href: '/business-partnership' }];
+
+const mobilePrimaryLink = { label: '登录 / 注册', href: '/login' };
+const mobileSecondaryLinks = [...navLinks];
 
 const linkClass =
   'rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-[#2027a8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2027a8]';
@@ -26,8 +35,14 @@ const linkClass =
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [newsOpen, setNewsOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileNewsOpen, setMobileNewsOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
+  const newsRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!productsOpen) return;
@@ -40,9 +55,41 @@ export default function Navbar() {
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [productsOpen]);
 
+  useEffect(() => {
+    if (!newsOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (newsRef.current && !newsRef.current.contains(e.target as Node)) {
+        setNewsOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [newsOpen]);
+
+  useEffect(() => {
+    if (!aboutOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (aboutRef.current && !aboutRef.current.contains(e.target as Node)) {
+        setAboutOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [aboutOpen]);
+
   const handleProductsBlur = (e: FocusEvent<Element>) => {
     const next = e.relatedTarget as Node | null;
     if (productsRef.current && !productsRef.current.contains(next)) setProductsOpen(false);
+  };
+
+  const handleNewsBlur = (e: FocusEvent<Element>) => {
+    const next = e.relatedTarget as Node | null;
+    if (newsRef.current && !newsRef.current.contains(next)) setNewsOpen(false);
+  };
+
+  const handleAboutBlur = (e: FocusEvent<Element>) => {
+    const next = e.relatedTarget as Node | null;
+    if (aboutRef.current && !aboutRef.current.contains(next)) setAboutOpen(false);
   };
 
   return (
@@ -107,21 +154,104 @@ export default function Navbar() {
               ) : null}
             </div>
 
-            {navLinks.map((link) =>
-              link.href === '/login' ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="ml-2 rounded-lg bg-[#2027a8] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1a2188] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2027a8]"
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className={linkClass}>
+                {link.label}
+              </Link>
+            ))}
+
+            <div
+              ref={newsRef}
+              className="relative"
+              onMouseEnter={() => setNewsOpen(true)}
+              onMouseLeave={() => setNewsOpen(false)}
+            >
+              <button
+                type="button"
+                onFocus={() => setNewsOpen(true)}
+                onBlur={handleNewsBlur}
+                className={`${linkClass} inline-flex items-center gap-1 ${newsOpen ? 'bg-slate-100 text-[#2027a8]' : ''}`}
+                aria-expanded={newsOpen}
+                aria-haspopup="true"
+                aria-controls="nav-news-dropdown"
+              >
+                新闻资讯
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 opacity-70 transition-transform ${newsOpen ? 'rotate-180' : ''}`}
+                  aria-hidden
+                />
+              </button>
+              {newsOpen ? (
+                <div
+                  id="nav-news-dropdown"
+                  role="menu"
+                  className="absolute left-0 top-full z-50 -mt-1 min-w-[14.5rem] overflow-hidden rounded-xl border border-slate-200/90 bg-white py-1 shadow-lg ring-1 ring-slate-900/[0.04]"
                 >
-                  {link.label}
-                </Link>
-              ) : (
-                <Link key={link.href} href={link.href} className={linkClass}>
-                  {link.label}
-                </Link>
-              )
-            )}
+                  {newsDropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      role="menuitem"
+                      className="block px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8] focus-visible:bg-slate-50 focus-visible:outline-none"
+                      onBlur={handleNewsBlur}
+                      onClick={() => setNewsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div
+              ref={aboutRef}
+              className="relative"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => setAboutOpen(false)}
+            >
+              <button
+                type="button"
+                onFocus={() => setAboutOpen(true)}
+                onBlur={handleAboutBlur}
+                className={`${linkClass} inline-flex items-center gap-1 ${aboutOpen ? 'bg-slate-100 text-[#2027a8]' : ''}`}
+                aria-expanded={aboutOpen}
+                aria-haspopup="true"
+                aria-controls="nav-about-dropdown"
+              >
+                关于 N2N-AFE
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 opacity-70 transition-transform ${aboutOpen ? 'rotate-180' : ''}`}
+                  aria-hidden
+                />
+              </button>
+              {aboutOpen ? (
+                <div
+                  id="nav-about-dropdown"
+                  role="menu"
+                  className="absolute left-0 top-full z-50 -mt-1 min-w-[14.5rem] overflow-hidden rounded-xl border border-slate-200/90 bg-white py-1 shadow-lg ring-1 ring-slate-900/[0.04]"
+                >
+                  {aboutDropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      role="menuitem"
+                      className="block px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8] focus-visible:bg-slate-50 focus-visible:outline-none"
+                      onBlur={handleAboutBlur}
+                      onClick={() => setAboutOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <Link
+              href={mobilePrimaryLink.href}
+              className="ml-2 rounded-lg bg-[#2027a8] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#1a2188] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2027a8]"
+            >
+              {mobilePrimaryLink.label}
+            </Link>
           </nav>
 
           <button
@@ -130,6 +260,8 @@ export default function Navbar() {
             onClick={() => {
               if (menuOpen) {
                 setMobileProductsOpen(false);
+                setMobileNewsOpen(false);
+                setMobileAboutOpen(false);
                 setMenuOpen(false);
               } else {
                 setMenuOpen(true);
@@ -146,6 +278,19 @@ export default function Navbar() {
       {menuOpen ? (
         <div className="border-t border-slate-200/80 bg-white lg:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-0.5 px-4 py-3">
+            <Link
+              href={mobilePrimaryLink.href}
+              className="mx-1 mb-1 rounded-lg bg-[#2027a8] px-4 py-3 text-center text-sm font-medium text-white transition hover:bg-[#1a2188]"
+              onClick={() => {
+                setMobileProductsOpen(false);
+                setMobileNewsOpen(false);
+                setMobileAboutOpen(false);
+                setMenuOpen(false);
+              }}
+            >
+              {mobilePrimaryLink.label}
+            </Link>
+
             <div className="flex flex-col">
               <button
                 type="button"
@@ -168,6 +313,8 @@ export default function Navbar() {
                       className="rounded-lg px-4 py-2.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-[#2027a8]"
                       onClick={() => {
                         setMobileProductsOpen(false);
+                        setMobileNewsOpen(false);
+                        setMobileAboutOpen(false);
                         setMenuOpen(false);
                       }}
                     >
@@ -178,23 +325,90 @@ export default function Navbar() {
               ) : null}
             </div>
 
-            {navLinks.map((link) => (
+            {mobileSecondaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  link.href === '/login'
-                    ? 'mx-1 mt-1 rounded-lg bg-[#2027a8] px-4 py-3 text-center text-sm font-medium text-white transition hover:bg-[#1a2188]'
-                    : 'rounded-lg px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8]'
-                }
+                className="rounded-lg px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8]"
                 onClick={() => {
                   setMobileProductsOpen(false);
+                  setMobileNewsOpen(false);
+                  setMobileAboutOpen(false);
                   setMenuOpen(false);
                 }}
               >
                 {link.label}
               </Link>
             ))}
+
+            <div className="flex flex-col">
+              <button
+                type="button"
+                className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8]"
+                onClick={() => setMobileNewsOpen((v) => !v)}
+                aria-expanded={mobileNewsOpen}
+              >
+                新闻资讯
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 opacity-70 transition-transform ${mobileNewsOpen ? 'rotate-180' : ''}`}
+                  aria-hidden
+                />
+              </button>
+              {mobileNewsOpen ? (
+                <div className="ml-2 flex flex-col border-l border-slate-200 pl-3">
+                  {newsDropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-lg px-4 py-2.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-[#2027a8]"
+                      onClick={() => {
+                        setMobileProductsOpen(false);
+                        setMobileNewsOpen(false);
+                        setMobileAboutOpen(false);
+                        setMenuOpen(false);
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex flex-col">
+              <button
+                type="button"
+                className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-[#2027a8]"
+                onClick={() => setMobileAboutOpen((v) => !v)}
+                aria-expanded={mobileAboutOpen}
+              >
+                关于 N2N-AFE
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 opacity-70 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`}
+                  aria-hidden
+                />
+              </button>
+              {mobileAboutOpen ? (
+                <div className="ml-2 flex flex-col border-l border-slate-200 pl-3">
+                  {aboutDropdownItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-lg px-4 py-2.5 text-sm text-slate-600 transition hover:bg-slate-50 hover:text-[#2027a8]"
+                      onClick={() => {
+                        setMobileProductsOpen(false);
+                        setMobileNewsOpen(false);
+                        setMobileAboutOpen(false);
+                        setMenuOpen(false);
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
           </div>
         </div>
       ) : null}
