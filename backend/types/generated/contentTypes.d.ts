@@ -739,6 +739,45 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMarketKnowHowMarketKnowHow
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'market_know_hows';
+  info: {
+    description: 'Market Know How posts';
+    displayName: 'Market Know How';
+    pluralName: 'market-know-hows';
+    singularName: 'market-know-how';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    category: Schema.Attribute.Enumeration<['Market Know How']> &
+      Schema.Attribute.DefaultTo<'Market Know How'>;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    coverImage: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    excerpt: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::market-know-how.market-know-how'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    publishedDate: Schema.Attribute.Date;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsInsightsPageNewsInsightsPage
   extends Struct.SingleTypeSchema {
   collectionName: 'news_insights_page';
@@ -1535,6 +1574,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::global-business.global-business': ApiGlobalBusinessGlobalBusiness;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::market-know-how.market-know-how': ApiMarketKnowHowMarketKnowHow;
       'api::news-insights-page.news-insights-page': ApiNewsInsightsPageNewsInsightsPage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::product-line-page.product-line-page': ApiProductLinePageProductLinePage;

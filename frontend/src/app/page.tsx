@@ -2,7 +2,6 @@ import HeroBanner from '@/components/home/HeroBanner';
 import CoreAdvantages from '@/components/home/CoreAdvantages';
 import ProductOverview from '@/components/home/ProductOverview';
 import NewsAndActivities from '@/components/home/NewsAndActivities';
-import ContactCtaSection from '@/components/home/ContactCtaSection';
 import { mapHomePageFromStrapi } from '@/lib/mapHomePage';
 import { getHomePage } from '@/lib/strapi';
 
@@ -22,8 +21,6 @@ export default async function HomePage() {
       <ProductOverview data={mapped.products} />
 
       <NewsAndActivities data={mapped.news} sectionKey="home-news" />
-
-      <ContactCtaSection data={mapped.contact} />
     </main>
   );
 }

@@ -253,7 +253,7 @@ export const productLinePageContentBySlug: Record<string, TradingSolutionPageMap
         title: '专业交易系统',
         variant: 'order-blotter',
         lines: [
-          '终端覆盖：Mobile X（手机App）、Trade X（浏览器版）、Pro X（专业桌面端）满足不同用户场景。',
+          '多终端覆盖：Mobile X（手机App）、Trade X（浏览器版）、Pro X（专业桌面端）满足不同用户场景。',
           '高效行情与订单：7×24 小时实时行情播报，丰富的图表工具与技术指标；支持限价单、市价单、止损单及长期单等多种订单类型。',
           'AI 新闻分析：内置智能新闻分析模块，自动过滤噪音，生成行业影响评估与建议，帮助用户洞察市场动向。',
         ],
@@ -275,26 +275,6 @@ export const productLinePageContentBySlug: Record<string, TradingSolutionPageMap
           '灵活计费：支持交易费、托管费、平台费等多种计费模式，支持经纪分佣与阶梯计费。',
           '合规报表：内置百张报表（客户/财务/交易/合规/风控/结算），完全适配监管要求，支持报表批量打印与导出。',
         ],
-      },
-      {
-        title: '投资者适当性',
-        variant: 'multi-chart',
-        lines: ['问卷与知识测评', '产品风险分级', '冷静期与确认记录'],
-      },
-      {
-        title: '与证券业务协同',
-        variant: 'compact-terminal',
-        lines: ['同一客户号与登录', '传统证券与 VA 头寸合并视图', '统一客服与工单'],
-      },
-      {
-        title: '监控与报表',
-        variant: 'spreadsheet',
-        lines: ['经营与合规看板', '大额与异常交易报表', '定期回顾与审计配合'],
-      },
-      {
-        title: '实施与运维',
-        variant: 'settlement',
-        lines: ['监管沟通与差距分析', '演练与上线支持', '7×24 运维可选'],
       },
     ]),
   },

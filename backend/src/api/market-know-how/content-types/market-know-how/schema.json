@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "market_know_hows",
+  "info": {
+    "singularName": "market-know-how",
+    "pluralName": "market-know-hows",
+    "displayName": "Market Know How",
+    "description": "Market Know How posts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["Market Know How"],
+      "default": "Market Know How"
+    },
+    "publishedDate": {
+      "type": "date"
+    },
+    "author": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

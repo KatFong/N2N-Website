@@ -81,6 +81,9 @@ export default function NewsInsightsPage() {
 
       <section id="market-know-how-section" className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-slate-900">Market Know How</h2>
+          </div>
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
             {marketKnowHowPosts.map((article) => (
               <article
