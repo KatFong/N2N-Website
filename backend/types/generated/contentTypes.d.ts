@@ -434,7 +434,7 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   collectionName: 'about_page';
   info: {
     description: 'About N2N-AFE page content';
-    displayName: '6 \u00B7 About N2N-AFE';
+    displayName: '6 \u00B7 \u5173\u4E8E N2N-AFE';
     pluralName: 'about-pages';
     singularName: 'about-page';
   };
@@ -474,7 +474,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles';
   info: {
     description: 'News & Insights articles';
-    displayName: 'Article';
+    displayName: '\u6587\u7AE0';
     pluralName: 'articles';
     singularName: 'article';
   };
@@ -516,7 +516,7 @@ export interface ApiBusinessPartnershipBusinessPartnership
   collectionName: 'business_partnership';
   info: {
     description: 'Business Partnership page content';
-    displayName: '3 \u00B7 Business Partnership';
+    displayName: '3 \u00B7 \u5546\u52A1\u5408\u4F5C';
     pluralName: 'business-partnerships';
     singularName: 'business-partnership';
   };
@@ -551,7 +551,7 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   collectionName: 'contact_page';
   info: {
     description: '\u806F\u7D61\u6211\u5011 \u2014 \u6A19\u984C\u8207\u5404\u5730\u8FA6\u516C\u5BA4\uFF08\u5C0D\u61C9\u524D\u53F0 /contact\uFF09';
-    displayName: '7 \u00B7 Contact Us';
+    displayName: '7 \u00B7 \u8054\u7CFB\u6211\u4EEC';
     pluralName: 'contact-pages';
     singularName: 'contact-page';
   };
@@ -586,7 +586,7 @@ export interface ApiFinancialInformationServicePageFinancialInformationServicePa
   collectionName: 'financial_information_service_page';
   info: {
     description: '\u5238\u5546\u62A5\u4EF7\u7CFB\u7EDF\uFF08Financial Information Service\uFF09/financial-information-service\uFF1A\u6807\u9898\u3001\u8981\u70B9\u4E0E SEO';
-    displayName: '2.3 \u00B7 Financial Information Service Page';
+    displayName: '2.3 \u00B7 \u91D1\u878D\u4FE1\u606F\u670D\u52A1\u9875\u9762';
     pluralName: 'financial-information-service-pages';
     singularName: 'financial-information-service-page';
   };
@@ -624,7 +624,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footer';
   info: {
     description: '\u5168\u7AD9\u9801\u5C3E\u56DB\u6B04\u5C0E\u89BD\u3001\u5E95\u90E8\u6CD5\u5F8B\u9023\u7D50\u8207\u7248\u6B0A\uFF1B\u672A\u767C\u5E03\u6642\u524D\u53F0\u4F7F\u7528\u7A0B\u5F0F\u9810\u8A2D\u3002';
-    displayName: '99 \u00B7 Footer\uFF08\u5168\u7AD9\u9801\u5C3E\uFF09';
+    displayName: '99 \u00B7 \u9875\u811A\uFF08\u5168\u7AD9\u9875\u5C3E\uFF09';
     pluralName: 'footers';
     singularName: 'footer';
   };
@@ -657,7 +657,7 @@ export interface ApiGlobalBusinessGlobalBusiness
   collectionName: 'global_business';
   info: {
     description: 'Global Business page content';
-    displayName: '4 \u00B7 Global Business';
+    displayName: '4 \u00B7 \u5168\u7403\u4E1A\u52A1';
     pluralName: 'global-businesses';
     singularName: 'global-business';
   };
@@ -691,7 +691,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_page';
   info: {
     description: '\u9996\u9801\u5340\u584A\u9806\u5E8F\u8207\u524D\u53F0\u4E00\u81F4\uFF08\u7531\u4E0A\u81F3\u4E0B\uFF09\uFF1A\u2460 Hero \u2192 \u2461 \u6838\u5FC3\u512A\u52E2 \u2192 \u2462 \u7522\u54C1\u8207\u670D\u52D9 \u2192 \u2463 \u65B0\u805E\u8207\u6D3B\u52D5 \u2192 \u2464 \u806F\u7E6B CTA\uFF1B\u5176\u5F8C\u70BA SEO\u3002\u518D\u4E0B\u65B9\u70BA\u820A\u7248\uFF0F\u9810\u7559\u6B04\u4F4D\uFF0C\u76EE\u524D\u524D\u53F0 map \u672A\u4F7F\u7528\uFF0C\u8ACB\u4EE5\u4E94\u5927\u5143\u4EF6\u70BA\u4E3B\u3002';
-    displayName: '1 \u00B7 Home';
+    displayName: '1 \u00B7 \u9996\u9875';
     pluralName: 'home-pages';
     singularName: 'home-page';
   };
@@ -740,7 +740,7 @@ export interface ApiNewsInsightsPageNewsInsightsPage
   collectionName: 'news_insights_page';
   info: {
     description: 'News and Insights listing page content';
-    displayName: '5 \u00B7 News & Insights';
+    displayName: '5 \u00B7 \u65B0\u95FB\u4E0E\u6D1E\u5BDF';
     pluralName: 'news-insights-pages';
     singularName: 'news-insights-page';
   };
@@ -772,7 +772,7 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Struct.SingleTypeSchema {
   collectionName: 'privacy_policy';
   info: {
     description: 'Privacy Policy page content';
-    displayName: '8 \u00B7 Privacy Policy';
+    displayName: '8 \u00B7 \u9690\u79C1\u653F\u7B56';
     pluralName: 'privacy-policies';
     singularName: 'privacy-policy';
   };
@@ -805,7 +805,7 @@ export interface ApiProductLinePageProductLinePage
   collectionName: 'product_line_pages';
   info: {
     description: '\u7522\u54C1\u7DDA\u5B50\u9801 /product-line/:slug\uFF08\u5831\u50F9\u3001\u6258\u7BA1\u3001VAS\u3001SMP5\u3001MPS\u3001Quant\u3001\u5168\u7403\u4E1A\u52A1\uFF09\uFF1B\u8207\u4EA4\u6613\u65B9\u6848\u76F8\u540C\u5340\u584A\uFF0C\u5F8C\u53F0\u53EF\u9010\u7B46\u7DE8\u8F2F\u4E26\u767C\u4F48';
-    displayName: 'Product Line Page';
+    displayName: '\u4EA7\u54C1\u7EBF\u9875\u9762';
     pluralName: 'product-line-pages';
     singularName: 'product-line-page';
   };
@@ -861,7 +861,7 @@ export interface ApiServerHostingPageServerHostingPage
   collectionName: 'server_hosting_line_page';
   info: {
     description: '\u670D\u52A1\u5668\u6258\u7BA1\u548C\u4E13\u7EBF\u670D\u52A1 /server-hosting\uFF1AHero\u3001Spotlight\u3001\u80FD\u529B\u7DB2\u683C\u3001\u5716\u6587\u5340\u584A\u8207 SEO\uFF08\u8207 2.1 \u6B04\u4F4D\u4E00\u81F4\uFF09';
-    displayName: '2.4 \u00B7 Server Hosting Page';
+    displayName: '2.4 \u00B7 \u670D\u52A1\u5668\u6258\u7BA1\u9875\u9762';
     pluralName: 'server-hosting-pages';
     singularName: 'server-hosting-page';
   };
@@ -913,7 +913,7 @@ export interface ApiSettlementSolutionPageSettlementSolutionPage
   collectionName: 'settlement_solution_page';
   info: {
     description: '\u7D50\u7B97\u65B9\u6848\u5B50\u9801 /settlement-solution\uFF1A\u8207 2.1 \u76F8\u540C\u5340\u584A\u7D50\u69CB\uFF08Hero\u3001Spotlight\u3001\u516D\u5BAE\u683C\u3001\u516B\u7D44\u5716\u6587\u3001\u9801\u5C3E CTA\u3001SEO\uFF09';
-    displayName: '2.2 \u00B7 Settlement Solution';
+    displayName: '2.2 \u00B7 \u7ED3\u7B97\u65B9\u6848';
     pluralName: 'settlement-solution-pages';
     singularName: 'settlement-solution-page';
   };
@@ -965,7 +965,7 @@ export interface ApiTradingSolutionPageTradingSolutionPage
   collectionName: 'trading_solution_page';
   info: {
     description: '\u4EA4\u6613\u65B9\u6848\u5B50\u9801 /trading-solution\uFF1AHero\u3001Spotlight\u3001\u516D\u5BAE\u683C\u3001CTA\u3001\u516B\u7D44\u5716\u6587\u8207 SEO \u7686\u53EF\u65BC\u6B64\u7DE8\u8F2F';
-    displayName: '2.1 \u00B7 Trading Solution Page';
+    displayName: '2.1 \u00B7 \u4EA4\u6613\u89E3\u51B3\u65B9\u6848\u9875\u9762';
     pluralName: 'trading-solution-pages';
     singularName: 'trading-solution-page';
   };

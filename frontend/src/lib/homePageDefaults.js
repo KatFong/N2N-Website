@@ -74,7 +74,7 @@ exports.HOME_PRODUCTS_DEFAULTS = [
     {
         slug: 'server-hosting',
         title: '服务器托管和专线服务',
-        subtitle: '7×24小时全天候监察',
+        subtitle: 'Server Hosting and Leased Line Services',
         description: '一站式服务：IT 硬件与机房环境、全天候监察、符合证监会科技安全要求、系统设置与维护，技术稳定可靠。',
         icon: 'hosting',
         coverImage: '/product-overview/half-globe.png',

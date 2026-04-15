@@ -79,7 +79,7 @@ exports.productLinePageContentBySlug = {
     'server-hosting': {
         hero: {
             title: '服务器托管和专线服务',
-            subtitle: '7×24小时全天候监察',
+            subtitle: 'Server Hosting and Leased Line Services',
         },
         spotlight: {
             title: '一站式服务',
