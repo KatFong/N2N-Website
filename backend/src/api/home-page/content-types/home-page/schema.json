@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "1 · Home",
+    "displayName": "1 · 首页",
     "description": "首頁區塊順序與前台一致（由上至下）：① Hero → ② 核心優勢 → ③ 產品與服務 → ④ 新聞與活動 → ⑤ 聯繫 CTA；其後為 SEO。再下方為舊版／預留欄位，目前前台 map 未使用，請以五大元件為主。"
   },
   "options": {
@@ -12,6 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "internalName": {
+      "type": "string",
+      "default": "Home Page"
+    },
     "hero": {
       "type": "component",
       "component": "sections.hero",

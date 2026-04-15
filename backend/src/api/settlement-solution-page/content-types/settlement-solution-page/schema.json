@@ -4,7 +4,7 @@
   "info": {
     "singularName": "settlement-solution-page",
     "pluralName": "settlement-solution-pages",
-    "displayName": "2.2 · Settlement Solution",
+    "displayName": "2.2 · 结算方案",
     "description": "結算方案子頁 /settlement-solution：與 2.1 相同區塊結構（Hero、Spotlight、六宮格、八組圖文、頁尾 CTA、SEO）"
   },
   "options": {

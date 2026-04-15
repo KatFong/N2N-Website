@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product-line-page",
     "pluralName": "product-line-pages",
-    "displayName": "Product Line Page",
+    "displayName": "产品线页面",
     "description": "產品線子頁 /product-line/:slug（報價、托管、VAS、SMP5、MPS、Quant、全球业务）；與交易方案相同區塊，後台可逐筆編輯並發佈"
   },
   "options": {

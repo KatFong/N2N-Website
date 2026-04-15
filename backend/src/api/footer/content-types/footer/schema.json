@@ -4,7 +4,7 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "99 · Footer（全站頁尾）",
+    "displayName": "99 · 页脚（全站页尾）",
     "description": "全站頁尾四欄導覽、底部法律連結與版權；未發布時前台使用程式預設。"
   },
   "options": {

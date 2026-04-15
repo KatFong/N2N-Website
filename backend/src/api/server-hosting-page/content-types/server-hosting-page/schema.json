@@ -4,7 +4,7 @@
   "info": {
     "singularName": "server-hosting-page",
     "pluralName": "server-hosting-pages",
-    "displayName": "2.4 · Server Hosting Page",
+    "displayName": "2.4 · 服务器托管页面",
     "description": "服务器托管和专线服务 /server-hosting：Hero、Spotlight、能力網格、圖文區塊與 SEO（與 2.1 欄位一致）"
   },
   "options": {

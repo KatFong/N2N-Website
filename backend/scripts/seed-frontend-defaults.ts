@@ -133,6 +133,7 @@ function homePayload() {
   const featured = pressAndAnnouncementArticles[0];
 
   return {
+    internalName: 'Home Page',
     hero,
     coreAdvantagesSection: {
       moduleLabel: HOME_CORE_ADV_DEFAULTS.moduleLabel,

@@ -715,6 +715,8 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'sections.home-news-section',
       false
     >;
+    internalName: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Home Page'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
