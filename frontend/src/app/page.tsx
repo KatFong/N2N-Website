@@ -23,8 +23,6 @@ export default async function HomePage() {
 
       <NewsAndActivities data={mapped.news} sectionKey="home-news" />
 
-      <NewsAndActivities data={mapped.marketKnowHow} sectionKey="home-market-know-how" />
-
       <ContactCtaSection data={mapped.contact} />
     </main>
   );
