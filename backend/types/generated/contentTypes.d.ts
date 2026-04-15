@@ -460,6 +460,9 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     seo: Schema.Attribute.Component<'shared.seo', false>;
     teamMembers: Schema.Attribute.Component<'sections.feature-card', true>;
     teamTitle: Schema.Attribute.String;
+    timelineFooter: Schema.Attribute.String;
+    timelineGroups: Schema.Attribute.Component<'sections.timeline-group', true>;
+    timelineTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

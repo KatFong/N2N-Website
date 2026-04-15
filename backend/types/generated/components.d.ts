@@ -326,6 +326,31 @@ export interface SectionsStatItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTimelineEvent extends Struct.ComponentSchema {
+  collectionName: 'components_sections_timeline_events';
+  info: {
+    description: 'Single event text under one timeline era';
+    displayName: 'Timeline Event';
+    icon: 'bulletList';
+  };
+  attributes: {
+    content: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsTimelineGroup extends Struct.ComponentSchema {
+  collectionName: 'components_sections_timeline_groups';
+  info: {
+    description: 'One timeline era with multiple events';
+    displayName: 'Timeline Group';
+    icon: 'clock';
+  };
+  attributes: {
+    era: Schema.Attribute.String & Schema.Attribute.Required;
+    events: Schema.Attribute.Component<'sections.timeline-event', true>;
+  };
+}
+
 export interface SectionsTradingSolutionBullet extends Struct.ComponentSchema {
   collectionName: 'components_sections_trading_solution_bullets';
   info: {
@@ -483,6 +508,8 @@ declare module '@strapi/strapi' {
       'sections.products-overview-section': SectionsProductsOverviewSection;
       'sections.region-item': SectionsRegionItem;
       'sections.stat-item': SectionsStatItem;
+      'sections.timeline-event': SectionsTimelineEvent;
+      'sections.timeline-group': SectionsTimelineGroup;
       'sections.trading-solution-bullet': SectionsTradingSolutionBullet;
       'sections.trading-solution-feature': SectionsTradingSolutionFeature;
       'sections.trading-solution-grid-item': SectionsTradingSolutionGridItem;
