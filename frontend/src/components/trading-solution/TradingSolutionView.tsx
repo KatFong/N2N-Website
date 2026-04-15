@@ -26,7 +26,7 @@ import type {
   TradingSolutionGridItem,
 } from '@/lib/tradingSolutionContent';
 import type { TradingSolutionSpotlightView } from '@/lib/mapTradingSolutionPage';
-import { tsContentMax, tsSectionInner } from '@/lib/tradingSolutionLayout';
+import { tsContentMax, tsSectionInner, tsSectionInnerCompact } from '@/lib/tradingSolutionLayout';
 
 const GRID_ICONS: Record<TradingSolutionGridIconId, LucideIcon> = {
   clock: Clock,
@@ -115,8 +115,8 @@ export default function TradingSolutionView({
 
       {/* 左图右文 + 了解更多 */}
       <section>
-        <div className={`${tsContentMax} ${tsSectionInner}`}>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className={`${tsContentMax} ${tsSectionInnerCompact}`}>
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
             <div className="relative order-2 aspect-[4/3] w-full lg:order-1">
               <Image
                 src={spotlight.imageSrc}

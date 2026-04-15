@@ -36,6 +36,11 @@
       "component": "sections.home-news-section",
       "repeatable": false
     },
+    "marketKnowHowSection": {
+      "type": "component",
+      "component": "sections.market-know-how-section",
+      "repeatable": false
+    },
     "contactCtaSection": {
       "type": "component",
       "component": "sections.contact-cta-section",

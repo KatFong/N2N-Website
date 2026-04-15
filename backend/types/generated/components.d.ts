@@ -250,6 +250,39 @@ export interface SectionsHomeNewsSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsMarketKnowHowSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_market_know_how_sections';
+  info: {
+    description: 'Featured image + know-how list + more button';
+    displayName: 'Market Know How Section';
+    icon: 'book';
+  };
+  attributes: {
+    featuredImage: Schema.Attribute.Media<'images'>;
+    featuredLink: Schema.Attribute.String;
+    featuredTitle: Schema.Attribute.String;
+    introText: Schema.Attribute.Text;
+    moduleLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Module 05'>;
+    moreButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u66F4\u591A'>;
+    moreButtonLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/news-insights#market-know-how-section'>;
+    newsItems: Schema.Attribute.Component<'sections.home-news-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 0;
+        },
+        number
+      >;
+    titleEn: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Market Know How'>;
+    titleZh: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Market Know How'>;
+  };
+}
+
 export interface SectionsProductItem extends Struct.ComponentSchema {
   collectionName: 'components_sections_product_items';
   info: {
@@ -504,6 +537,7 @@ declare module '@strapi/strapi' {
       'sections.hero': SectionsHero;
       'sections.home-news-item': SectionsHomeNewsItem;
       'sections.home-news-section': SectionsHomeNewsSection;
+      'sections.market-know-how-section': SectionsMarketKnowHowSection;
       'sections.product-item': SectionsProductItem;
       'sections.products-overview-section': SectionsProductsOverviewSection;
       'sections.region-item': SectionsRegionItem;

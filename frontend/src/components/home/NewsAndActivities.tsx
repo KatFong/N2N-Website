@@ -4,20 +4,22 @@ import type { MappedNews } from '@/lib/mapHomePage';
 
 type Props = {
   data: MappedNews;
+  sectionKey?: string;
 };
 
-export default function NewsAndActivities({ data }: Props) {
+export default function NewsAndActivities({ data, sectionKey = 'news-activities' }: Props) {
   const n = data;
+  const headingId = `${sectionKey}-heading`;
 
   if (!n.featuredTitle || n.list.length === 0) return null;
 
   return (
-    <section className="border-t border-slate-200/80 bg-white home-section-y" aria-labelledby="news-activities-heading">
+    <section className="border-t border-slate-200/80 bg-white home-section-y" aria-labelledby={headingId}>
       <div className="home-shell lg:grid lg:h-[450px] lg:max-h-[450px] lg:grid-rows-[auto_320px_auto] lg:gap-y-3 lg:py-0">
         <div className="lg:shrink-0">
           {n.moduleLabel ? <p className="home-kicker">{n.moduleLabel}</p> : null}
           <h2
-            id="news-activities-heading"
+            id={headingId}
             className={`home-h2 ${n.moduleLabel ? 'mt-2' : ''}`}
           >
             {n.titleZh}

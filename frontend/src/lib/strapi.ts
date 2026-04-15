@@ -117,6 +117,9 @@ const HOME_PAGE_POPULATE_PATHS = [
   'homeNewsSection',
   'homeNewsSection.featuredImage',
   'homeNewsSection.newsItems',
+  'marketKnowHowSection',
+  'marketKnowHowSection.featuredImage',
+  'marketKnowHowSection.newsItems',
   'contactCtaSection',
   'contactCtaSection.backgroundImage',
   'seo',
@@ -362,6 +365,7 @@ export interface HomePageData {
   coreAdvantagesSection?: Record<string, unknown>;
   productsOverview?: Record<string, unknown>;
   homeNewsSection?: Record<string, unknown>;
+  marketKnowHowSection?: Record<string, unknown>;
   contactCtaSection?: Record<string, unknown>;
 }
 

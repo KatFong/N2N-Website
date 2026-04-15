@@ -21,7 +21,9 @@ export default async function HomePage() {
 
       <ProductOverview data={mapped.products} />
 
-      <NewsAndActivities data={mapped.news} />
+      <NewsAndActivities data={mapped.news} sectionKey="home-news" />
+
+      <NewsAndActivities data={mapped.marketKnowHow} sectionKey="home-market-know-how" />
 
       <ContactCtaSection data={mapped.contact} />
     </main>

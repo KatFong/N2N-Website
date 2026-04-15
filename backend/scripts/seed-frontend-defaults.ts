@@ -11,6 +11,7 @@ import {
   HOME_CONTACT_CTA_DEFAULTS,
   HOME_CORE_ADV_DEFAULTS,
   HOME_HERO_DEFAULTS,
+  HOME_MARKET_KNOW_HOW_DEFAULTS,
   HOME_NEWS_DEFAULTS,
   HOME_PRODUCTS_DEFAULTS,
   HOME_PRODUCTS_SECTION_DEFAULTS,
@@ -131,6 +132,8 @@ function homePayload() {
 
   const newsList = pressAndAnnouncementArticles.slice(0, 3);
   const featured = pressAndAnnouncementArticles[0];
+  const marketKnowHowList = pressAndAnnouncementArticles.slice(3, 5);
+  const marketKnowHowFeatured = pressAndAnnouncementArticles[2];
 
   return {
     internalName: 'Home Page',
@@ -157,6 +160,22 @@ function homePayload() {
       moreButtonLabel: HOME_NEWS_DEFAULTS.moreButtonLabel,
       moreButtonLink: HOME_NEWS_DEFAULTS.moreButtonLink,
       newsItems: newsList.map((a) => ({
+        title: a.title,
+        excerpt: a.excerpt,
+        link: `/news-insights/${a.slug}`,
+      })),
+    },
+    marketKnowHowSection: {
+      moduleLabel: HOME_MARKET_KNOW_HOW_DEFAULTS.moduleLabel,
+      titleZh: HOME_MARKET_KNOW_HOW_DEFAULTS.titleZh,
+      titleEn: HOME_MARKET_KNOW_HOW_DEFAULTS.titleEn,
+      featuredTitle: marketKnowHowFeatured?.title ?? '',
+      featuredLink: marketKnowHowFeatured
+        ? `/news-insights/${marketKnowHowFeatured.slug}`
+        : HOME_MARKET_KNOW_HOW_DEFAULTS.featuredLink,
+      moreButtonLabel: HOME_MARKET_KNOW_HOW_DEFAULTS.moreButtonLabel,
+      moreButtonLink: HOME_MARKET_KNOW_HOW_DEFAULTS.moreButtonLink,
+      newsItems: marketKnowHowList.map((a) => ({
         title: a.title,
         excerpt: a.excerpt,
         link: `/news-insights/${a.slug}`,

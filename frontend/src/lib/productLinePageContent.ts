@@ -96,14 +96,15 @@ export const productLinePageContentBySlug: Record<string, TradingSolutionPageMap
       subtitle: 'Server Hosting and Leased Line Services',
     },
     spotlight: {
-      title: '一站式服务',
-      tagline: '',
+      title: '服务器托管和专线服务',
+      tagline: '7×24小时全天候监察',
       paragraphs: [],
       imageSrc: '/trading-solution/server-hosting-spotlight.png',
       ctaLabel: '了解更多',
       ctaHref: '/contact',
       highlightsHeading: '',
       coreHighlights: [
+        '一站式服务：',
         'IT硬件和服务器机房环境',
         '7×24全天候监察',
         '符合证监会科技安全要求',

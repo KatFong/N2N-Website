@@ -15,6 +15,7 @@ import {
   HOME_CONTACT_CTA_DEFAULTS,
   HOME_CORE_ADV_DEFAULTS,
   HOME_HERO_DEFAULTS,
+  HOME_MARKET_KNOW_HOW_DEFAULTS,
   HOME_NEWS_DEFAULTS,
   HOME_PRODUCTS_DEFAULTS,
   HOME_PRODUCTS_SECTION_DEFAULTS,
@@ -160,6 +161,7 @@ function defaultsBundle(): {
   core: MappedCoreAdv;
   products: MappedProductsSection;
   news: MappedNews;
+  marketKnowHow: MappedNews;
   contact: MappedContactCta;
 } {
   const refArticles = pressAndAnnouncementArticles;
@@ -174,11 +176,25 @@ function defaultsBundle(): {
       link: `/news-insights/${a.slug}`,
     })),
   };
+  const marketKnowHow: MappedNews = {
+    ...HOME_MARKET_KNOW_HOW_DEFAULTS,
+    titleEn: HOME_MARKET_KNOW_HOW_DEFAULTS.titleEn,
+    featuredTitle: refArticles[2]?.title || refArticles[0]?.title || '',
+    featuredLink: refArticles[2]
+      ? `/news-insights/${refArticles[2].slug}`
+      : HOME_MARKET_KNOW_HOW_DEFAULTS.featuredLink,
+    list: refArticles.slice(3, 5).map((a) => ({
+      title: a.title,
+      excerpt: a.excerpt || '',
+      link: `/news-insights/${a.slug}`,
+    })),
+  };
   return {
     hero: { ...HOME_HERO_DEFAULTS },
     core: { ...HOME_CORE_ADV_DEFAULTS },
     products: { ...HOME_PRODUCTS_SECTION_DEFAULTS, items: [...HOME_PRODUCTS_DEFAULTS] },
     news,
+    marketKnowHow,
     contact: { ...HOME_CONTACT_CTA_DEFAULTS },
   };
 }
@@ -188,6 +204,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   core: MappedCoreAdv;
   products: MappedProductsSection;
   news: MappedNews;
+  marketKnowHow: MappedNews;
   contact: MappedContactCta;
 } {
   if (apiData == null) return defaultsBundle();
@@ -198,6 +215,7 @@ export function mapHomePageFromStrapi(apiData: unknown): {
   const coreRaw = unwrapStrapiComponent(doc?.coreAdvantagesSection);
   const productsRaw = unwrapStrapiComponent(doc?.productsOverview);
   const newsRaw = unwrapStrapiComponent(doc?.homeNewsSection);
+  const marketKnowHowRaw = unwrapStrapiComponent(doc?.marketKnowHowSection);
   const contactRaw = unwrapStrapiComponent(doc?.contactCtaSection);
 
   /** Hero 对应 Strapi `sections.hero`：subtitle＝主标上行（公司名）、title＝主标下行（标语）；CTA 可为 Button1/2 或旧字段 ctaLabel */
@@ -356,6 +374,62 @@ export function mapHomePageFromStrapi(apiData: unknown): {
     ...(newsIntro ? { introText: newsIntro } : {}),
   };
 
+  const cmsMkhItems = unwrapStrapiEntryArray(marketKnowHowRaw?.newsItems);
+  const mkhFeaturedTitle =
+    pickStr(marketKnowHowRaw?.featuredTitle) ||
+    refArticles[2]?.title ||
+    HOME_MARKET_KNOW_HOW_DEFAULTS.featuredTitle;
+  const mkhFeaturedLink =
+    pickStr(marketKnowHowRaw?.featuredLink) ||
+    (refArticles[2]
+      ? `/news-insights/${refArticles[2].slug}`
+      : HOME_MARKET_KNOW_HOW_DEFAULTS.featuredLink);
+  const mkhFeaturedImageUrl =
+    mediaUrl(marketKnowHowRaw?.featuredImage as StrapiMedia) || HOME_MARKET_KNOW_HOW_DEFAULTS.featuredImageUrl;
+
+  let mkhList: { title: string; excerpt: string; link: string }[];
+  if (cmsMkhItems.length > 0) {
+    const fromCms = cmsMkhItems
+      .map((n) => {
+        const row = unwrapStrapiComponent(n) ?? n;
+        return {
+          title: pickStr(row.title),
+          excerpt: pickStr(row.excerpt) || '',
+          link: pickStr(row.link) || '/news-insights#market-know-how-section',
+        };
+      })
+      .filter((row) => row.title !== '');
+    mkhList =
+      fromCms.length > 0
+        ? fromCms
+        : refArticles.slice(3, 5).map((a) => ({
+            title: a.title,
+            excerpt: a.excerpt || '',
+            link: `/news-insights/${a.slug}`,
+          }));
+  } else {
+    mkhList = refArticles.slice(3, 5).map((a) => ({
+      title: a.title,
+      excerpt: a.excerpt || '',
+      link: `/news-insights/${a.slug}`,
+    }));
+  }
+
+  const mkhIntro = pickStr(marketKnowHowRaw?.introText);
+  const marketKnowHow: MappedNews = {
+    moduleLabel: pickStr(marketKnowHowRaw?.moduleLabel) || HOME_MARKET_KNOW_HOW_DEFAULTS.moduleLabel,
+    titleZh: pickStr(marketKnowHowRaw?.titleZh) || HOME_MARKET_KNOW_HOW_DEFAULTS.titleZh,
+    titleEn: pickStr(marketKnowHowRaw?.titleEn) || HOME_MARKET_KNOW_HOW_DEFAULTS.titleEn,
+    featuredTitle: mkhFeaturedTitle,
+    featuredLink: mkhFeaturedLink,
+    featuredImageUrl: mkhFeaturedImageUrl,
+    moreButtonLabel:
+      pickStr(marketKnowHowRaw?.moreButtonLabel) || HOME_MARKET_KNOW_HOW_DEFAULTS.moreButtonLabel,
+    moreButtonLink: pickStr(marketKnowHowRaw?.moreButtonLink) || HOME_MARKET_KNOW_HOW_DEFAULTS.moreButtonLink,
+    list: mkhList,
+    ...(mkhIntro ? { introText: mkhIntro } : {}),
+  };
+
   const contact: MappedContactCta = {
     ...HOME_CONTACT_CTA_DEFAULTS,
     title: pickStr(contactRaw?.title) || HOME_CONTACT_CTA_DEFAULTS.title,
@@ -365,5 +439,5 @@ export function mapHomePageFromStrapi(apiData: unknown): {
     backgroundImageUrl: mediaUrl(contactRaw?.backgroundImage as StrapiMedia) || HOME_CONTACT_CTA_DEFAULTS.backgroundImageUrl,
   };
 
-  return { hero, core, products, news, contact };
+  return { hero, core, products, news, marketKnowHow, contact };
 }

@@ -131,6 +131,17 @@ export const HOME_NEWS_DEFAULTS = {
   moreButtonLink: '/news-insights',
 };
 
+export const HOME_MARKET_KNOW_HOW_DEFAULTS = {
+  moduleLabel: 'Module 05',
+  titleZh: 'Market Know How',
+  titleEn: 'Market Know How',
+  featuredTitle: '',
+  featuredLink: '/news-insights#market-know-how-section',
+  featuredImageUrl: '/about/geometric-building2.jpg',
+  moreButtonLabel: '更多',
+  moreButtonLink: '/news-insights#market-know-how-section',
+};
+
 export const HOME_CONTACT_CTA_DEFAULTS = {
   title: '准备好迎接金融科技的未来了吗？',
   description: '立即联系我们的专家，获取为您量身定制的解决方案。',

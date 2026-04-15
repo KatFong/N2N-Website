@@ -723,6 +723,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
+    marketKnowHowSection: Schema.Attribute.Component<
+      'sections.market-know-how-section',
+      false
+    >;
     productsOverview: Schema.Attribute.Component<
       'sections.products-overview-section',
       false
