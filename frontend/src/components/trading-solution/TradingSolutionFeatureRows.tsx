@@ -75,7 +75,9 @@ function TradingSolutionCtaBanner({ cta }: { cta: TradingSolutionFooterCta }) {
 
 /** 8 组图文：统一间距（行动堆叠 / 桌面栏距 / 标题↔条列） */
 const featureRowGridGap =
-  'gap-12 lg:gap-x-20 lg:gap-y-8 xl:gap-x-24 2xl:gap-x-[6.5rem]';
+  'gap-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20 2xl:gap-x-24';
+
+const featureRowPadY = 'py-12 md:py-16';
 
 export default function TradingSolutionFeatureRows({
   rows,
@@ -127,7 +129,7 @@ function FeatureRow({
     <article
       ref={ref}
       data-visible={visible ? 'true' : 'false'}
-      className={`ts-feature-row border-b border-slate-100 last:border-b-0 ${tsSectionPadY}`}
+      className={`ts-feature-row border-b border-slate-100 last:border-b-0 ${featureRowPadY}`}
       style={
         {
           ['--ts-media-x' as string]: odd ? '-44px' : '44px',
@@ -147,7 +149,7 @@ function FeatureRow({
         }`}
       >
         <h2
-          className={`ts-slide-title col-start-1 row-start-1 text-[1.375rem] font-bold leading-snug tracking-tight text-slate-900 md:text-[1.65rem] lg:text-[1.75rem] ${textCol} lg:row-start-1`}
+          className={`ts-slide-title col-start-1 row-start-1 text-[1.25rem] font-bold leading-snug tracking-tight text-slate-900 md:text-[1.5rem] lg:text-[1.625rem] ${textCol} lg:row-start-1`}
         >
           {row.title}
         </h2>
@@ -161,13 +163,13 @@ function FeatureRow({
         </div>
 
         <div
-          className={`ts-slide-text col-start-1 row-start-3 flex min-w-0 flex-col gap-8 ${textCol} lg:row-start-2`}
+          className={`ts-slide-text col-start-1 row-start-3 flex min-w-0 flex-col gap-6 ${textCol} lg:row-start-2`}
         >
-          <ul className="list-none space-y-5 md:space-y-6">
+          <ul className="list-none space-y-3.5 md:space-y-4">
             {row.lines.map((line, i) => (
-              <li key={i} className="flex gap-4 text-[0.9375rem] leading-[1.75] text-slate-700 md:text-base md:leading-[1.8]">
+              <li key={i} className="flex gap-3 text-[0.9rem] leading-[1.55] text-slate-700 md:text-[0.95rem] md:leading-[1.65]">
                 <span
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-600"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-600"
                   aria-hidden
                 />
                 <span>{line}</span>

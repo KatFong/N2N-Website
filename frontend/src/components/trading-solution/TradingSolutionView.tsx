@@ -56,7 +56,7 @@ function GridIconMark({ iconId }: { iconId: TradingSolutionGridIconId }) {
   return <Icon className="h-7 w-7" strokeWidth={1.5} aria-hidden />;
 }
 
-function GridCard({ item }: { item: TradingSolutionGridItem }) {
+function GridCard({ item, noBullet = false }: { item: TradingSolutionGridItem; noBullet?: boolean }) {
   return (
     <div className="flex flex-col">
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-faint text-brand-primary">
@@ -66,7 +66,7 @@ function GridCard({ item }: { item: TradingSolutionGridItem }) {
       <ul className="mt-2 list-none space-y-2">
         {item.lines.map((line, i) => (
           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-slate-600">
-            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />
+            {noBullet ? null : <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />}
             <span>{line}</span>
           </li>
         ))}
@@ -96,6 +96,10 @@ export default function TradingSolutionView({
   featureRows,
 }: Props) {
   const six = sixGrid;
+  const isVasPage =
+    hero.title.includes('VAS') ||
+    hero.title.includes('虚拟资产') ||
+    hero.subtitle.includes('Virtual Asset');
 
   return (
     <div className="bg-white text-slate-900">
@@ -143,13 +147,18 @@ export default function TradingSolutionView({
                       <p className="text-sm font-semibold text-slate-900 md:text-base">{label}</p>
                     ) : null;
                   })()}
-                  <ul className="list-none space-y-2.5 text-sm leading-relaxed text-slate-600 md:text-base">
-                    {spotlight.coreHighlights.map((line, i) => (
-                      <li key={i} className="flex gap-2.5">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />
-                        <span>{line}</span>
-                      </li>
-                    ))}
+                  <ul className="list-none space-y-2.5 pl-5 text-sm leading-relaxed text-slate-600 md:pl-7 md:text-base">
+                    {spotlight.coreHighlights.map((line, i) => {
+                      const isHeadingLine = /[：:]$/.test(line.trim());
+                      return (
+                        <li key={i} className="flex gap-2.5">
+                          {isHeadingLine ? null : (
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand-primary/70" aria-hidden />
+                          )}
+                          <span className={isHeadingLine ? 'font-semibold text-slate-800' : ''}>{line}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ) : null}
@@ -167,8 +176,11 @@ export default function TradingSolutionView({
       </section>
 
       {/* 能力网格：4 项大屏 1×4，小屏先 2 列再单列；6 项为 3×2；CTA 置于下方置中 */}
-      <section className="border-t border-slate-100">
+      <section className="border-t border-slate-200 bg-slate-50/80">
         <div className={`${tsContentMax} ${tsSectionInner}`}>
+          <div className="mb-10 text-center md:mb-12">
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">技术优势</h2>
+          </div>
           <div
             className={`grid gap-10 md:gap-12 ${
               six.length > 4
@@ -179,7 +191,7 @@ export default function TradingSolutionView({
             }`}
           >
             {six.map((item, i) => (
-              <GridCard key={`${item.title}-${i}`} item={item} />
+              <GridCard key={`${item.title}-${i}`} item={item} noBullet={isVasPage} />
             ))}
           </div>
           <div className="mt-12 flex w-full justify-center md:mt-14">
